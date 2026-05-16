@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Philosophie 4 – Begriffe</title>
+<style>
+:root{
+  --b:#1F3864;--bm:#2E75B6;--bl:#D6E4F0;--ba:#378ADD;
+  --gm:#1D9E75;--gl:#E1F5EE;
+  --am:#BA7517;--al:#FAEEDA;
+  --pm:#D4537E;--pl:#FBEAF0;
+  --bg:#f7f8fa;--w:#fff;--br:#e0e0e0;
+  --r:8px;--rl:12px;
+  --font:'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:#1a1a1a;}
+
+/* TOPNAV */
+.topnav{position:sticky;top:0;z-index:200;background:var(--b);
+  display:flex;align-items:center;padding:0 1.25rem;height:48px;gap:.5rem;}
+.topnav a,.topnav span{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;
+  padding:4px 10px;border-radius:5px;transition:all .15s;white-space:nowrap;}
+.topnav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.topnav a.active{background:rgba(255,255,255,.25);color:#fff;font-weight:600;}
+.topnav .brand{color:#fff;font-weight:700;font-size:14px;margin-right:.5rem;}
+.topnav .spacer{flex:1;}
+.topnav .srch{position:relative;max-width:240px;flex:1;}
+.topnav .srch input{width:100%;padding:5px 10px 5px 26px;border:1px solid rgba(255,255,255,.2);
+  border-radius:5px;background:rgba(255,255,255,.1);color:#fff;font-size:12px;}
+.topnav .srch input::placeholder{color:rgba(255,255,255,.5);}
+.topnav .srch input:focus{outline:none;background:rgba(255,255,255,.18);}
+.topnav .srch .si{position:absolute;left:7px;top:50%;transform:translateY(-50%);
+  font-size:11px;opacity:.6;}
+
+.bg-layout{max-width:900px;margin:0 auto;padding:1.25rem;}
+.bg-hero{background:linear-gradient(135deg,#1F3864,#2E75B6);color:#fff;
+  border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;}
+.bg-hero h1{font-size:18px;font-weight:600;margin-bottom:2px;}
+.bg-hero p{font-size:12px;opacity:.85;}
+.alpha-nav{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:1rem;}
+.alpha-btn{width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+  border:1px solid #e0e0e0;border-radius:6px;font-size:12px;font-weight:600;
+  cursor:pointer;background:#fff;color:#555;transition:all .12s;}
+.alpha-btn:hover{border-color:var(--ba);color:var(--b);}
+.alpha-btn.has{background:var(--bl);color:var(--b);border-color:var(--bm);}
+.alpha-section{margin-bottom:1.25rem;}
+.alpha-letter{font-size:13px;font-weight:700;color:var(--bm);border-bottom:2px solid var(--bl);
+  padding-bottom:4px;margin-bottom:.6rem;}
+.term-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;
+  padding:10px 14px;margin-bottom:6px;transition:border-color .12s;}
+.term-card:target,.term-card.highlight{border-color:var(--ba);background:var(--bl);}
+.term-name{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:3px;}
+.term-def{font-size:13px;color:#444;line-height:1.55;}
+.term-links{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;}
+.term-link{font-size:11px;padding:2px 9px;border-radius:99px;border:1px solid;
+  text-decoration:none;cursor:pointer;font-weight:500;}
+.term-sem{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  margin-bottom:4px;color:#bbb;}
+.bg-srch{display:flex;gap:.5rem;margin-bottom:.75rem;}
+.bg-srch input{flex:1;padding:7px 12px;border:1px solid #e0e0e0;border-radius:6px;
+  font-size:13px;font-family:inherit;}
+.bg-srch input:focus{outline:none;border-color:var(--ba);}
+.no-results{text-align:center;padding:2rem;color:#bbb;font-size:13px;}
+</style>
+</head>
+<body>
+<nav class="topnav"><span class="brand">Philosophie 4</span><a href="index.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="">📊 Vergleiche</a><a href="fachwissen.html" class="">📖 Fachwissen</a><a href="begriffe.html" class="active">📚 Begriffe</a><span class="spacer"></span></nav>
+<div class="bg-layout">
+  <div class="bg-hero">
+    <h1>📚 Philosophische Kernbegriffe</h1>
+    <p>71 Begriffe aus allen vier Semestern · mit Querverweisen ins Fachwissen</p>
+  </div>
+  <div class="bg-srch">
+    <input type="text" id="bg-search" placeholder="Begriff suchen…">
+  </div>
+  <div id="bg-list"></div>
+</div>
+<script>
+
+const BEGRIFFE=[{"term":"Angeborene Ideen","definition":"Descartes: Gewisse Ideen (Gott, Unendlichkeit, Mathematik) sind nicht aus Erfahrung gewonnen, sondern im Verstand angelegt.","fw_id":"descartes","sem":"Erkenntnistheorie"},{"term":"Animal Symbolicum","definition":"Cassirer: Der Mensch lebt nicht in einer natürlichen, sondern in einer symbolischen Wirklichkeit — Sprache, Mythos, Kunst, Wissenschaft.","fw_id":"anthr_intro","sem":"Anthropologie"},{"term":"Anything goes","definition":"Feyerabend: Es gibt keine universelle wissenschaftliche Methode — was zählt, ist was funktioniert, auch wenn es gegen die Regeln verstößt.","fw_id":"feyerabend","sem":"Erkenntnistheorie"},{"term":"Aponie","definition":"Epikur: Schmerzfreiheit des Körpers — zusammen mit Ataraxia das Ziel des epikureischen Lebens.","fw_id":"epikur","sem":"Ethik"},{"term":"Areté (Tugend)","definition":"Aristoteles: Tugend entsteht durch Übung und Gewohnheit — sie ist die Mitte zwischen Übermaß und Mangel (Mesotes).","fw_id":"aristoteles_eth","sem":"Ethik"},{"term":"Ataraxia","definition":"Epikur: Seelenruhe und innere Unerschütterlichkeit als höchstes Lebensziel — frei von irrationalen Ängsten.","fw_id":"epikur","sem":"Ethik"},{"term":"Autonomie","definition":"Kant: Die Fähigkeit des Menschen, sich selbst Gesetze zu geben — Grundlage von Würde und Moralität.","fw_id":"kant_eth","sem":"Ethik"},{"term":"Banalität des Bösen","definition":"Arendt: Das Böse entsteht nicht aus Bösartigkeit, sondern aus Gedankenlosigkeit — am Beispiel Eichmanns in Jerusalem.","fw_id":"macht_fw","sem":"Staatsphilosophie"},{"term":"Citoyen vs. Bourgeois","definition":"Rousseau: Citoyen = politisch verantwortlicher Staatsbürger; Bourgeois = privatinteressierter Bürger — nur der Citoyen erhält die Demokratie.","fw_id":"rousseau","sem":"Staatsphilosophie"},{"term":"Cogito ergo sum","definition":"«Ich denke, also bin ich.» — Descartes' unerschütterliche Grundwahrheit aus dem radikalen Zweifel.","fw_id":"descartes","sem":"Erkenntnistheorie"},{"term":"Das Andere","definition":"de Beauvoir: Die Frau wurde von der Gesellschaft als «das Andere» definiert — kein eigenständiges Subjekt, sondern Gegenpol zum männlichen Norm-Subjekt.","fw_id":"ess_exist","sem":"Anthropologie"},{"term":"Differenzprinzip","definition":"Rawls: Ungleichheiten sind nur gerechtfertigt, wenn sie den am schlechtesten Gestellten zugutekommen.","fw_id":"sozgerech_fw","sem":"Staatsphilosophie"},{"term":"Ding an sich","definition":"Kant: Die Welt, wie sie unabhängig von unserer Wahrnehmung ist — für uns grundsätzlich unerkennbar.","fw_id":"kant_erk","sem":"Erkenntnistheorie"},{"term":"Doxa / Episteme","definition":"Platon: Doxa = bloße Meinung (trügerisch); Episteme = echtes Wissen (durch Vernunft gewonnen).","fw_id":"platon_erk","sem":"Erkenntnistheorie"},{"term":"Ehrfurcht vor dem Leben","definition":"Schweitzer: Jedes Lebewesen hat einen Eigenwert — Grundprinzip einer universalen Ethik.","fw_id":"jonas","sem":"Ethik"},{"term":"Entfremdung","definition":"Marx: Im Kapitalismus verliert der Arbeiter die Verbindung zu seinem Produkt, seiner Tätigkeit, seinen Mitmenschen und seinem Gattungswesen.","fw_id":"arbeit_fw","sem":"Anthropologie"},{"term":"Entitlement-Theorie","definition":"Nozick: Eigentum ist rechtmäßig, wenn es ohne Verletzung fremder Rechte erworben wurde — Umverteilung ist Zwang.","fw_id":"sozgerech_fw","sem":"Staatsphilosophie"},{"term":"Eudaimonia","definition":"Aristoteles: Das höchste Ziel menschlichen Lebens — Glückseligkeit als Zustand sittlicher und geistiger Vollendung.","fw_id":"aristoteles_eth","sem":"Ethik"},{"term":"Existenz geht der Essenz voraus","definition":"Sartre: Es gibt kein vorgegebenes menschliches Wesen — der Mensch erschafft sich erst durch seine Entscheidungen.","fw_id":"sartre","sem":"Anthropologie"},{"term":"Fallibilismus","definition":"Popper: Kein Wissen ist absolut sicher — alle Theorien bleiben vorläufig und müssen bereit sein, widerlegt zu werden.","fw_id":"popper","sem":"Erkenntnistheorie"},{"term":"Falsifikationsprinzip","definition":"Popper: Eine Aussage ist wissenschaftlich, wenn sie unter bestimmten Bedingungen widerlegbar (falsifizierbar) ist.","fw_id":"popper","sem":"Erkenntnistheorie"},{"term":"Freiheit der Haltung","definition":"Frankl: «Man kann dem Menschen alles nehmen, nur nicht die letzte Freiheit — die Wahl der eigenen Haltung.» Auch in äußerster Not.","fw_id":"frankl","sem":"Anthropologie"},{"term":"Gattungswesen","definition":"Marx: Der Mensch unterscheidet sich vom Tier dadurch, dass er bewusst und frei produziert — Arbeit ist sein Wesensausdruck.","fw_id":"arbeit_fw","sem":"Anthropologie"},{"term":"Gesellschaftsvertrag","definition":"Hobbes/Locke/Rousseau: Die (hypothetische) Übereinkunft, durch die Menschen den Naturzustand verlassen und den Staat gründen.","fw_id":"hobbes","sem":"Staatsphilosophie"},{"term":"Gesetzliches Unrecht","definition":"Radbruch: Gesetze können rechtsgültig und dennoch moralisch ungerecht sein — NS-Recht als historisches Paradigma.","fw_id":"naturrecht_fw","sem":"Staatsphilosophie"},{"term":"Goldene Mitte (Mesotes)","definition":"Aristoteles: Tugend liegt zwischen zwei Extremen — Tapferkeit z.B. zwischen Feigheit und Tollkühnheit.","fw_id":"aristoteles_eth","sem":"Ethik"},{"term":"Guter Wille","definition":"Kant: Nur der Wille zu handeln aus Pflicht ist uneingeschränkt gut — unabhängig von Ergebnis oder Neigung.","fw_id":"kant_eth","sem":"Ethik"},{"term":"Hedonistisches Kalkül","definition":"Bentham: Methode zur Berechnung von Lust und Schmerz nach Intensität, Dauer, Gewissheit, Nähe, Folgenträchtigkeit und Reinheit.","fw_id":"utilitarismus_fw","sem":"Ethik"},{"term":"Heuristik der Furcht","definition":"Jonas: Im Zweifel soll man das schlimmste Szenario ernst nehmen — Vorsichtsprinzip für Technologieentscheidungen.","fw_id":"jonas","sem":"Ethik"},{"term":"Homo Faber","definition":"Marx/Arendt: Der Mensch als Werkzeugmacher — er definiert sich durch aktive Gestaltung der Welt durch Arbeit und Technik.","fw_id":"arbeit_fw","sem":"Anthropologie"},{"term":"Höhlengleichnis","definition":"Platon: Gleichnis für den Weg von der sinnlichen Wahrnehmung (Schatten) zur wahren Erkenntnis (Ideenwelt/Licht).","fw_id":"platon_erk","sem":"Erkenntnistheorie"},{"term":"Ideenlehre","definition":"Platon: Hinter den sichtbaren Dingen stehen unveränderliche, vollkommene Urbilder (Ideen) — das eigentliche Sein.","fw_id":"platon_erk","sem":"Erkenntnistheorie"},{"term":"Induktionsproblem","definition":"Hume: Aus einzelnen Beobachtungen kann man keine allgemeinen Gesetze ableiten — Kausalität ist Gewohnheit, keine logische Notwendigkeit.","fw_id":"empirismus","sem":"Erkenntnistheorie"},{"term":"Inkommensurabilität","definition":"Kuhn/Feyerabend: Verschiedene Paradigmen/Theorien sind nicht direkt vergleichbar, weil sie unterschiedliche Begriffe und Maßstäbe verwenden.","fw_id":"kuhn","sem":"Erkenntnistheorie"},{"term":"Kategorien des Verstandes","definition":"Kant: Angeborene Denkformen (Kausalität, Raum, Zeit), durch die wir Erfahrungen erst ordnen und verstehen können.","fw_id":"kant_erk","sem":"Erkenntnistheorie"},{"term":"Kategorischer Imperativ","definition":"Kant: «Handle nur nach der Maxime, die du zugleich als allgemeines Gesetz wollen könntest.» — Das unbedingte Moralgesetz.","fw_id":"kant_eth","sem":"Ethik"},{"term":"Kopernikanische Wende","definition":"Kant: Nicht der Geist passt sich den Dingen an, sondern die Dinge passen sich den Strukturen unseres Verstandes an.","fw_id":"kant_erk","sem":"Erkenntnistheorie"},{"term":"Legitime Herrschaft","definition":"Weber: Herrschaft, die von den Beherrschten als berechtigt anerkannt wird — in drei Typen: traditional, charismatisch, legal-rational.","fw_id":"macht_fw","sem":"Staatsphilosophie"},{"term":"Leviathan","definition":"Hobbes: Der allmächtige Staat, dem alle Bürger ihre Rechte übertragen, um dem Krieg aller gegen alle zu entkommen.","fw_id":"hobbes","sem":"Staatsphilosophie"},{"term":"Logotherapie","definition":"Frankl: Therapieform, die auf der Suche nach Sinn basiert — der Wille zum Sinn als primäre menschliche Motivation.","fw_id":"frankl","sem":"Anthropologie"},{"term":"Macht vs. Gewalt","definition":"Arendt: Macht entsteht durch gemeinsames Handeln und Zustimmung; Gewalt ist ihr Gegenteil — wo Gewalt herrscht, ist Macht bereits verschwunden.","fw_id":"macht_fw","sem":"Staatsphilosophie"},{"term":"Mauvaise foi","definition":"Sartre: Schlechter Glaube — die Selbsttäuschung, man sei durch äußere Umstände festgelegt und habe keine Wahl.","fw_id":"sartre","sem":"Anthropologie"},{"term":"Mängelwesen","definition":"Gehlen: Der Mensch ist biologisch unfertig — ohne Instinkte, ohne Naturwaffen. Deshalb schafft er Kultur, Technik und Institutionen als Kompensation.","fw_id":"gehlen","sem":"Anthropologie"},{"term":"Naturzustand","definition":"Hobbes/Locke/Rousseau: Der vorstaatliche Zustand — bei Hobbes: Krieg; bei Locke: friedlich; bei Rousseau: gut und harmonisch.","fw_id":"hobbes","sem":"Staatsphilosophie"},{"term":"Noodynamik","definition":"Frankl: Die produktive Spannung zwischen dem, was man ist, und dem, wozu man berufen ist — Quelle von Sinn und Motivation.","fw_id":"frankl","sem":"Anthropologie"},{"term":"Normalwissenschaft","definition":"Kuhn: Routinebetrieb innerhalb eines Paradigmas — Rätsel lösen, ohne das Paradigma selbst zu hinterfragen.","fw_id":"kuhn","sem":"Erkenntnistheorie"},{"term":"Paradigma","definition":"Kuhn: Ein von der wissenschaftlichen Gemeinschaft geteiltes Denk- und Forschungsrahmen, das bestimmt, welche Fragen sinnvoll sind.","fw_id":"kuhn","sem":"Erkenntnistheorie"},{"term":"Performativität","definition":"Butler: Geschlecht und Identität entstehen nicht durch ein inneres Wesen, sondern durch wiederholte gesellschaftliche Handlungen.","fw_id":"ess_exist","sem":"Ethik"},{"term":"Philosophenkönig","definition":"Platon: Nur wer das Gute kennt, kann gerecht regieren — Herrschaft der philosophisch Gebildeten statt Demokratie.","fw_id":"platon_staat","sem":"Staatsphilosophie"},{"term":"Prinzip Verantwortung","definition":"Jonas: Die Verantwortung des Menschen erstreckt sich auf zukünftige Generationen und die Natur — nicht nur auf die Gegenwart.","fw_id":"jonas","sem":"Ethik"},{"term":"Radbruchsche Formel","definition":"Radbruch: Positives Recht gilt in der Regel — aber extrem ungerechtes Recht verliert seine Verbindlichkeit und muss am Naturrecht gemessen werden.","fw_id":"naturrecht_fw","sem":"Staatsphilosophie"},{"term":"Recht, Rechte zu haben","definition":"Arendt: Das grundlegendste Menschenrecht — das Recht, einer politischen Gemeinschaft anzugehören, die Rechte garantiert.","fw_id":"menschenrechte_fw","sem":"Staatsphilosophie"},{"term":"Sanfter Despotismus","definition":"Tocqueville: Ein fürsorglicher, zentralisierter Staat, der die Bürger durch Bequemlichkeit und Wohlfahrt unmündig macht — ohne Gewalt.","fw_id":"demokratie_fw","sem":"Staatsphilosophie"},{"term":"Schleier des Nichtwissens","definition":"Rawls: Gedankenexperiment — hinter dem Schleier weiß niemand seine soziale Position; faire Grundregeln entstehen so ohne Eigeninteresse.","fw_id":"sozgerech_fw","sem":"Staatsphilosophie"},{"term":"Situated Freedom / Situierte Freiheit","definition":"de Beauvoir: Freiheit ist immer eingebettet in eine konkrete Situation — Frauen waren historisch in ihrer Freiheit durch Strukturen blockiert.","fw_id":"ess_exist","sem":"Anthropologie"},{"term":"Sklavenmoral","definition":"Nietzsche: Die Moral der Schwachen, die Werte wie Mitleid und Gleichheit erfindet, um die Starken zu bändigen.","fw_id":"relativismus_fw","sem":"Ethik"},{"term":"Speziesismus","definition":"Singer: Die unberechtigte Bevorzugung der eigenen Spezies — moralisch analog zu Rassismus oder Sexismus.","fw_id":"utilitarismus_fw","sem":"Ethik"},{"term":"Staatsraison","definition":"Machiavelli: Das Interesse des Staates rechtfertigt Mittel, die nach privater Moral unzulässig wären.","fw_id":"macht_fw","sem":"Staatsphilosophie"},{"term":"Synthetisches Urteil a priori","definition":"Kant: Ein Urteil, das neue Erkenntnis liefert (synthetisch), aber unabhängig von Erfahrung gilt (a priori). Beispiel: 7+5=12.","fw_id":"kant_erk","sem":"Erkenntnistheorie"},{"term":"Tabula Rasa","definition":"Der Geist ist bei Geburt eine leere Tafel — alles Wissen entsteht durch Erfahrung. (Locke)","fw_id":"empirismus","sem":"Erkenntnistheorie"},{"term":"Telos","definition":"Aristoteles: Der Zweck oder die Bestimmung eines Wesens — für den Menschen: Eudaimonia durch Tugend und Vernunft.","fw_id":"aristoteles_eth","sem":"Ethik"},{"term":"Tetrapharmakos","definition":"Epikur: Die vier Heilmittel — Fürchte Gott nicht; fürchte den Tod nicht; das Gute ist leicht zu erreichen; das Böse ist leicht zu ertragen.","fw_id":"epikur","sem":"Ethik"},{"term":"Tyrannei der Mehrheit","definition":"Tocqueville: Die Gefahr, dass demokratische Mehrheiten Minderheiten systematisch unterdrücken.","fw_id":"demokratie_fw","sem":"Staatsphilosophie"},{"term":"Umwertung aller Werte","definition":"Nietzsche: Das Projekt, alle überkommenen moralischen Werte radikal neu zu bewerten — weg von Sklavenmoral, hin zu Lebensbejahung.","fw_id":"relativismus_fw","sem":"Ethik"},{"term":"Virtù","definition":"Machiavelli: Die politische Tüchtigkeit des Fürsten — Kombination aus Stärke (Löwe) und List (Fuchs), situationsgerecht eingesetzt.","fw_id":"macht_fw","sem":"Staatsphilosophie"},{"term":"Vita Activa","definition":"Arendt: Das tätige Leben in drei Dimensionen — Arbeit (biologisch), Herstellen (dauerhaft), Handeln (politisch-frei).","fw_id":"arbeit_fw","sem":"Anthropologie"},{"term":"Volonté générale","definition":"Rousseau: Der Gemeinwille — mehr als die Summe der Einzelwillen, repräsentiert das kollektive Wohl aller Bürger.","fw_id":"rousseau","sem":"Staatsphilosophie"},{"term":"Widerstandsrecht","definition":"Locke: Das Recht des Volkes, sich gegen eine Regierung zu erheben, die ihre Pflicht verletzt und natürliche Rechte missachtet.","fw_id":"locke","sem":"Staatsphilosophie"},{"term":"Würde","definition":"Kant: Der Mensch hat einen absoluten inneren Wert — er darf nie nur als Mittel, sondern muss immer als Zweck behandelt werden.","fw_id":"kant_eth","sem":"Ethik"},{"term":"Zoon politikon","definition":"Aristoteles: Der Mensch ist von Natur aus ein Gemeinschaftswesen — nur in der Polis kann er seine Vernunft voll entfalten.","fw_id":"aristoteles_staat","sem":"Staatsphilosophie"},{"term":"Übermensch","definition":"Nietzsche: Nicht biologisches Ideal, sondern der Mensch, der eigene Werte schafft statt tradierte Moral zu übernehmen.","fw_id":"relativismus_fw","sem":"Ethik"}];
+const SEM={
+  "Erkenntnistheorie":{"bg":"#D6E4F0","text":"#185FA5","bar":"#2E75B6"},
+  "Ethik":            {"bg":"#E1F5EE","text":"#0F6E56","bar":"#1D9E75"},
+  "Staatsphilosophie":{"bg":"#FAEEDA","text":"#854F0B","bar":"#BA7517"},
+  "Anthropologie":    {"bg":"#FBEAF0","text":"#993556","bar":"#D4537E"},
+};
+let sq="";
+
+function render(){
+  const q=sq.toLowerCase();
+  const visible=q?BEGRIFFE.filter(b=>(b.term+b.definition).toLowerCase().includes(q)):BEGRIFFE;
+  
+  if(!visible.length){
+    document.getElementById("bg-list").innerHTML='<div class="no-results">Keine Begriffe gefunden.</div>';
+    return;
+  }
+  
+  if(q){
+    // Flat list for search results
+    document.getElementById("bg-list").innerHTML=visible.map(b=>termCard(b)).join('');
+    return;
+  }
+  
+  // Group by first letter
+  const letters={};
+  visible.forEach(b=>{
+    const l=b.term[0].toUpperCase();
+    if(!letters[l])letters[l]=[];
+    letters[l].push(b);
+  });
+  
+  // Alpha nav
+  const allLetters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const alphaNav=allLetters.map(l=>
+    `<div class="alpha-btn ${letters[l]?'has':''}" onclick="${letters[l]?`scrollToLetter('${l}')`:''}">${l}</div>`
+  ).join('');
+  
+  let html=`<div class="alpha-nav">${alphaNav}</div>`;
+  Object.keys(letters).sort().forEach(l=>{
+    html+=`<div class="alpha-section" id="letter-${l}">
+      <div class="alpha-letter">${l}</div>
+      ${letters[l].map(b=>termCard(b)).join('')}
+    </div>`;
+  });
+  document.getElementById("bg-list").innerHTML=html;
+  
+  // Check for URL param
+  const urlTerm=decodeURIComponent(new URLSearchParams(window.location.search).get('term')||'');
+  if(urlTerm){
+    const el=document.getElementById('term-'+urlTerm.replace(/[^a-zA-ZäöüÄÖÜß]/g,'_'));
+    if(el){el.classList.add('highlight');el.scrollIntoView({behavior:'smooth',block:'center'});}
+  }
+}
+
+function termCard(b){
+  const s=SEM[b.sem]||{bg:"#eee",text:"#555",bar:"#888"};
+  const id='term-'+b.term.replace(/[^a-zA-ZäöüÄÖÜß]/g,'_');
+  return `<div class="term-card" id="${id}">
+    <div class="term-sem" style="color:${s.text}">${b.sem}</div>
+    <div class="term-name">${b.term}</div>
+    <div class="term-def">${b.definition}</div>
+    <div class="term-links">
+      ${b.fw_id?`<a class="term-link" style="background:${s.bg};color:${s.text};border-color:${s.bar}60"
+        href="fachwissen.html?id=${b.fw_id}">📖 Fachwissen</a>`:''}
+    </div>
+  </div>`;
+}
+
+function scrollToLetter(l){
+  const el=document.getElementById('letter-'+l);
+  if(el)el.scrollIntoView({behavior:'smooth'});
+}
+
+document.getElementById('bg-search').addEventListener('input',e=>{sq=e.target.value.trim();render();});
+render();
+
+</script>
+</body>
+</html>
