@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Philosophie 4 – Leitfragen</title>
+<style>
+:root{
+  --b:#1F3864;--bm:#2E75B6;--bl:#D6E4F0;--ba:#378ADD;
+  --bg:#f7f8fa;--w:#fff;--br:#e0e0e0;
+  --r:8px;--rl:12px;
+  --font:'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:#1a1a1a;font-size:14px;}
+
+.topnav{position:sticky;top:0;z-index:200;background:var(--b);
+  display:flex;align-items:center;padding:0 1.25rem;height:46px;gap:.4rem;}
+.topnav .brand{color:#fff;font-weight:700;font-size:13.5px;margin-right:.4rem;white-space:nowrap;}
+.topnav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;
+  padding:4px 9px;border-radius:5px;transition:all .15s;white-space:nowrap;}
+.topnav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.topnav a.active{background:rgba(255,255,255,.25);color:#fff;font-weight:600;}
+.topnav .sp{flex:1;}
+.topnav .srch{position:relative;width:230px;}
+.topnav .srch input{width:100%;padding:5px 10px 5px 25px;
+  border:1px solid rgba(255,255,255,.2);border-radius:5px;
+  background:rgba(255,255,255,.1);color:#fff;font-size:12px;font-family:inherit;}
+.topnav .srch input::placeholder{color:rgba(255,255,255,.5);}
+.topnav .srch input:focus{outline:none;background:rgba(255,255,255,.18);}
+.topnav .srch .si{position:absolute;left:7px;top:50%;transform:translateY(-50%);
+  font-size:11px;opacity:.6;pointer-events:none;}
+
+.lf-wrap{max-width:960px;margin:0 auto;padding:1.25rem;}
+.lf-hero{background:linear-gradient(135deg,var(--b),var(--bm));color:#fff;
+  border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:1.25rem;}
+.lf-hero h1{font-size:18px;font-weight:600;margin-bottom:3px;}
+.lf-hero p{font-size:12.5px;opacity:.85;}
+.lf-sem{margin-bottom:1.5rem;}
+.lf-sem-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:5px 0;margin-bottom:.6rem;border-bottom:2px solid;}
+.lf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;}
+.lf-card{background:#fff;border:1px solid #e0e0e0;border-radius:var(--rl);padding:12px 14px;}
+.lf-topic{font-size:10.5px;color:#bbb;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.lf-q{font-size:13.5px;color:#222;font-style:italic;line-height:1.55;margin-bottom:8px;}
+.lf-pos{font-size:11px;color:#888;margin-bottom:8px;}
+.lf-btn{font-size:11.5px;color:var(--bm);background:none;border:none;cursor:pointer;
+  font-weight:600;padding:0;font-family:inherit;}
+.lf-btn:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<nav class="topnav"><span class="brand">Philosophie 4</span><a href="philosophen.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="">📊 Vergleiche</a><a href="leitfragen.html" class="active">💡 Leitfragen</a><a href="begriffe.html" class="">📚 Begriffe</a><span class="sp"></span></nav>
+<div class="lf-wrap">
+  <div class="lf-hero">
+    <h1>💡 Leitfragen</h1>
+    <p>Die zentralen Fragen zu allen 22 Themen — direkt zur Vergleichstabelle verlinkt.</p>
+  </div>
+  <div class="lf-sem"><div class="lf-sem-hdr" style="color:#185FA5;border-color:#2E75B6">Erkenntnistheorie</div><div class="lf-grid"><div class="lf-card">
+  <div class="lf-topic">Klassische Erkenntnistheorie</div>
+  <div class="lf-q">💡 Woher stammt unser Wissen — aus der Vernunft, der Erfahrung, oder beiden?</div>
+  <div class="lf-pos">Rationalismus · Empirismus · Kritizismus</div>
+  <a class="lf-btn" href="vergleiche.html?id=rationalismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Wissenschaftstheorie</div>
+  <div class="lf-q">💡 Was macht eine Theorie wissenschaftlich — und wie funktioniert wissenschaftlicher Fortschritt?</div>
+  <div class="lf-pos">Karl Popper (1902–1994) · Thomas Kuhn (1922–1996) · Paul Feyerabend (1924–1994)</div>
+  <a class="lf-btn" href="vergleiche.html?id=wissenschaft">Positionen ansehen →</a>
+</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#0F6E56;border-color:#1D9E75">Ethik</div><div class="lf-grid"><div class="lf-card">
+  <div class="lf-topic">Hedonismus vs. Eudämonismus</div>
+  <div class="lf-q">💡 Was ist das Ziel des menschlichen Lebens — Lust, Seelenruhe oder tugendhafte Vollendung?</div>
+  <div class="lf-pos">(Purer) Hedonismus · Hedonismus nach Epikur (Epikurismus) · Eudämonismus (Tugendethik)</div>
+  <a class="lf-btn" href="vergleiche.html?id=hedonismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Utilitarismus vs. Pflichtethik</div>
+  <div class="lf-q">💡 Ist die gute Absicht oder das gute Ergebnis entscheidend für die moralische Beurteilung?</div>
+  <div class="lf-pos">Pflichtethik (Deontologie) · Utilitarismus (Konsequentialismus) · Utilitarismus (Konsequentialismus) · Utilitarismus (Konsequentialismus)</div>
+  <a class="lf-btn" href="vergleiche.html?id=utilitarismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Verantwortung in ethischen Kontexten</div>
+  <div class="lf-q">💡 Wer trägt Verantwortung — und wofür, wie weit und gegenüber wem?</div>
+  <div class="lf-pos">Albert Schweitzer (1875–1965) · Hans Jonas (1903–1993) · Peter Singer (*1946)</div>
+  <a class="lf-btn" href="vergleiche.html?id=verantwortung">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Freiheit: Determinismus – Indeterminismus – Kompatibilismus</div>
+  <div class="lf-q">💡 Ist der Wille absolut frei — oder sind alle Entscheidungen durch Ursachen bestimmt?</div>
+  <div class="lf-pos">Determinismus · Indeterminismus (Libertarismus) · Kompatibilismus</div>
+  <a class="lf-btn" href="vergleiche.html?id=freiheit">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Relativismus vs. Universalismus</div>
+  <div class="lf-q">💡 Gibt es universelle moralische Werte — oder ist Moral immer kulturell bedingt?</div>
+  <div class="lf-pos">Moralischer Relativismus · Universalismus · Kritische Intoleranz</div>
+  <a class="lf-btn" href="vergleiche.html?id=relativismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Moralkritik: Nietzsche – Marx – Foucault – Butler</div>
+  <div class="lf-q">💡 Ist Moral ein Instrument der Herrschaft — oder gibt es moralische Prinzipien jenseits von Machtverhältnissen?</div>
+  <div class="lf-pos">Friedrich Nietzsche (1844–1900) · Karl Marx (1818–1883) · Michel Foucault (1926–1984) · Judith Butler (*1956)</div>
+  <a class="lf-btn" href="vergleiche.html?id=moralkritik">Positionen ansehen →</a>
+</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#854F0B;border-color:#BA7517">Staatsphilosophie</div><div class="lf-grid"><div class="lf-card">
+  <div class="lf-topic">Antike Staatstheorien: Platon & Aristoteles</div>
+  <div class="lf-q">💡 Was ist der Zweck des Staates — und wer soll regieren?</div>
+  <div class="lf-pos">Platon
+428–348 v. Chr. · Aristoteles
+384–322 v. Chr.</div>
+  <a class="lf-btn" href="vergleiche.html?id=platon">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Vertragstheorie</div>
+  <div class="lf-q">💡 Worauf gründet die Legitimität des Staates — und was darf das Volk verlangen?</div>
+  <div class="lf-pos">Thomas Hobbes
+1588–1679 · John Locke
+1632–1704 · Jean-Jacques Rousseau
+1712–1778 · John Rawls
+1921–2002
+NEU — Moderne Weiterentwicklung</div>
+  <a class="lf-btn" href="vergleiche.html?id=vertragstheorie">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Machttheorie</div>
+  <div class="lf-q">💡 Was ist Macht — Kontrolle, Konsens oder Herrschaft?</div>
+  <div class="lf-pos">Macht als Kontrolle und Strategie · Macht als kollektive Zustimmung · Macht als Herrschaft und Legitimität</div>
+  <a class="lf-btn" href="vergleiche.html?id=machttheorie">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Liberalismus – Kommunitarismus – Autoritarismus</div>
+  <div class="lf-q">💡 Was alles sollte der Staat bestimmen dürfen — und wo liegen die Grenzen?</div>
+  <div class="lf-pos">Liberalismus · Kommunitarismus · Autoritarismus</div>
+  <a class="lf-btn" href="vergleiche.html?id=liberalismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Soziale Gerechtigkeit</div>
+  <div class="lf-q">💡 Impliziert Gerechtigkeit Gleichbehandlung — oder kann Ungleichheit gerecht sein?</div>
+  <div class="lf-pos">Karl Marx
+1818–1883 · John Rawls
+1921–2002 · Robert Nozick
+1938–2002</div>
+  <a class="lf-btn" href="vergleiche.html?id=sozgerechtigkeit">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Demokratiekonzepte</div>
+  <div class="lf-q">💡 Ist Demokratie die beste aller Regierungsformen — und was macht sie aus?</div>
+  <div class="lf-pos">Alexis de Tocqueville
+1805–1859 · Josef Alois Schumpeter
+1883–1950 · Hannah Arendt
+1906–1975</div>
+  <a class="lf-btn" href="vergleiche.html?id=demokratie">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Naturrecht vs. Positives Recht</div>
+  <div class="lf-q">💡 Ist das Legale auch das Gerechte — oder muss Recht an einem übergeordneten Maßstab gemessen werden?</div>
+  <div class="lf-pos">Positives Recht (Rechtspositivismus) · Naturrecht (Naturrechtslehre)</div>
+  <a class="lf-btn" href="vergleiche.html?id=naturrecht">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Menschenrechte</div>
+  <div class="lf-q">💡 Sind Menschenrechte universell gültig — oder ein historisch geprägtes Konstrukt?</div>
+  <div class="lf-pos">Immanuel Kant (1724–1804) · Martha Nussbaum (*1947) · Richard Rorty (1931–2007) · Friedrich Nietzsche (1844–1900)</div>
+  <a class="lf-btn" href="vergleiche.html?id=menschenrechte">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Grenzen staatlicher Macht</div>
+  <div class="lf-q">💡 Wie weit darf staatliche Macht gehen — und wann muss man ihr widerstehen?</div>
+  <div class="lf-pos">Anarchismus · Libertarismus · Republikanismus · Totalitarismus ⚠ Keine normative Position — analytische Gegenfolie</div>
+  <a class="lf-btn" href="vergleiche.html?id=grenzen">Positionen ansehen →</a>
+</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#993556;border-color:#D4537E">Anthropologie</div><div class="lf-grid"><div class="lf-card">
+  <div class="lf-topic">Essentialismus – Existentialismus – Konstruktivismus</div>
+  <div class="lf-q">💡 Hat der Mensch ein vorgegebenes Wesen — oder erschafft er sich selbst?</div>
+  <div class="lf-pos">Essentialismus · Existentialismus · Feministische Existenzphilosophie NEU — Simone de Beauvoir · (Konstruktivismus)</div>
+  <a class="lf-btn" href="vergleiche.html?id=essentialismus">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Menschenmodelle im Vergleich</div>
+  <div class="lf-q">💡 Was ist der Mensch seinem Wesen nach?</div>
+  <div class="lf-pos">Homo Faber · Homo Economicus · Mängelwesen (Gehlen) · Animal Symbolicum (Cassirer)</div>
+  <a class="lf-btn" href="vergleiche.html?id=menschenmodelle">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Technologie: Wesen oder Gefahr?</div>
+  <div class="lf-q">💡 Besteht in der Technik das Wesen des Menschen — oder entfremdet Technik den Menschen?</div>
+  <div class="lf-pos">Gehlen – Technik als Notwendigkeit · Jonas – Technik als Gefahr · Mittelstraß – Technik als Chance · Rousseau – Technik als Verfall</div>
+  <a class="lf-btn" href="vergleiche.html?id=technologie">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Identität und Sinn</div>
+  <div class="lf-q">💡 Gibt es einen Sinn des Lebens — oder muss der Mensch sich selbst einen geben?</div>
+  <div class="lf-pos">Sartre – Existentialismus · Camus – Absurdismus · Aristoteles – Teleologie · Frankl – Logotherapie</div>
+  <a class="lf-btn" href="vergleiche.html?id=sinn">Positionen ansehen →</a>
+</div><div class="lf-card">
+  <div class="lf-topic">Arbeit: Selbstverwirklichung oder Entfremdung?</div>
+  <div class="lf-q">💡 Besteht Selbstverwirklichung im Arbeiten — oder ist Arbeit primär Notwendigkeit und Entfremdung?</div>
+  <div class="lf-pos">Hegel – Arbeit als Selbsterschaffung · Marx – Arbeit und Entfremdung · Arendt – Drei Tätigkeitsformen · Hüther – Arbeit und Gehirn</div>
+  <a class="lf-btn" href="vergleiche.html?id=arbeit">Positionen ansehen →</a>
+</div></div></div>
+</div>
+</body>
+</html>
