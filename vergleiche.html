@@ -183,24 +183,42 @@ mark{background:#fef08a;color:inherit;border-radius:2px;}
   .layout{display:block;height:auto;}
   .ptbl td,.ptbl th{font-size:10px;padding:4px 6px;}}
 @media(max-width:560px){.sidebar{width:180px;} .ptbl{display:none;} .qopts{grid-template-columns:1fr;}}
+
+/* unified topnav */
+:root{
+  --b:#1F3864;--bm:#2E75B6;--bl:#D6E4F0;--ba:#378ADD;
+  --bg:#f7f8fa;--w:#fff;--br:#e0e0e0;
+  --r:8px;--rl:12px;
+  --font:'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:#1a1a1a;font-size:14px;}
+.topnav{position:sticky;top:0;z-index:200;background:var(--b);
+  display:flex;align-items:center;padding:0 1.25rem;height:46px;gap:.5rem;}
+.topnav .brand{color:#fff;font-weight:700;font-size:13.5px;margin-right:.3rem;white-space:nowrap;}
+.topnav a{color:rgba(255,255,255,.72);text-decoration:none;font-size:12px;
+  padding:4px 9px;border-radius:5px;transition:all .15s;white-space:nowrap;}
+.topnav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.topnav a.active{background:rgba(255,255,255,.25);color:#fff;font-weight:600;}
+.topnav .sp{flex:1;}
+.topnav .srch{position:relative;width:220px;}
+.topnav .srch input{width:100%;padding:5px 10px 5px 24px;
+  border:1px solid rgba(255,255,255,.2);border-radius:5px;
+  background:rgba(255,255,255,.1);color:#fff;font-size:12px;font-family:inherit;}
+.topnav .srch input::placeholder{color:rgba(255,255,255,.5);}
+.topnav .srch input:focus{outline:none;background:rgba(255,255,255,.18);}
+.topnav .srch .si{position:absolute;left:7px;top:50%;transform:translateY(-50%);
+  font-size:11px;opacity:.6;pointer-events:none;}
+
 </style>
 </head>
 <body>
-<nav class="topnav"><span class="brand">Philosophie 4</span><a href="philosophen.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="active">📊 Vergleiche</a><a href="leitfragen.html" class="">💡 Leitfragen</a><a href="begriffe.html" class="">📚 Begriffe</a><span class="sp"></span><div class="srch"><span class="si">🔍</span><input type="text" id="vsi" placeholder="Suche…"></div></nav>
-
+<nav class="topnav"><span class="brand">Philosophie 4</span><a href="philosophen.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="active">📊 Vergleiche</a><a href="fachwissen.html" class="">📖 Fachwissen</a><a href="leitfragen.html" class="">💡 Leitfragen</a><a href="begriffe.html" class="">📚 Begriffe</a><span class="sp"></span><div class="srch"><span class="si">🔍</span><input type="text" id="vsi" placeholder="Suche…"></div></nav>
 <div class="topbar">
   <div class="brand"><b>Philosophie 4</b><small>SE · Positionenvergleiche &amp; Fachwissen</small></div>
   <div class="srch"><span class="si">🔍</span>
     <input type="text" id="si" placeholder="Suche: Philosoph, Begriff…"></div>
-  <div class="navbtns">
-    <button class="nb on" id="nbOverview" onclick="setMode('overview')">📊 Vergleiche</button>
-    <button class="nb fw" id="nbFachwissen" onclick="window.location.href='Fachwissen.html'">📖 Fachwissen</button>
-    <button class="nb" id="nbCompare" onclick="setMode('compare')">⚖ Vergleich</button>
-    <button class="nb" id="nbLeitfragen" onclick="setMode('leitfragen')">💡 Leitfragen</button>
-    <button class="nb" id="nbQuiz" onclick="setMode('quiz')">🎯 Quiz</button>
-    <a href="Fachwissen.html" class="nb" style="text-decoration:none">📖 Fachwissen →</a>
-    <button class="nb" onclick="window.print()">🖨</button>
-  </div>
+  
 </div>
 <div class="layout">
   <nav class="sidebar" id="sidebar"></nav>
@@ -605,6 +623,12 @@ try{sidebar();home();}catch(e){
   document.getElementById("cnt").innerHTML=`<div style="padding:2rem;color:red;font-family:monospace">
     Fehler beim Laden: ${e.message}<br>${e.stack}</div>`;
 }
+
+document.getElementById('vsi').addEventListener('input',e=>{
+  sq=e.target.value.trim();
+  if(!sq){if(curId&&mode==='overview')renderT(curId);else home();}
+  else doSearch(sq);
+});
 
 document.getElementById('vsi').addEventListener('input',e=>{
   sq=e.target.value.trim();
