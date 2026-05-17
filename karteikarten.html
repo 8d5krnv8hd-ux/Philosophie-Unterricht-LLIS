@@ -30,16 +30,16 @@ body {
   position:fixed; top:0; left:0; right:0; z-index:100;
   background:rgba(14,21,37,.92); backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,.08);
-  display:flex; align-items:center; padding:0 1.25rem; height:46px; gap:.5rem;
+  display:flex; align-items:center; padding:0 .75rem; height:46px; gap:.15rem;
 }
-.topnav .brand { color:#fff; font-weight:600; font-size:14px; margin-right:.4rem; white-space:nowrap; }
+.topnav .brand { color:#fff; font-weight:600; font-size:13px; margin-right:.25rem; white-space:nowrap; flex-shrink:0; }
 .topnav a {
-  color:rgba(255,255,255,.6); text-decoration:none; font-size:12px;
-  padding:4px 9px; border-radius:6px; transition:all .15s; white-space:nowrap;
+  color:rgba(255,255,255,.6); text-decoration:none; font-size:11.5px;
+  padding:4px 7px; border-radius:6px; transition:all .15s; white-space:nowrap; flex-shrink:0;
 }
 .topnav a:hover { background:rgba(255,255,255,.1); color:#fff; }
 .topnav a.active { background:rgba(255,255,255,.18); color:#fff; font-weight:600; }
-.topnav .sp { flex:1; }
+.topnav .sp { flex:1; min-width:0; }
 
 /* ── Page layout ── */
 .page {
