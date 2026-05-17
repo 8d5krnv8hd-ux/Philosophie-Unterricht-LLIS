@@ -215,7 +215,7 @@ body{font-family:var(--font);background:var(--bg);color:#1a1a1a;font-size:14px;}
 </style>
 </head>
 <body>
-<nav class="topnav"><span class="brand">Philosophie 4</span><a href="philosophen.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="active">📊 Vergleiche</a><a href="fachwissen.html" class="">📖 Fachwissen</a><a href="leitfragen.html" class="">💡 Leitfragen</a><a href="begriffe.html" class="">📚 Begriffe</a><span class="sp"></span><div class="srch"><span class="si">🔍</span><input type="text" id="vsi" placeholder="Suche…"></div></nav>
+<nav class="topnav"><span class="brand">Philosophie 4</span><a href="philosophen.html" class="">🎴 Philosophen</a><a href="vergleiche.html" class="active">📊 Vergleiche</a><a href="fachwissen.html" class="">📖 Fachwissen</a><a href="leitfragen.html" class="">💡 Leitfragen</a><a href="begriffe.html" class="">📚 Begriffe</a><span class="sp"></span><div class="srch"><span class="si">🔍</span><input type="text" id="si" placeholder="Suche…"></div></nav>
 <div class="layout">
   <nav class="sidebar" id="sidebar"></nav>
   <div class="main">
@@ -620,13 +620,13 @@ try{sidebar();home();}catch(e){
     Fehler beim Laden: ${e.message}<br>${e.stack}</div>`;
 }
 
-document.getElementById('vsi').addEventListener('input',e=>{
+document.getElementById('si').addEventListener('input',e=>{
   sq=e.target.value.trim();
   if(!sq){if(curId&&mode==='overview')renderT(curId);else home();}
   else doSearch(sq);
 });
 
-document.getElementById('vsi').addEventListener('input',e=>{
+document.getElementById('si').addEventListener('input',e=>{
   sq=e.target.value.trim();
   if(!sq){if(curId&&mode==='overview')renderT(curId);else home();}
   else doSearch(sq);
