@@ -138,6 +138,8 @@ body{font-family:var(--font);background:var(--bg);color:#1a1a1a;font-size:14px;l
 
 /* ── Semester banner ── */
 .sem-section{margin-bottom:3rem;}
+.subsection-block+.subsection-block{margin-top:.75rem;border-radius:8px;border:1px solid var(--br);}
+.subsection-block+.subsection-block:last-child{border-radius:8px;}
 .sem-banner{border-radius:12px 12px 0 0;overflow:hidden;position:relative;}
 .sem-banner-inner{display:flex;align-items:center;padding:1.5rem 2rem;gap:1.5rem;position:relative;z-index:1;}
 .sem-banner-num{font-family:var(--serif);font-size:80px;font-weight:700;line-height:1;
@@ -153,11 +155,15 @@ body{font-family:var(--font);background:var(--bg);color:#1a1a1a;font-size:14px;l
 /* ── Subsection ── */
 .subsection-block{background:var(--w);border:1px solid var(--br);border-top:none;}
 .subsection-block:last-child{border-radius:0 0 12px 12px;}
-.subsection-title{display:flex;align-items:center;padding:.6rem 1.1rem;
-  background:#F7F8FB;border-bottom:1px solid var(--br);
-  border-top:2px solid;border-top-color:inherit;}
-.subsection-label{font-size:12px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.08em;color:#333;}
+.subsection-title{
+  padding:.6rem 1.2rem;
+  border-top:none;
+  border-bottom:1px solid rgba(0,0,0,.12);
+}
+.subsection-label{
+  font-family:var(--serif);font-size:18px;font-weight:700;
+  color:#fff;letter-spacing:-.01em;
+}
 
 /* ── Staatsformen ── */
 .staatsformen-box{background:#fff;border-bottom:1px solid var(--br);padding:.9rem 1.2rem;}
@@ -346,7 +352,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
       <div class="sem-banner-count">46 Begriffe</div>
     </div>
   </div>
-  <div class="subsection-block" id="sub_grundbegriffe_der_erkenntnistheorie"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Grundbegriffe der Erkenntnistheorie</span></div>
+  <div class="subsection-block" id="sub_grundbegriffe_der_erkenntnistheorie"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Grundbegriffe der Erkenntnistheorie</span></div>
     <article class="term-card" id="term_erkenntnistheorie_epistemologie" data-sem="Erkenntnistheorie" data-term="erkenntnistheorie (epistemologie)">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Erkenntnistheorie (Epistemologie)</span>
@@ -425,7 +431,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_induktion" class="xref">Induktion</a>: Induktion schließt vom Besonderen zum Allgemeinen – probabilistisch, nicht zwingend. <a href="#term_falsifikation" class="xref">Falsifikation</a> bei Popper beruht auf Deduktion: Aus einer Theorie werden überprüfbare Vorhersagen abgeleitet.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_der_skeptizismus"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Der Skeptizismus</span></div>
+  <div class="subsection-block" id="sub_der_skeptizismus"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Der Skeptizismus</span></div>
     <article class="term-card" id="term_skeptizismus" data-sem="Erkenntnistheorie" data-term="skeptizismus">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Skeptizismus</span>
@@ -461,7 +467,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_boeser_daemon_malin_g_nie" class="xref">Böser Dämon (malin génie)</a>: Das Traumargument ist Descartes' erste Zweifelsstufe (Sinne täuschen). Der böse Dämon ist die radikalste Stufe – selbst Mathematik und Logik könnten getäuscht sein.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_rationalismus_ren_descartes"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Rationalismus – René Descartes</span></div>
+  <div class="subsection-block" id="sub_rationalismus_ren_descartes"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Rationalismus – René Descartes</span></div>
     <article class="term-card" id="term_rationalismus" data-sem="Erkenntnistheorie" data-term="rationalismus">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Rationalismus</span>
@@ -538,7 +544,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_skeptizismus" class="xref">Skeptizismus</a>: Der Skeptiker zweifelt an sicherem Wissen; der Solipsist zieht die radikale Konsequenz, nur das eigene Bewusstsein anzuerkennen. Der Solipsismus ist selbstwiderlegend: Er kann nicht sinnvoll mit anderen diskutiert werden.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_empirismus_locke_hume"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Empirismus – Locke & Hume</span></div>
+  <div class="subsection-block" id="sub_empirismus_locke_hume"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Empirismus – Locke & Hume</span></div>
     <article class="term-card" id="term_empirismus" data-sem="Erkenntnistheorie" data-term="empirismus">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Empirismus</span>
@@ -566,7 +572,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_kritizismus_kant" class="xref">Kritizismus (Kant)</a>: Kant "rettet" die Kausalität: Sie ist eine der <a href="#term_kategorien_des_verstandes" class="xref">Kategorien des Verstandes</a> – eine apriorische Denkstruktur, die Erfahrung erst ermöglicht, nicht eine Ableitung aus ihr.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_kritizismus_immanuel_kant"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Kritizismus – Immanuel Kant</span></div>
+  <div class="subsection-block" id="sub_kritizismus_immanuel_kant"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Kritizismus – Immanuel Kant</span></div>
     <article class="term-card" id="term_kritizismus_kant" data-sem="Erkenntnistheorie" data-term="kritizismus (kant)">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Kritizismus (Kant)</span>
@@ -627,7 +633,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. analytische Urteile: Diese erweitern das Wissen nicht (z. B. "Alle Junggesellen sind unverheiratet"). </span><br><span class="vs-line">vs. <a href="#term_empirismus" class="xref">Empirismus</a>: Hume leugnet synthetische Urteile a priori – für ihn sind alle Allaussagen aus <a href="#term_induktion" class="xref">Induktion</a> gewonnen und daher nie wirklich notwendig.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_platon_ideenlehre_und_erkenntnistheorie"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Platon – Ideenlehre und Erkenntnistheorie</span></div>
+  <div class="subsection-block" id="sub_platon_ideenlehre_und_erkenntnistheorie"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Platon – Ideenlehre und Erkenntnistheorie</span></div>
     <article class="term-card" id="term_ideenlehre_platon" data-sem="Erkenntnistheorie" data-term="ideenlehre (platon)">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Ideenlehre (Platon)</span>
@@ -662,7 +668,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-wichtig">Wichtig weil:</span> Algorithmen, soziale Medien oder politische Propaganda könnten als moderne "Höhlen" gedacht werden – wir sehen nur das, was uns gezeigt wird. Das Gleichnis stellt die Frage nach dem <a href="#term_sozialer_konstruktivismus" class="xref">Sozialer Konstruktivismus</a> unserer Realität.</p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_grundbegriffe_der_wissenschaftstheorie"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Grundbegriffe der Wissenschaftstheorie</span></div>
+  <div class="subsection-block" id="sub_grundbegriffe_der_wissenschaftstheorie"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Grundbegriffe der Wissenschaftstheorie</span></div>
     <article class="term-card" id="term_rationalitaet" data-sem="Erkenntnistheorie" data-term="rationalität">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Rationalität</span>
@@ -672,7 +678,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. Irrationalität: Überzeugungen, die Evidenz und Logik ignorieren. </span><br><span class="vs-line">vs. Methodenpluralismus / "Anything goes" (Feyerabend): Feyerabend bezweifelt, dass ein einziges Rationalitätskriterium alle gute Wissenschaft erfasst.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_wissenschaftstheorie_popper_kuhn_feyerabend"><div class="subsection-title" style="border-left-color:#2E75B6"><span class="subsection-label">Wissenschaftstheorie – Popper, Kuhn, Feyerabend</span></div>
+  <div class="subsection-block" id="sub_wissenschaftstheorie_popper_kuhn_feyerabend"><div class="subsection-title" style="background:#1E3F8B"><span class="subsection-label">Wissenschaftstheorie – Popper, Kuhn, Feyerabend</span></div>
     <article class="term-card" id="term_falsifikation" data-sem="Erkenntnistheorie" data-term="falsifikation">
     <div class="term-header" style="background:#EBF3FB">
       <span class="term-name">Falsifikation</span>
@@ -761,7 +767,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
       <div class="sem-banner-count">37 Begriffe</div>
     </div>
   </div>
-  <div class="subsection-block" id="sub_grundbegriffe_der_ethik"><div class="subsection-title" style="border-left-color:#1D9E75"><span class="subsection-label">Grundbegriffe der Ethik</span></div>
+  <div class="subsection-block" id="sub_grundbegriffe_der_ethik"><div class="subsection-title" style="background:#0B5E45"><span class="subsection-label">Grundbegriffe der Ethik</span></div>
     <article class="term-card" id="term_ethik" data-sem="Ethik" data-term="ethik">
     <div class="term-header" style="background:#F0FAF6">
       <span class="term-name">Ethik</span>
@@ -835,7 +841,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_ethischer_relativismus" class="xref">Ethischer Relativismus</a>: Ein Relativist würde sagen, das Gewissen ist kulturell geformt und damit relativ. </span><br><span class="vs-line">vs. <a href="#term_autonomie" class="xref">Autonomie</a>: Autonomes Handeln bei Kant bedeutet, dem eigenen Vernunftgewissen zu folgen, nicht äußerem Druck.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_antike_tugendethik_aristoteles_epikur_stoa"><div class="subsection-title" style="border-left-color:#1D9E75"><span class="subsection-label">Antike Tugendethik – Aristoteles, Epikur, Stoa</span></div>
+  <div class="subsection-block" id="sub_antike_tugendethik_aristoteles_epikur_stoa"><div class="subsection-title" style="background:#0B5E45"><span class="subsection-label">Antike Tugendethik – Aristoteles, Epikur, Stoa</span></div>
     <article class="term-card" id="term_tugendethik" data-sem="Ethik" data-term="tugendethik">
     <div class="term-header" style="background:#F0FAF6">
       <span class="term-name">Tugendethik</span>
@@ -911,7 +917,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_hedonismus_epikur" class="xref">Hedonismus (Epikur)</a>: Epikur strebt nach Lust; die Stoa strebt nach Tugend und ist gegenüber Lust und Schmerz gleichgültig (adiaphoron). </span><br><span class="vs-line">vs. <a href="#term_eudaimonia_aristoteles" class="xref">Eudaimonia (Aristoteles)</a>: Für Aristoteles sind Maß und Gewohnheit entscheidend (<a href="#term_mesotes_goldene_mitte_aristoteles" class="xref">Mesotes / Goldene Mitte (Aristoteles)</a>); für die Stoa ist vollständige Beherrschung durch Vernunft das Ziel.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_utilitarismus_bentham_mill_singer"><div class="subsection-title" style="border-left-color:#1D9E75"><span class="subsection-label">Utilitarismus – Bentham, Mill, Singer</span></div>
+  <div class="subsection-block" id="sub_utilitarismus_bentham_mill_singer"><div class="subsection-title" style="background:#0B5E45"><span class="subsection-label">Utilitarismus – Bentham, Mill, Singer</span></div>
     <article class="term-card" id="term_utilitarismus" data-sem="Ethik" data-term="utilitarismus">
     <div class="term-header" style="background:#F0FAF6">
       <span class="term-name">Utilitarismus</span>
@@ -997,7 +1003,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_kategorischer_imperativ" class="xref">Kategorischer Imperativ</a>: Kant beschränkt <a href="#term_menschenwuerde" class="xref">Menschenwürde</a> auf vernünftige Wesen – Tiere fallen raus. Singer kritisiert diese Grenzziehung als willkürlich.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_kant_pflichtethik_deontologie"><div class="subsection-title" style="border-left-color:#1D9E75"><span class="subsection-label">Kant – Pflichtethik (Deontologie)</span></div>
+  <div class="subsection-block" id="sub_kant_pflichtethik_deontologie"><div class="subsection-title" style="background:#0B5E45"><span class="subsection-label">Kant – Pflichtethik (Deontologie)</span></div>
     <article class="term-card" id="term_deontologie_pflichtethik" data-sem="Ethik" data-term="deontologie / pflichtethik">
     <div class="term-header" style="background:#F0FAF6">
       <span class="term-name">Deontologie / Pflichtethik</span>
@@ -1041,7 +1047,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_tugendethik" class="xref">Tugendethik</a>: Aristoteles schätzt das Handeln aus tugendhafter Neigung – für Kant ist das kein moralisches Handeln. </span><br><span class="vs-line">vs. <a href="#term_utilitarismus" class="xref">Utilitarismus</a>: Auch gute Konsequenzen durch Neigung haben bei Kant keinen moralischen Wert.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_universalismus_vs_relativismus"><div class="subsection-title" style="border-left-color:#1D9E75"><span class="subsection-label">Universalismus vs. Relativismus</span></div>
+  <div class="subsection-block" id="sub_universalismus_vs_relativismus"><div class="subsection-title" style="background:#0B5E45"><span class="subsection-label">Universalismus vs. Relativismus</span></div>
     <article class="term-card" id="term_toleranz" data-sem="Ethik" data-term="toleranz">
     <div class="term-header" style="background:#F0FAF6">
       <span class="term-name">Toleranz</span>
@@ -1092,7 +1098,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
       <div class="sem-banner-count">34 Begriffe</div>
     </div>
   </div>
-  <div class="subsection-block" id="sub_grundbegriffe_der_staatsphilosophie"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Grundbegriffe der Staatsphilosophie</span></div>
+  <div class="subsection-block" id="sub_grundbegriffe_der_staatsphilosophie"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Grundbegriffe der Staatsphilosophie</span></div>
     <div class="staatsformen-box"><div class="staatsformen-title">Staatsformen im Überblick</div><div class="staatsformen-grid"><div class="sf-row"><span class="sf-term">Demokratie</span><span class="sf-def">Herrschaft des Volkes; Entscheidungen durch alle oder gewählte Vertreter.</span></div>
 <div class="sf-row"><span class="sf-term">Monarchie</span><span class="sf-def">Herrschaft eines Einzelnen, meist eines Königs oder Kaisers.</span></div>
 <div class="sf-row"><span class="sf-term">Diktatur</span><span class="sf-def">Unbeschränkte Herrschaft einer Person oder Gruppe, oft unterdrückend.</span></div>
@@ -1159,7 +1165,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-wichtig">Wichtig weil:</span> Sie verhindert die Konzentration von Macht in einer Hand und sichert so individuelle Freiheit – ein Kerngedanke des <a href="#term_liberalismus" class="xref">Locke – Liberaler Staat</a>.</p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_antike_staatsphilosophie_aristoteles_platon"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Antike Staatsphilosophie – Aristoteles, Platon</span></div>
+  <div class="subsection-block" id="sub_antike_staatsphilosophie_aristoteles_platon"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Antike Staatsphilosophie – Aristoteles, Platon</span></div>
     <article class="term-card" id="term_polis" data-sem="Staatsphilosophie" data-term="polis">
     <div class="term-header" style="background:#FDF5E8">
       <span class="term-name">Polis</span>
@@ -1177,7 +1183,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. Demokratie: Reine Demokratie kann zur Herrschaft des Pöbels entarten; die Politie mäßigt dies durch Eigentumsvoraussetzungen und Gesetzesbindung. </span><br><span class="vs-line">vs. Oligarchie: Diese dient nur dem Interesse der Reichen; die Politie soll das Gemeinwohl sichern.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_kontraktualismus_und_vertragstheorien_hobbes_locke_rousseau"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Kontraktualismus und Vertragstheorien: Hobbes, Locke, Rousseau</span></div>
+  <div class="subsection-block" id="sub_kontraktualismus_und_vertragstheorien_hobbes_locke_rousseau"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Kontraktualismus und Vertragstheorien: Hobbes, Locke, Rousseau</span></div>
     <article class="term-card" id="term_naturzustand" data-sem="Staatsphilosophie" data-term="naturzustand">
     <div class="term-header" style="background:#FDF5E8">
       <span class="term-name">Naturzustand</span>
@@ -1213,7 +1219,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-wichtig">Wichtig weil:</span> Der Kontraktualismus ist bis heute die wichtigste Grundlage liberaldemokratischer Legitimationstheorien – von Lockes Verfassungsliberalismus bis zu Rawls' Gerechtigkeitstheorie.</p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_vertragstheorien_leviathan_liberaler_staat_gemeinwille"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Vertragstheorien: Leviathan, Liberaler Staat, Gemeinwille</span></div>
+  <div class="subsection-block" id="sub_vertragstheorien_leviathan_liberaler_staat_gemeinwille"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Vertragstheorien: Leviathan, Liberaler Staat, Gemeinwille</span></div>
     <article class="term-card" id="term_leviathan_hobbes" data-sem="Staatsphilosophie" data-term="leviathan (hobbes)">
     <div class="term-header" style="background:#FDF5E8">
       <span class="term-name">Leviathan (Hobbes)</span>
@@ -1263,7 +1269,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-wichtig">Wichtig weil:</span> Die Eigentumstheorie entscheidet über die Grundfrage der <a href="#term_soziale_gerechtigkeit" class="xref">Soziale Gerechtigkeit</a>: Was darf umverteilt werden – und was nicht?</p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_macht_gewalt_machiavelli_arendt_weber"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Macht & Gewalt – Machiavelli, Arendt, Weber</span></div>
+  <div class="subsection-block" id="sub_macht_gewalt_machiavelli_arendt_weber"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Macht & Gewalt – Machiavelli, Arendt, Weber</span></div>
     <article class="term-card" id="term_macht_als_herrschaftsinstrument_machiavelli" data-sem="Staatsphilosophie" data-term="macht als herrschaftsinstrument (machiavelli)">
     <div class="term-header" style="background:#FDF5E8">
       <span class="term-name">Macht als Herrschaftsinstrument (Machiavelli)</span>
@@ -1306,7 +1312,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_autoritaet" class="xref">Autorität</a>: Autorität wirkt ohne Zwang; Gewalt setzt Zustimmung außer Kraft. </span><br><span class="vs-line">vs. <a href="#term_gewaltmonopol" class="xref">Gewaltmonopol</a>: Der Staat hat das legitime Monopol auf Gewalt; private Gewalt ist rechtswidrig.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_naturrecht_positives_recht_und_menschenrechte"><div class="subsection-title" style="border-left-color:#BA7517"><span class="subsection-label">Naturrecht, Positives Recht und Menschenrechte</span></div>
+  <div class="subsection-block" id="sub_naturrecht_positives_recht_und_menschenrechte"><div class="subsection-title" style="background:#6B3800"><span class="subsection-label">Naturrecht, Positives Recht und Menschenrechte</span></div>
     <article class="term-card" id="term_rechtsstaat" data-sem="Staatsphilosophie" data-term="rechtsstaat">
     <div class="term-header" style="background:#FDF5E8">
       <span class="term-name">Rechtsstaat</span>
@@ -1409,7 +1415,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
       <div class="sem-banner-count">20 Begriffe</div>
     </div>
   </div>
-  <div class="subsection-block" id="sub_grundbegriffe_der_philosophischen_anthropologie"><div class="subsection-title" style="border-left-color:#D4537E"><span class="subsection-label">Grundbegriffe der philosophischen Anthropologie</span></div>
+  <div class="subsection-block" id="sub_grundbegriffe_der_philosophischen_anthropologie"><div class="subsection-title" style="background:#7A1B3A"><span class="subsection-label">Grundbegriffe der philosophischen Anthropologie</span></div>
     <article class="term-card" id="term_anthropologie_philosophisch" data-sem="Anthropologie" data-term="anthropologie (philosophisch)">
     <div class="term-header" style="background:#FDF0F5">
       <span class="term-name">Anthropologie (philosophisch)</span>
@@ -1455,7 +1461,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-abgrenzung">Abgrenzung:</span> <br><span class="vs-line">vs. <a href="#term_essentialismus" class="xref">Essentialismus</a>: Dieser setzt eine feste Natur voraus; der Konstruktivismus bestreitet jede vorgesellschaftliche Natürlichkeit. </span><br><span class="vs-line">vs. <a href="#term_existentialismus_sartre" class="xref">Existentialismus (Sartre)</a>: Sartre betont individuelle Freiheit; der Konstruktivismus betont soziale Strukturen als prägend.</span></p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_freiheit_determinismus_und_willensfreiheit"><div class="subsection-title" style="border-left-color:#D4537E"><span class="subsection-label">Freiheit, Determinismus und Willensfreiheit</span></div>
+  <div class="subsection-block" id="sub_freiheit_determinismus_und_willensfreiheit"><div class="subsection-title" style="background:#7A1B3A"><span class="subsection-label">Freiheit, Determinismus und Willensfreiheit</span></div>
     <article class="term-card" id="term_freiheit" data-sem="Anthropologie" data-term="freiheit">
     <div class="term-header" style="background:#FDF0F5">
       <span class="term-name">Freiheit</span>
@@ -1542,7 +1548,7 @@ a.xref:hover{color:var(--b);border-bottom-color:var(--b);background:rgba(46,117,
 <p class="def-label"><span class="lbl-wichtig">Wichtig weil:</span> Disziplinierung erklärt, warum Macht so effektiv ist – sie braucht keine Gewalt, weil die Menschen sich selbst kontrollieren. Hochrelevant für Analyse von Algorithmen, sozialen Medien und Überwachungskapitalismus.</p></div>
   </article>
   </div>
-  <div class="subsection-block" id="sub_sinn_des_lebens_anthropologie_und_identit_t"><div class="subsection-title" style="border-left-color:#D4537E"><span class="subsection-label">Sinn des Lebens, Anthropologie und Identität</span></div>
+  <div class="subsection-block" id="sub_sinn_des_lebens_anthropologie_und_identit_t"><div class="subsection-title" style="background:#7A1B3A"><span class="subsection-label">Sinn des Lebens, Anthropologie und Identität</span></div>
     <article class="term-card" id="term_sinn_des_lebens" data-sem="Anthropologie" data-term="sinn des lebens">
     <div class="term-header" style="background:#FDF0F5">
       <span class="term-name">Sinn des Lebens</span>
