@@ -1,10 +1,757 @@
 <!DOCTYPE html>
 <html lang="de">
-<head><meta charset="UTF-8"><meta http-equiv="refresh" content="0; url=vergleiche.html">
-<title>Philosophie 4</title>
-<style>body{font-family:'Inter','Segoe UI',sans-serif;background:#1a1d24;display:flex;
-  align-items:center;justify-content:center;min-height:100vh;margin:0;}
-.b{text-align:center;color:#fff;}.b h1{font-size:20px;font-weight:600;margin-bottom:6px;}
-.b a{color:#9baec8;font-size:14px;}</style>
-</head><body><div class="b"><h1>Philosophie 4</h1><a href="vergleiche.html">→ Laden…</a></div></body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Philosophie 4 — Dein Lernbegleiter</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --bg-2: #1e293b;
+  --bg-3: #334155;
+  --surface: #1e293b;
+  --surface-2: #273548;
+  --text: #f1f5f9;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --muted: #64748b;
+  --border: rgba(255,255,255,.08);
+  --border-2: rgba(255,255,255,.12);
+  --nav-bg: rgba(15,23,42,.75);
+  --accent: #f97316;
+  --accent-hover: #fb923c;
+  --accent-soft: rgba(249,115,22,.12);
+  --accent-glow: rgba(249,115,22,.25);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+}
+
+/* ── LIGHT MODE ── */
+html.light {
+  --bg: #ffffff;
+  --bg-2: #f8fafc;
+  --bg-3: #f1f5f9;
+  --surface: #f8fafc;
+  --surface-2: #f1f5f9;
+  --text: #0f172a;
+  --text-2: #1e293b;
+  --text-3: #475569;
+  --muted: #94a3b8;
+  --border: rgba(0,0,0,.07);
+  --border-2: rgba(0,0,0,.11);
+  --nav-bg: rgba(255,255,255,.80);
+  --accent: #ea6c00;
+  --accent-hover: #f97316;
+  --accent-soft: rgba(234,108,0,.1);
+  --accent-glow: rgba(234,108,0,.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 52px; gap: .25rem;
+}
+.nav-brand {
+  color: var(--text); font-weight: 700; font-size: 15px;
+  margin-right: 1.5rem; letter-spacing: -.02em;
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+}
+.nav-brand span { color: var(--accent); }
+nav a.nav-link {
+  color: var(--text-3); text-decoration: none; font-size: 13px;
+  padding: 6px 12px; border-radius: 6px;
+  transition: background .15s, color .15s; font-weight: 400;
+  white-space: nowrap;
+}
+nav a.nav-link:hover { background: rgba(255,255,255,.07); color: var(--text); }
+.nav-sp { flex: 1; }
+.nav-cta {
+  background: var(--accent); color: #fff;
+  padding: 7px 16px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  transition: background .15s, transform .1s;
+  letter-spacing: -.01em;
+}
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 7rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249,115,22,.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-soft); border: 1px solid rgba(249,115,22,.3);
+  color: var(--accent); font-size: 12px; font-weight: 600;
+  padding: 5px 14px; border-radius: 99px;
+  letter-spacing: .04em; text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700; letter-spacing: -.04em; line-height: 1.08;
+  color: var(--text); margin-bottom: 1.25rem;
+}
+.hero h1 em {
+  font-style: normal; color: var(--accent);
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-3); max-width: 560px; margin: 0 auto 2.5rem;
+  line-height: 1.65; letter-spacing: -.01em;
+}
+.hero-actions {
+  display: flex; justify-content: center;
+  gap: .75rem; flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  padding: 13px 28px; border-radius: 12px;
+  text-decoration: none; font-size: 15px; font-weight: 600;
+  transition: background .15s, transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  letter-spacing: -.01em;
+}
+.btn-primary:hover {
+  background: var(--accent-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+.btn-secondary {
+  background: rgba(255,255,255,.07); color: var(--text-2);
+  padding: 11px 20px; border-radius: 12px;
+  text-decoration: none; font-size: 14px; font-weight: 500;
+  transition: background .15s, transform .15s;
+  border: 1px solid var(--border-2); letter-spacing: -.01em;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,.11); transform: translateY(-2px);
+}
+.hero-meta {
+  margin-top: 2.5rem;
+  display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  font-size: 12px; color: var(--muted); letter-spacing: .02em;
+}
+.hero-meta span { display: flex; align-items: center; gap: 5px; }
+.hero-meta span::before { content: '✓'; color: var(--accent); font-weight: 700; }
+
+/* ── SECTION SHELL ── */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: .75rem;
+}
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700; letter-spacing: -.03em; line-height: 1.15;
+  color: var(--text); margin-bottom: 1rem;
+}
+.section-sub {
+  font-size: 1rem; color: var(--text-3);
+  line-height: 1.7; max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+/* ── MODULES GRID ── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--surface);
+  padding: 2rem;
+  text-decoration: none;
+  transition: background .2s;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.module-card:hover { background: var(--surface-2); }
+.module-icon {
+  font-size: 2rem; margin-bottom: .25rem;
+  display: block; line-height: 1;
+}
+.module-icon svg { display: block; }
+.module-title {
+  font-size: 1.1rem; font-weight: 600; color: var(--text);
+  letter-spacing: -.02em;
+}
+.module-desc {
+  font-size: .875rem; color: var(--text-3); line-height: 1.6;
+}
+.module-tag {
+  display: inline-block; margin-top: auto; padding-top: .75rem;
+  font-size: 11px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--accent);
+}
+
+/* ── FEATURES SPLIT ── */
+.feature-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.feature-split.reverse { direction: rtl; }
+.feature-split.reverse > * { direction: ltr; }
+@media (max-width: 768px) {
+  .feature-split { grid-template-columns: 1fr; gap: 2rem; }
+  .feature-split.reverse { direction: ltr; }
+}
+.feature-visual {
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 18px; overflow: hidden;
+  aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+}
+.feature-visual-inner {
+  width: 100%; height: 100%; padding: 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  justify-content: center;
+}
+.fv-row {
+  display: flex; align-items: center; gap: .75rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: .75rem 1rem;
+}
+.fv-row.highlight {
+  background: var(--accent-soft);
+  border-color: rgba(249,115,22,.3);
+}
+.fv-icon { font-size: 1.25rem; }
+.fv-text { font-size: .8rem; color: var(--text-2); }
+.fv-text strong { display: block; color: var(--text); font-size: .9rem; margin-bottom: 1px; }
+
+.feature-content .section-label { margin-bottom: .5rem; }
+.feature-list {
+  margin-top: 1.5rem; display: flex; flex-direction: column; gap: .75rem;
+}
+.feature-item {
+  display: flex; gap: .75rem; align-items: flex-start;
+}
+.feature-item-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); margin-top: .45rem; flex-shrink: 0;
+}
+.feature-item-text { font-size: .9rem; color: var(--text-3); line-height: 1.6; }
+.feature-item-text strong { color: var(--text-2); }
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  margin-bottom: 5rem;
+}
+.stat-cell {
+  background: var(--surface); padding: 1.75rem 2rem;
+  text-align: center;
+}
+.stat-num {
+  font-size: 2.25rem; font-weight: 700; letter-spacing: -.04em;
+  color: var(--accent); line-height: 1;
+  margin-bottom: .4rem;
+}
+.stat-label { font-size: .8rem; color: var(--text-3); letter-spacing: .02em; }
+
+/* ── QUOTE / HIGHLIGHT BOX ── */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(249,115,22,.1) 0%, rgba(251,146,60,.05) 100%);
+  border: 1px solid rgba(249,115,22,.25);
+  border-radius: 20px; padding: 3rem;
+  text-align: center;
+}
+.highlight-box blockquote {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600; color: var(--text); letter-spacing: -.02em;
+  line-height: 1.4; margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.highlight-box cite { font-size: .9rem; color: var(--accent); font-style: normal; font-weight: 500; }
+
+/* ── FEATURES LIST (cards) ── */
+.features-3col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.feat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.5rem;
+}
+.feat-card-icon { font-size: 1.5rem; margin-bottom: .75rem; }
+.feat-card-title {
+  font-size: .95rem; font-weight: 600; color: var(--text);
+  margin-bottom: .4rem; letter-spacing: -.01em;
+}
+.feat-card-desc { font-size: .85rem; color: var(--text-3); line-height: 1.65; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+  font-size: .8rem; color: var(--muted);
+}
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px; background: var(--border);
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border-2);
+  color: var(--text-3);
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 16px;
+  transition: background .15s, color .15s, transform .1s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: rgba(255,255,255,.14);
+  color: var(--text);
+  transform: rotate(20deg);
+}
+html.light .theme-toggle {
+  background: rgba(0,0,0,.05);
+  border-color: rgba(0,0,0,.1);
+}
+html.light .theme-toggle:hover { background: rgba(0,0,0,.09); }
+
+/* light mode hero glow */
+html.light .hero::before {
+  background: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(234,108,0,.13) 0%, transparent 60%);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav { padding: 0 1rem; }
+  .hero { padding: 5rem 1.25rem 3rem; }
+  section { padding: 3rem 1.25rem; }
+  .highlight-box { padding: 2rem 1.5rem; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html" style="display:flex;align-items:center;gap:6px;"><svg fill="currentColor" width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent);flex-shrink:0;margin-right:6px;vertical-align:middle"><path d="m76.445 93.746-63.941 0.003906c-1.7266 0-3.125-1.3984-3.125-3.125s1.3984-3.125 3.125-3.125h18.477c0.054687-0.19922 0.12891-0.39844 0.22266-0.59375l3.8672-7.832c0.058594-0.10938 0.11719-0.21484 0.18359-0.31641-0.33984-0.33594-0.67578-0.68359-1.0039-1.0312-9.3242-9.9727-14.098-24.75-13.934-44.914v-0.023438c0-0.39062 0.007813-0.77344 0.019532-1.1562-0.011719-0.125-0.019532-0.25391-0.019532-0.38281 0-1.5352 0.21094-3.0234 0.60547-4.4297 2.7734-13.516 14.75-23.695 29.082-23.695 14.332 0 26.305 10.18 29.082 23.695 0.39062 1.4062 0.60547 2.8945 0.60547 4.4297 0 0.12891-0.011718 0.25781-0.023437 0.38281 0.015625 0.39063 0.023437 0.78125 0.023437 1.1797v54.688h7.8125c1.7227 0 3.125 1.3984 3.125 3.125s-1.4023 3.125-3.125 3.125h-10.82c-0.078125 0-0.16016 0-0.23828-0.003906zm-3.0039-7.8438v-34.875c-4.2266 5.4258-10.289 9.3477-17.25 10.824 1.8477 3.7461 5.0156 9.7109 8.832 15.055 2.3398 3.2773 4.9141 6.3242 7.5938 8.3945 0.27344 0.21094 0.54687 0.41406 0.82422 0.60156zm-23.879-23.406c-8.2227-0.11719-15.637-3.5859-20.945-9.0977 1.9648 8.2031 5.3438 14.867 10.199 20.059 6.2148 6.6445 14.801 10.801 25.684 12.77-0.37109-0.40234-0.74219-0.8125-1.1055-1.2383-6.4375-7.5273-11.809-18.219-13.832-22.492zm-22.996-29.684v0.023438c0.011719 12.926 10.508 23.414 23.438 23.414 12.934 0 23.438-10.504 23.438-23.438 0-1.5391-0.15234-3.0469-0.43359-4.5039-1.2656-4.1758-5.1406-7.2148-9.7227-7.2148-5.6055 0-10.156 4.5508-10.156 10.156 0 1.7266-1.4023 3.125-3.125 3.125-1.7266 0-3.125-1.3984-3.125-3.125 0-5.6055-4.5508-10.156-10.156-10.156-4.582 0-8.4609 3.0391-9.7227 7.2148-0.28516 1.457-0.43359 2.9648-0.43359 4.5039zm20.309 10.938c0-1.7266 1.3984-3.125 3.125-3.125s3.125 1.3984 3.125 3.125v3.125c0 1.7266-1.3984 3.125-3.125 3.125s-3.125-1.3984-3.125-3.125zm16.406-15.625c2.1562 0 3.9062 1.75 3.9062 3.9062s-1.75 3.9062-3.9062 3.9062-3.9062-1.75-3.9062-3.9062 1.75-3.9062 3.9062-3.9062zm-26.562 0c2.1562 0 3.9062 1.75 3.9062 3.9062s-1.75 3.9062-3.9062 3.9062-3.9062-1.75-3.9062-3.9062 1.75-3.9062 3.9062-3.9062zm28.453-13.176c-4.0898-3.4727-9.3867-5.5742-15.168-5.5742s-11.078 2.1016-15.168 5.5742c0.61719-0.070313 1.25-0.10547 1.8867-0.10547 5.457 0 10.301 2.6719 13.281 6.7734 2.9805-4.1016 7.8203-6.7734 13.281-6.7734 0.63672 0 1.2695 0.035156 1.8867 0.10547zm-27.289 72.551h9.8945c-2.7539-1.3125-5.3047-2.8281-7.6445-4.5547z" fill-rule="evenodd"/></svg><span style="color:var(--accent)">Philosophie</span></a>
+  <a class="nav-link" href="leitfragen.html">Leitfragen</a>
+  <a class="nav-link" href="vergleiche.html">Vergleiche</a>
+  <a class="nav-link" href="begriffe.html">Begriffe</a>
+  <a class="nav-link" href="philosophen.html">Philosophen</a>
+  <a class="nav-link" href="karteikarten.html">Karteikarten</a>
+  <div class="nav-sp"></div>
+  <button class="theme-toggle" id="themeBtn" title="Hell/Dunkel wechseln"><svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m51.625 95.188c-14.523-0.11328-28.168-6.9531-36.953-18.52-8.7852-11.562-11.715-26.543-7.9336-40.566 3.7852-14.02 13.852-25.496 27.262-31.07l1.9062-0.75 2.9688 2.875-0.71875 1.9688c-3.9297 9.8828-3.8281 20.914 0.28125 30.723 4.1133 9.8086 11.91 17.613 21.715 21.738 9.8047 4.125 20.836 4.2383 30.723 0.32031l1.875-0.75 2.9688 2.8125-0.6875 2.0938c-3.4844 8.6445-9.4844 16.047-17.223 21.238-7.7422 5.1953-16.863 7.9414-26.184 7.8867zm-21.469-81.25c-10.801 6.6953-17.848 18.055-19.043 30.707-1.1953 12.648 3.5938 25.129 12.949 33.73 7.375 6.6719 16.922 10.441 26.867 10.602 9.9453 0.16016 19.609-3.2969 27.195-9.7266 3.1367-2.6914 5.8359-5.8555 8-9.375-15.652 3.4961-32.008-1.2539-43.352-12.594-11.344-11.336-16.102-27.688-12.617-43.344z"/></svg></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Philosophie Lernplattform</div>
+  <h1>Denken lernen.<br><em>Philosophie verstehen.</em></h1>
+  <p class="hero-sub">
+    Philosophen, Begriffe, Leitfragen und Positionsvergleiche — alles übersichtlich, durchsuchbar und immer griffbereit.
+  </p>
+  <div class="hero-actions">
+    <a href="philosophen.html" class="btn-primary">Philosophen entdecken</a>
+    <a href="leitfragen.html" class="btn-secondary">Leitfragen ansehen</a>
+    <a href="vergleiche.html" class="btn-secondary">Positionen überblicken</a>
+    <a href="begriffe.html" class="btn-secondary">Fachbegriffe meistern</a>
+  </div>
+  <div class="hero-meta">
+    <span>Philosophen &amp; Strömungen</span>
+    <span>Fachbegriffe erklärt</span>
+    <span>Leitfragen &amp; Antworten</span>
+    <span>Offline nutzbar</span>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">Module</p>
+    <h2 class="section-title">Alles an einem Ort</h2>
+    <p class="section-sub">Von klassischen Philosophen bis zu abstrakten Begriffen — jedes Modul bringt dich einen Schritt weiter.</p>
+
+    <div class="modules-grid">
+      <a class="module-card" href="philosophen.html">
+        <span class="module-icon">
+          <svg fill="currentColor" width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+            <path d="m40.793 6.25c-0.85938 0.003906-1.5586 0.70703-1.5547 1.5664v4.25c-0.003906 0.85938 0.69531 1.5586 1.5547 1.5625 0.41797 0.003906 0.81641-0.16016 1.1133-0.45703 0.29297-0.29297 0.45703-0.69141 0.45703-1.1055v-4.25c0-0.41406-0.16406-0.8125-0.45703-1.1094-0.29688-0.29297-0.69531-0.45703-1.1133-0.45703zm-9.3242 1.8633v0.003907c-0.23438-0.003907-0.46484 0.042968-0.67969 0.14062-0.78516 0.35156-1.1367 1.2773-0.78516 2.0625l2.1445 4.7695c0.35547 0.78516 1.2812 1.1367 2.0664 0.78125 0.78906-0.35156 1.1367-1.2734 0.78516-2.0625l-2.1484-4.7695c-0.16797-0.375-0.48047-0.67187-0.86719-0.82031-0.16406-0.0625-0.33984-0.097656-0.51562-0.10156zm13.789 7.6172c-1.0508 0.003906-2.1172 0.11328-3.1875 0.34375-8.5391 1.8516-13.852 10.598-11.93 19.422 0.26562 1.2227 0.66016 2.3867 1.1602 3.4805-2.0039-0.14453-3.918 0.46484-5.4336 1.6055l-0.003907 0.003907c-1.6562 1.2461-2.8359 3.1211-3.1445 5.3203l-4.1914 29.543c-0.12891 0.89062-0.10938 1.7539 0.03125 2.5703-3.1758 1.0938-5.4805 4.1133-5.4805 7.6445 0 4.4414 3.6445 8.082 8.0938 8.082h30.773c2.5859-0.003906 4.9961-1.25 6.5039-3.2969l26.91 0.26562-0.003906 0.003906c0.48438 0 0.9375-0.21875 1.2344-0.59766 0.29688-0.38281 0.40234-0.875 0.28516-1.3438l-10.238-41.109h0.003906c-0.011719-0.03125-0.019531-0.0625-0.03125-0.09375-1.0938-3.4492-4.8242-5.3789-8.2773-4.2852l-20.703 6.0938-0.011718 0.003907c-1.2734 0.21875-2.2031 0.42188-2.8984 0.69141-0.74219 0.28516-1.293 0.69141-1.6562 1.0117l-5.418 4.8164 1.0977-7.7305-0.003907-0.011719c0.0625-0.43359 0.082031-0.86328 0.074219-1.2891 3.082 1.5781 6.6641 2.1445 10.254 1.3672 8.5391-1.8516 13.836-10.598 11.914-19.422-1.6797-7.7227-8.3594-13.105-15.723-13.086zm-23.711 3.0938v0.003906c-0.61719 0.035156-1.1523 0.42578-1.3711 1.0039-0.14844 0.38672-0.13672 0.81641 0.035157 1.1992 0.16797 0.37891 0.48437 0.67188 0.875 0.82031l4.6641 1.7461c0.39062 0.14453 0.82031 0.125 1.1992-0.046875 0.375-0.17188 0.66797-0.48828 0.8125-0.875 0.30078-0.80469-0.10547-1.6992-0.91016-2.0078l-4.6641-1.7461v0.003906c-0.20312-0.078125-0.42188-0.11328-0.64062-0.097656zm23.73 0.03125c5.8867-0.011719 11.27 4.2773 12.652 10.625 1.5781 7.2539-2.7188 14.234-9.5234 15.711-6.8047 1.4766-13.633-3.0977-15.207-10.352-1.5781-7.2539 2.7305-14.234 9.5391-15.711 0.85156-0.18359 1.6992-0.27344 2.543-0.27344zm-14.617 23.227c0.25-0.003906 0.50391 0.011719 0.76172 0.046875 2.7305 0.38672 4.6094 2.8711 4.2188 5.5977l-1.6602 11.75-3.7734 9.0625 0.003907 0.003907c-0.16406 0.38281-0.16406 0.81641-0.003907 1.2031 0.16016 0.38281 0.46875 0.6875 0.85547 0.84375 0.80078 0.32812 1.7109-0.054688 2.0391-0.85156l3.6992-8.8945 8.3398-7.4258c0.22266-0.19922 0.29297-0.26562 0.70312-0.42578 0.41406-0.16016 1.168-0.34766 2.4766-0.56641 0.0625-0.011719 0.125-0.027343 0.1875-0.046875l20.727-6.1016 0.003906 0.003906c0.011719-0.003906 0.027344-0.007812 0.039063-0.011719 1.8438-0.58594 3.7695 0.41406 4.3555 2.2539l9.7266 39.051-23.16-0.23047 8.1328-15.254c0.40234-0.75781 0.11328-1.6992-0.64844-2.1016-0.75391-0.40234-1.6953-0.12109-2.1055 0.63281l-9.2656 17.387c-0.86328 1.6172-2.543 2.6094-4.375 2.6094h-30.773c-2.7578 0-4.9531-2.1914-4.957-4.9453 0-2.7539 2.1992-4.9492 4.957-4.9492h26.855c0.57812-0.003906 1.1055-0.32422 1.375-0.83594l1.4844-2.7852 0.003906-0.003906c0.015626-0.027344 0.03125-0.054687 0.046876-0.082031l7.3555-13.793 2.9766-5.5938c0.19531-0.36328 0.24219-0.79297 0.12109-1.1875-0.11719-0.39844-0.39062-0.73047-0.75781-0.92969-0.36719-0.19531-0.79688-0.23438-1.1914-0.11328-0.39844 0.12109-0.73047 0.39453-0.92578 0.76172l-2.9883 5.5938-4.8125 9.0312-0.375-5.3242c-0.050781-0.8125-0.71875-1.4453-1.5312-1.4609v-0.003906c-0.39062-0.003906-0.76562 0.13672-1.0586 0.39844l-14.824 13.156c-0.007813 0.011719-0.019531 0.023438-0.027344 0.035157h-11.246c-0.10156-0.52344-0.12109-1.0859-0.035156-1.6953l4.2031-29.547c0.35156-2.4727 2.4258-4.2422 4.8438-4.2617zm16.777 26.758 0.50391 7.1367-0.85938 1.6094h-9.4883z"/>
+          </svg>
+        </span>
+        <div class="module-title">Philosophen</div>
+        <div class="module-desc">Alle wichtigen Denker mit Strömung, Kernthesen, Biografie und Querverweisen auf einen Blick.</div>
+        <span class="module-tag">Öffnen →</span>
+      </a>
+      <a class="module-card" href="begriffe.html">
+        <span class="module-icon">
+          <svg fill="currentColor" width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+            <g fill-rule="evenodd"><path d="m29.168 8.3398c-2.3008 0.011718-4.1602 1.8828-4.1523 4.1836v25c0.003906 2.293 1.8594 4.1484 4.1523 4.1602h48.289l7.1055 7.1055c1.1875 1.1797 2.9727 1.5352 4.5234 0.89844 1.5508-0.64062 2.5664-2.1445 2.582-3.8203v-33.344c0.007812-2.3008-1.8516-4.1719-4.1523-4.1836zm12.5 12.508c2.3008 0 4.1641 1.8672 4.1641 4.168s-1.8633 4.168-4.1641 4.168-4.168-1.8672-4.168-4.168 1.8672-4.168 4.168-4.168zm16.664 0c2.3008 0 4.168 1.8672 4.168 4.168s-1.8672 4.168-4.168 4.168-4.1641-1.8672-4.1641-4.168 1.8633-4.168 4.1641-4.168zm16.668 0c2.3008 0 4.168 1.8672 4.168 4.168s-1.8672 4.168-4.168 4.168-4.168-1.8672-4.168-4.168 1.8672-4.168 4.168-4.168z"/><path d="m12.484 49.992c-2.3008 0.007812-4.1602 1.8828-4.1523 4.1836v33.34c0.015625 1.6758 1.0312 3.1836 2.582 3.8203 1.5508 0.63672 3.3359 0.28516 4.5234-0.89844l7.1055-7.1055h48.289c2.293-0.007812 4.1484-1.8672 4.1523-4.1562v-25c0.007813-2.3008-1.8516-4.1758-4.1523-4.1836zm12.516 12.508c2.3008 0 4.168 1.8672 4.168 4.168s-1.8672 4.1641-4.168 4.1641-4.168-1.8633-4.168-4.1641 1.8672-4.168 4.168-4.168zm16.668 0c2.3008 0 4.1641 1.8672 4.1641 4.168s-1.8633 4.1641-4.1641 4.1641-4.168-1.8633-4.168-4.1641 1.8672-4.168 4.168-4.168zm16.664 0c2.3008 0 4.168 1.8672 4.168 4.168s-1.8672 4.1641-4.168 4.1641-4.1641-1.8633-4.1641-4.1641 1.8633-4.168 4.1641-4.168z"/></g>
+          </svg>
+        </span>
+        <div class="module-title">Begriffe</div>
+        <div class="module-desc">Philosophisches Fachvokabular verständlich erklärt — von Apriori bis Zweck an sich.</div>
+        <span class="module-tag">Öffnen →</span>
+      </a>
+      <a class="module-card" href="leitfragen.html">
+        <span class="module-icon">
+          <svg fill="currentColor" width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+            <g><path d="m60.531 55.59c8.3086-4.0586 13.48-12.328 13.48-21.578 0-6.3086-2.5195-12.32-7.1094-16.898-4.5938-4.5938-10.594-7.1133-16.902-7.1133-13.238 0-24.012 10.77-24.012 24.012h12.172c0-6.5312 5.3086-11.84 11.84-11.84 3.0586 0 6.0117 1.2617 8.2891 3.5508 2.2891 2.2891 3.5508 5.2305 3.5508 8.3008 0 4.5586-2.5508 8.6406-6.6484 10.648-6.8516 3.3281-11.27 10.738-11.27 18.848v4.3984h12.172v-4.3984c-0.015625-3.5 1.7344-6.6094 4.4375-7.9297z"/><path d="m50 74.789c-4.1797 0-7.5781 3.4102-7.5781 7.5781 0 4.2188 3.4102 7.6211 7.5781 7.6211 4.1797 0 7.5781-3.4102 7.5781-7.6211 0-4.168-3.3984-7.5781-7.5781-7.5781z"/></g>
+          </svg>
+        </span>
+        <div class="module-title">Leitfragen</div>
+        <div class="module-desc">Klausur-relevante Fragen mit strukturierten Antworten — perfekt zur Prüfungsvorbereitung.</div>
+        <span class="module-tag">Öffnen →</span>
+      </a>
+      <a class="module-card" href="karteikarten.html">
+        <span class="module-icon">
+          <svg fill="currentColor" width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+            <path d="m32.039 27.105c-0.085937-0.070313-0.16016-0.14844-0.23437-0.22656-0.23828-0.21484-0.50391-0.40625-0.78125-0.56641-1.0273-0.59375-2.2852-0.79688-3.5234-0.46875h-0.003906l-18.477 4.9492c-1.2266 0.32812-2.207 1.1328-2.8008 2.1641l-0.058594 0.097657c-0.55078 1.0078-0.73047 2.2227-0.40625 3.4141l11.969 44.656c0.32812 1.2305 1.1328 2.2148 2.1641 2.8086l0.097656 0.058594c1.0078 0.55078 2.2227 0.73047 3.418 0.40625l18.484-4.9531c1.2305-0.32812 2.2109-1.1328 2.8008-2.1523 0.57422-0.98828 0.78125-2.1914 0.5-3.3828-0.019531-0.070312-0.039062-0.14062-0.054688-0.21484-3.7812-14.746-8.543-29.844-11.945-44.582-0.21094-0.78125-0.61328-1.4648-1.1367-2.0117zm-0.82422-5.6484v-1.3789c0-2.5391 1.0391-4.8438 2.7109-6.5156s3.9766-2.7109 6.5156-2.7109h19.129c2.5391 0 4.8438 1.0391 6.5156 2.7109 1.6719 1.6719 2.7109 3.9766 2.7109 6.5156v1.3789c0.070313-0.019531 0.14453-0.039062 0.21875-0.058593 1.4922-0.39063 3.0977-0.41016 4.6797 0.011718l18.473 4.9492c2.4492 0.65625 4.4102 2.2578 5.5898 4.3008l0.082032 0.14844c1.1172 2.0195 1.4922 4.4531 0.85156 6.8398l-11.969 44.656c-0.65625 2.4492-2.2539 4.4102-4.3008 5.5898l-0.14844 0.082031c-2.0195 1.1172-4.4531 1.4922-6.8438 0.85156l-18.477-4.9492c-2.4375-0.65234-4.3906-2.2383-5.5742-4.2734-0.71875-1.2266-1.1484-2.6172-1.2383-4.0703h-0.27344c-0.09375 1.4336-0.52344 2.8125-1.2266 4.0352-1.1602 2.0117-3.0586 3.5859-5.4375 4.2656-0.089844 0.03125-0.18359 0.058593-0.27734 0.074218l-18.352 4.918c-2.3867 0.64062-4.8203 0.26562-6.8398-0.85156l-0.15234-0.082031c-2.043-1.1797-3.6406-3.1367-4.3008-5.5898l-11.93-44.531c-0.03125-0.089844-0.054687-0.17578-0.070312-0.27344-0.58984-2.3398-0.20703-4.7188 0.88672-6.6953l0.082031-0.14844c1.1562-2 3.0586-3.5742 5.4375-4.2578 0.089844-0.03125 0.18359-0.058594 0.27734-0.074219l18.227-4.8828c0.085938-0.03125 0.17578-0.054687 0.26953-0.070312 1.6172-0.40625 3.25-0.35156 4.7539 0.085937zm17.918 49.484h10.434c1.2734 0 2.4258-0.52344 3.2656-1.3633 0.83984-0.83984 1.3633-1.9961 1.3633-3.2656v-46.23c0-1.2734-0.52344-2.4258-1.3633-3.2656-0.83984-0.83984-1.9961-1.3633-3.2656-1.3633h-19.129c-1.2734 0-2.4258 0.52344-3.2656 1.3633s-1.3633 1.9961-1.3633 3.2656v4.3789c0.78906 0.94922 1.3984 2.0703 1.7539 3.3242 0.03125 0.089844 0.058594 0.17969 0.074219 0.27344l11.492 42.887zm19.66-44.508v39.879c0 2.5391-1.0391 4.8438-2.7109 6.5156s-3.9766 2.7109-6.5156 2.7109h-4.8281c0.082031 0.62891 0.28906 1.2344 0.60547 1.7773 0.58984 1.0156 1.5703 1.8086 2.793 2.1406l18.477 4.9492c1.1953 0.32031 2.4062 0.14062 3.418-0.40625l0.097656-0.058594c1.0273-0.59375 1.832-1.5781 2.1641-2.8086l11.969-44.656c0.32031-1.1953 0.14062-2.4062-0.40625-3.418l-0.058594-0.097656c-0.59375-1.0273-1.5781-1.8359-2.8086-2.1641l-18.477-4.9492c-0.80078-0.21484-1.6055-0.20703-2.3477-0.011718-0.48437 0.125-0.94922 0.32812-1.3672 0.60156z"/>
+          </svg>
+        </span>
+        <div class="module-title">Karteikarten</div>
+        <div class="module-desc">Interaktives Spaced-Repetition-Training — lern so lange, bis der Stoff sitzt.</div>
+        <span class="module-tag">Öffnen →</span>
+      </a>
+      <a class="module-card" href="philosophen.html">
+        <span class="module-icon">
+          <svg fill="currentColor" width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+            <g><path d="m80 31h-16.75l6.7188-6.7188c1.1094-1.1094 1.3281-2.8203 0.51172-3.9805-0.53125-0.75-1.3203-1.2109-2.2188-1.2891-0.089844 0-0.17188-0.011719-0.26172-0.011719-0.78906 0-1.5586 0.30859-2.1211 0.87891l-6.8789 6.8789c-1.9297 1.9297-3 4.5-3 7.2383 0 2.7383 1.0703 5.3086 3 7.2383l6.8789 6.8789c0.64062 0.64062 1.5312 0.94922 2.4219 0.85938 0.91016-0.089844 1.6992-0.57031 2.2305-1.3594 0.76953-1.1602 0.57031-2.7695-0.48047-3.8203l-6.8086-6.8008h16.75c1.6484 0 3-1.3516 3-3 0-1.6484-1.3516-3-3-3z"/><path d="m31.73 80.988c0.87891 0.070313 1.7617-0.23828 2.3789-0.87109l6.8789-6.8789c1.9297-1.9297 3-4.5 3-7.2383s-1.0703-5.3086-3-7.2383l-6.8789-6.8789c-0.64062-0.64062-1.5312-0.94922-2.4219-0.85937-0.91016 0.089843-1.6992 0.57031-2.2305 1.3594-0.76953 1.1602-0.57031 2.7695 0.48047 3.8203l6.8086 6.8008-16.746-0.003906c-1.6484 0-3 1.3516-3 3s1.3516 3 3 3h16.75l-6.7188 6.7188c-1.1094 1.1094-1.3281 2.8203-0.51172 3.9805 0.53125 0.75 1.3203 1.2109 2.2109 1.2891z"/><path d="m70.43 73.25-36-50c-0.46875-0.64844-1.1602-1.0781-1.9492-1.2109-0.16016-0.03125-0.32812-0.039062-0.48828-0.039062-0.62109 0-1.2305 0.19141-1.75 0.57031-0.64844 0.46875-1.0781 1.1602-1.2109 1.9492-0.12891 0.78906 0.058594 1.5781 0.53125 2.2383l36 50c0.92969 1.2891 2.8906 1.6211 4.1914 0.67969 1.3398-0.96875 1.6484-2.8398 0.67969-4.1914z"/></g>
+          </svg>
+        </span>
+        <div class="module-title">Vergleiche</div>
+        <div class="module-desc">Philosophen direkt gegenüberstellen — Gemeinsamkeiten und Unterschiede strukturiert erkunden.</div>
+        <span class="module-tag">Öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURE: Philosophen -->
+<section>
+  <div class="section-inner">
+    <div class="feature-split">
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="fv-row highlight">
+            <span class="fv-icon">🎴</span>
+            <div class="fv-text">
+              <strong>Immanuel Kant</strong>
+              Aufklärung · 1724–1804
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">📌</span>
+            <div class="fv-text">
+              <strong>Kernthese</strong>
+              Kategorischer Imperativ als oberstes Moralprinzip
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">🔗</span>
+            <div class="fv-text">
+              <strong>Vergleich</strong>
+              Rousseau · Hegel · Schopenhauer
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">📖</span>
+            <div class="fv-text">
+              <strong>Werke</strong>
+              Kritik der reinen Vernunft · Grundlegung
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-content">
+        <p class="section-label">Philosophen</p>
+        <h2 class="section-title">Jeder Denker auf einen Blick</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Strömung, Lebensdaten, Kernthesen, Biografie und Querverweise — strukturiert, durchsuchbar und filterbar nach Epoche.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Filter nach Epoche und Strömung</strong> — Antike, Neuzeit, Aufklärung, Moderne</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Sofortsuche</strong> — finde jeden Philosophen in Sekunden</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Querverweise</strong> — direkte Links zu verwandten Denkern und Begriffen</div>
+          </div>
+        </div>
+        <a href="philosophen.html" class="btn-primary" style="display:inline-block;margin-top:1.75rem;font-size:.9rem;padding:10px 22px;">Philosophen öffnen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURE: Karteikarten -->
+<section>
+  <div class="section-inner">
+    <div class="feature-split reverse">
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="fv-row highlight">
+            <span class="fv-icon">🃏</span>
+            <div class="fv-text">
+              <strong>Was ist der kategorische Imperativ?</strong>
+              Tippe zum Aufdecken
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">✅</span>
+            <div class="fv-text"><strong>Kenne ich</strong> · 12 Karten</div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">🔄</span>
+            <div class="fv-text"><strong>Noch üben</strong> · 8 Karten</div>
+          </div>
+          <div class="fv-row" style="margin-top: .5rem; background: transparent; border-color: transparent;">
+            <div style="width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden;">
+              <div style="width: 60%; height: 100%; background: var(--accent); border-radius: 99px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-content">
+        <p class="section-label">Karteikarten</p>
+        <h2 class="section-title">Lernen, bis es sitzt</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Interaktives Karteikarten-Training mit Fortschrittsverfolgung — ideal für die letzte Woche vor der Klausur.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Flip-Karten</strong> — Frage und Antwort im Wechsel</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Fortschritt</strong> — markiere Karten als bekannt oder zum Wiederholen</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Themenfilter</strong> — übe gezielt einzelne Bereiche</div>
+          </div>
+        </div>
+        <a href="karteikarten.html" class="btn-primary" style="display:inline-block;margin-top:1.75rem;font-size:.9rem;padding:10px 22px;">Karteikarten öffnen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- POSITIONSVERGLEICHE -->
+<section>
+  <div class="section-inner">
+    <div class="feature-split reverse">
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="fv-row" style="background:rgba(255,255,255,.04);border-color:var(--border);margin-bottom:.25rem;">
+            <span class="fv-icon">⚖️</span>
+            <div class="fv-text">
+              <strong style="color:var(--accent)">Position A · Kant</strong>
+              Moral folgt aus Vernunft, nicht aus Gefühl
+            </div>
+          </div>
+          <div class="fv-row" style="background:rgba(255,255,255,.04);border-color:var(--border);margin-bottom:.5rem;">
+            <span class="fv-icon">⚖️</span>
+            <div class="fv-text">
+              <strong style="color:#60a5fa">Position B · Hume</strong>
+              Moral basiert auf Gefühl und Empathie
+            </div>
+          </div>
+          <div class="fv-row" style="background:var(--accent-soft);border-color:rgba(249,115,22,.3);">
+            <span class="fv-icon">🔍</span>
+            <div class="fv-text">
+              <strong>Gemeinsamkeit</strong>
+              Beide suchen ein universelles Moralprinzip
+            </div>
+          </div>
+          <div class="fv-row" style="background:rgba(255,255,255,.03);border-color:var(--border);margin-top:.25rem;">
+            <span class="fv-icon">↔️</span>
+            <div class="fv-text">
+              <strong>Unterschied</strong>
+              Ratio vs. Sentimentalismus als Grundlage
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-content">
+        <p class="section-label">Positionsvergleiche</p>
+        <h2 class="section-title">Positionen direkt gegenüberstellen</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Vergleiche philosophische Positionen strukturiert — Gemeinsamkeiten, Unterschiede und Querverweise auf einen Blick.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Thematische Vergleiche</strong> — Erkenntnistheorie, Ethik, Metaphysik, Anthropologie</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Tabellarisch</strong> — klare Gegenüberstellung von Kernthesen</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Merksätze</strong> — prägnante Zusammenfassungen pro Vergleich</div>
+          </div>
+        </div>
+        <a href="vergleiche.html" class="btn-primary" style="display:inline-block;margin-top:1.75rem;font-size:.9rem;padding:10px 22px;">Vergleiche öffnen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURE: Leitfragen -->
+<section>
+  <div class="section-inner">
+    <div class="feature-split">
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="fv-row highlight">
+            <span class="fv-icon">💡</span>
+            <div class="fv-text">
+              <strong>Utilitarismus vs. Pflichtethik</strong>
+              Ethik · Prüfungsfrage
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">📌</span>
+            <div class="fv-text">
+              <strong>Leitfrage</strong>
+              Ist die gute Absicht oder das gute Ergebnis entscheidend?
+            </div>
+          </div>
+          <div class="fv-row">
+            <span class="fv-icon">🔗</span>
+            <div class="fv-text">
+              <strong>Positionen</strong>
+              Kant · Bentham · Mill · Singer
+            </div>
+          </div>
+          <div class="fv-row" style="background:var(--accent-soft);border-color:rgba(249,115,22,.3);">
+            <span class="fv-icon">→</span>
+            <div class="fv-text">
+              <strong>Direkt zu den Vergleichen</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-content">
+        <p class="section-label">Leitfragen</p>
+        <h2 class="section-title">Prüfungsfragen auf einen Blick</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Alle zentralen Prüfungsfragen nach Themenbereichen — jede Frage direkt verlinkt mit den Positionsvergleichen.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>22 Themen</strong> — von Erkenntnistheorie bis Anthropologie</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Direkt verlinkt</strong> — ein Klick führt zu den Positionsvergleichen</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-dot"></div>
+            <div class="feature-item-text"><strong>Klausurvorbereitung</strong> — alle relevanten Fragen kompakt zusammengefasst</div>
+          </div>
+        </div>
+        <a href="leitfragen.html" class="btn-primary" style="display:inline-block;margin-top:1.75rem;font-size:.9rem;padding:10px 22px;">Leitfragen öffnen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="highlight-box">
+      <blockquote>„Die Philosophie ist keine Lehre, sondern eine Tätigkeit."</blockquote>
+      <cite>— <a href="https://de.wikipedia.org/wiki/Ludwig_Wittgenstein" target="_blank" style="color:var(--accent);text-decoration:none;">Ludwig Wittgenstein</a>, Tractatus Logico-Philosophicus 4.112</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>Philosophie 4 · Lernplattform · <span style="opacity:.5">v1.0</span></span>
+    <div class="footer-links">
+      <a href="philosophen.html">Philosophen</a>
+      <a href="begriffe.html">Begriffe</a>
+      <a href="leitfragen.html">Leitfragen</a>
+      <a href="karteikarten.html">Karteikarten</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('themeBtn');
+  const html = document.documentElement;
+
+  // Restore saved preference
+  const MOON = '<svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m51.625 95.188c-14.523-0.11328-28.168-6.9531-36.953-18.52-8.7852-11.562-11.715-26.543-7.9336-40.566 3.7852-14.02 13.852-25.496 27.262-31.07l1.9062-0.75 2.9688 2.875-0.71875 1.9688c-3.9297 9.8828-3.8281 20.914 0.28125 30.723 4.1133 9.8086 11.91 17.613 21.715 21.738 9.8047 4.125 20.836 4.2383 30.723 0.32031l1.875-0.75 2.9688 2.8125-0.6875 2.0938c-3.4844 8.6445-9.4844 16.047-17.223 21.238-7.7422 5.1953-16.863 7.9414-26.184 7.8867zm-21.469-81.25c-10.801 6.6953-17.848 18.055-19.043 30.707-1.1953 12.648 3.5938 25.129 12.949 33.73 7.375 6.6719 16.922 10.441 26.867 10.602 9.9453 0.16016 19.609-3.2969 27.195-9.7266 3.1367-2.6914 5.8359-5.8555 8-9.375-15.652 3.4961-32.008-1.2539-43.352-12.594-11.344-11.336-16.102-27.688-12.617-43.344z"/></svg>';
+  const SUN  = '<svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m48 17v6h4v-6zm-19.906 8.25-2.8438 2.8125 4.25 4.25 2.8125-2.8438zm43.812 0-4.2188 4.2188 2.8125 2.8438 4.25-4.25zm-21.906 3.75c-11.574 0-21 9.4258-21 21s9.4258 21 21 21 21-9.4258 21-21-9.4258-21-21-21zm0 4c9.4141 0 17 7.5859 17 17s-7.5859 17-17 17-17-7.5859-17-17 7.5859-17 17-17zm-33 15v4h6v-4zm60 0v4h6v-4zm-47.5 19.656-1.4062 1.4375-1.4375 1.4062-1.4062 1.4062 2.8438 2.8438 1.4062-1.4375 2.8125-2.8125zm41 0-2.8125 2.8438 2.8125 2.8125 1.4062 1.4375 2.8438-2.8438-1.4062-1.4062-1.4375-1.4062zm-22.5 9.3438v6h4v-6z"/></svg>';
+
+  if (localStorage.getItem('philo-theme') === 'light') {
+    html.classList.add('light');
+    btn.innerHTML = SUN;
+  }
+
+  btn.addEventListener('click', () => {
+    const isLight = html.classList.toggle('light');
+    btn.innerHTML = isLight ? SUN : MOON;
+    localStorage.setItem('philo-theme', isLight ? 'light' : 'dark');
+  });
+</script>
+</body>
 </html>
