@@ -806,7 +806,7 @@ NEU — Moderne Weiterentwicklung</div>
 .lf-sem-hdr {
   color: var(--text-3) !important;
   border-color: var(--border-2) !important;
-  text-align: right !important;
+  text-align: left !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -831,15 +831,26 @@ NEU — Moderne Weiterentwicklung</div>
 }
 .lf-kurs-badge:empty { display: none; }
 
-/* ── CARD: Frage rechtsbündig, Thema als Subtext ── */
+/* ── FILTERLEISTE: identisch zu .filter-bar ── */
+.lf-filter-bar {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: .55rem 1.25rem !important;
+  display: flex !important;
+  gap: .4rem !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+/* ── CARD: Frage linksbündig, Thema als Subtext ── */
 .lf-topic {
-  text-align: right !important;
+  text-align: left !important;
   font-size: 10.5px !important;
   color: var(--muted) !important;
   margin-bottom: 3px !important;
 }
 .lf-q {
-  text-align: right !important;
+  text-align: left !important;
   font-size: 13.5px !important;
   font-weight: 500 !important;
   font-style: normal !important;
