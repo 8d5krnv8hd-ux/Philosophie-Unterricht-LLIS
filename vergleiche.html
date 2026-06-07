@@ -2921,7 +2921,7 @@ function sidebar(){
       const active=items.some(f=>fwId===f.id);
       h+=`<div class="sb-sem-block">
         <div class="sb-sem-link${active?' active':''}">
-          <div class="sb-sem-texts"><span class="sb-sem-name">${s}</span></div>
+          <div class="sb-sem-texts"><span class="sb-sem-name">${s}</span><span class="sb-sem-sub">${SEM_NR[s]||""}</span></div>
         </div>
         <div class="sb-subs">`;
       items.forEach(f=>{
@@ -2935,7 +2935,7 @@ function sidebar(){
       const active=ids.some(id=>curId===id&&!sq&&mode==="overview");
       h+=`<div class="sb-sem-block">
         <div class="sb-sem-link${active?' active':''}">
-          <div class="sb-sem-texts"><span class="sb-sem-name">${s}</span></div>
+          <div class="sb-sem-texts"><span class="sb-sem-name">${s}</span><span class="sb-sem-sub">${SEM_NR[s]||""}</span></div>
         </div>
         <div class="sb-subs">`;
       ids.forEach(id=>{
@@ -3473,6 +3473,15 @@ html.light .pcm {
   color:var(--muted) !important;
   border-color:var(--border) !important;
 }
+
+/* SB-SEM-SUB: Semesterzahl unter Abschnittsname */
+.sb-sem-sub { font-size:10px !important; color:var(--muted) !important; line-height:1.3 !important; }
+
+/* MERKSATZ FINAL: einheitlich in Tabellen- UND Kartenansicht */
+.mr td { background:rgba(249,115,22,.1) !important; color:var(--text) !important; font-style:italic !important; border-top:2px solid rgba(249,115,22,.35) !important; border-bottom:2px solid rgba(249,115,22,.35) !important; }
+.mr td.rl { background:rgba(249,115,22,.2) !important; color:var(--accent) !important; font-style:normal !important; font-weight:700 !important; }
+html.light .mr td { background:#fff7ed !important; color:#92400e !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
+html.light .mr td.rl { background:#fed7aa !important; color:#7c2d12 !important; }
 </style>
 
 <script>
