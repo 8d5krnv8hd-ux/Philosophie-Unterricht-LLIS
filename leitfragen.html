@@ -781,7 +781,7 @@ NEU — Moderne Weiterentwicklung</div>
   font-size: clamp(1.8rem,4vw,2.8rem) !important;
   font-weight: 700 !important;
   letter-spacing: -.03em !important;
-  text-align: right !important;
+  text-align: left !important;
   margin-bottom: .5rem !important;
 }
 .page-hero p {
@@ -819,6 +819,23 @@ NEU — Moderne Weiterentwicklung</div>
   margin-left: .4rem;
 }
 .lf-kurs-badge:empty { display: none; }
+
+/* ── FILTER-BUTTONS: Basis-Styling (Pills wie auf anderen Seiten) ── */
+.fbtn {
+  padding: 4px 13px !important;
+  border: 1px solid var(--border-2) !important;
+  border-radius: 99px !important;
+  background: var(--surface) !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  color: var(--text-3) !important;
+  font-family: inherit !important;
+  transition: all .15s !important;
+}
+.fbtn:hover { border-color: var(--accent) !important; color: var(--text) !important; }
+.fbtn.on { background: var(--accent) !important; color: #fff !important; border-color: var(--accent) !important; font-weight: 600 !important; }
+html.light .fbtn { background: var(--surface) !important; border-color: rgba(0,0,0,.12) !important; color: #374151 !important; }
+html.light .fbtn.on { background: var(--accent) !important; color: #fff !important; }
 
 /* ── FILTERLEISTE: identisch zu .filter-bar ── */
 .lf-filter-bar {
