@@ -617,11 +617,18 @@ html.light .version-badge {
     <p>Die zentralen Prüfungsfragen zu allen Themenbereichen — direkt verlinkt mit den Positionsvergleichen.</p>
   </div>
 </div>
+<div class="lf-filter-bar" id="lfFilterBar">
+  <button class="fbtn on" onclick="filterLF(null,this)">Alle</button>
+  <button class="fbtn" onclick="filterLF('Erkenntnistheorie',this)">Erkenntnistheorie</button>
+  <button class="fbtn" onclick="filterLF('Ethik',this)">Ethik</button>
+  <button class="fbtn" onclick="filterLF('Staatsphilosophie',this)">Staatsphilosophie</button>
+  <button class="fbtn" onclick="filterLF('Anthropologie',this)">Anthropologie</button>
+</div>
 <div class="lf-wrap">
   <div class="lf-hero"><h1>Leitfragen</h1>
     <p>Die zentralen Fragen zu allen 22 Themen — direkt zur Vergleichstabelle verlinkt.</p>
   </div>
-  <div class="lf-sem"><div class="lf-sem-hdr" style="color:#3d5a78;border-color:#9baec8">Erkenntnistheorie</div><div class="lf-grid"><div class="lf-card">
+  <div class="lf-sem" data-thema="Erkenntnistheorie"><div class="lf-sem-hdr">Erkenntnistheorie</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Klassische Erkenntnistheorie</div>
   <div class="lf-q">Woher stammt unser Wissen — aus der Vernunft, der Erfahrung, oder beiden?</div>
   <div class="lf-pos">Rationalismus · Empirismus · Kritizismus</div>
@@ -631,7 +638,7 @@ html.light .version-badge {
   <div class="lf-q">Was macht eine Theorie wissenschaftlich — und wie funktioniert wissenschaftlicher Fortschritt?</div>
   <div class="lf-pos">Karl Popper (1902–1994) · Thomas Kuhn (1922–1996) · Paul Feyerabend (1924–1994)</div>
   <a class="lf-btn" href="vergleiche.html?id=wissenschaft">Positionen ansehen →</a>
-</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#2d5a47;border-color:#4a6b5a">Ethik</div><div class="lf-grid"><div class="lf-card">
+</div></div></div><div class="lf-sem" data-thema="Ethik"><div class="lf-sem-hdr">Ethik</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Hedonismus vs. Eudämonismus</div>
   <div class="lf-q">Was ist das Ziel des menschlichen Lebens — Lust, Seelenruhe oder tugendhafte Vollendung?</div>
   <div class="lf-pos">(Purer) Hedonismus · Hedonismus nach Epikur (Epikurismus) · Eudämonismus (Tugendethik)</div>
@@ -661,7 +668,7 @@ html.light .version-badge {
   <div class="lf-q">Ist Moral ein Instrument der Herrschaft — oder gibt es moralische Prinzipien jenseits von Machtverhältnissen?</div>
   <div class="lf-pos">Friedrich Nietzsche (1844–1900) · Karl Marx (1818–1883) · Michel Foucault (1926–1984) · Judith Butler (*1956)</div>
   <a class="lf-btn" href="vergleiche.html?id=moralkritik">Positionen ansehen →</a>
-</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#6b4e20;border-color:#b09060">Staatsphilosophie</div><div class="lf-grid"><div class="lf-card">
+</div></div></div><div class="lf-sem" data-thema="Staatsphilosophie"><div class="lf-sem-hdr">Staatsphilosophie</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Antike Staatstheorien: Platon & Aristoteles</div>
   <div class="lf-q">Was ist der Zweck des Staates — und wer soll regieren?</div>
   <div class="lf-pos">Platon
@@ -719,7 +726,7 @@ NEU — Moderne Weiterentwicklung</div>
   <div class="lf-q">Wie weit darf staatliche Macht gehen — und wann muss man ihr widerstehen?</div>
   <div class="lf-pos">Anarchismus · Libertarismus · Republikanismus · Totalitarismus ⚠ Keine normative Position — analytische Gegenfolie</div>
   <a class="lf-btn" href="vergleiche.html?id=grenzen">Positionen ansehen →</a>
-</div></div></div><div class="lf-sem"><div class="lf-sem-hdr" style="color:#6b3a4e;border-color:#b07890">Anthropologie</div><div class="lf-grid"><div class="lf-card">
+</div></div></div><div class="lf-sem" data-thema="Anthropologie"><div class="lf-sem-hdr">Anthropologie</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Essentialismus – Existentialismus – Konstruktivismus</div>
   <div class="lf-q">Hat der Mensch ein vorgegebenes Wesen — oder erschafft er sich selbst?</div>
   <div class="lf-pos">Essentialismus · Existentialismus · Feministische Existenzphilosophie NEU — Simone de Beauvoir · (Konstruktivismus)</div>
@@ -766,6 +773,92 @@ NEU — Moderne Weiterentwicklung</div>
 })();
 </script>
 <div class="version-badge">v1.0</div>
+<style>
+/* ── PAGE HERO: linksbündig, einheitlich ── */
+.page-hero-inner { text-align: left !important; }
+.page-hero h1 {
+  font-family: var(--serif) !important;
+  font-size: clamp(1.8rem,4vw,2.8rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  text-align: left !important;
+  margin-bottom: .5rem !important;
+}
+.page-hero p {
+  text-align: left !important;
+}
+
+/* ── VOLLBILD: kein max-width ── */
+.lf-wrap { max-width: none !important; padding: 1.5rem 2rem !important; }
+
+/* ── FILTERLEISTE ── */
+.lf-filter-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: .55rem 2rem;
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── SEKTIONS-HEADER: neutral, rechtsbündig ── */
+.lf-sem-hdr {
+  color: var(--text-3) !important;
+  border-color: var(--border-2) !important;
+  text-align: right !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .08em !important;
+  padding: 4px 0 !important;
+  margin-bottom: .75rem !important;
+  border-bottom-width: 1px !important;
+}
+
+/* ── KURS-BADGE (Platzhalter) ── */
+.lf-kurs-badge {
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text-3);
+  border: 1px solid var(--border-2);
+  vertical-align: middle;
+  margin-left: .4rem;
+}
+.lf-kurs-badge:empty { display: none; }
+
+/* ── CARD: Frage rechtsbündig, Thema als Subtext ── */
+.lf-topic {
+  text-align: right !important;
+  font-size: 10.5px !important;
+  color: var(--muted) !important;
+  margin-bottom: 3px !important;
+}
+.lf-q {
+  text-align: right !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  color: var(--text) !important;
+}
+</style>
+<script>
+(function(){
+  function filterLF(thema, btn) {
+    document.querySelectorAll('#lfFilterBar .fbtn').forEach(b => b.classList.remove('on'));
+    if(btn) btn.classList.add('on');
+    document.querySelectorAll('.lf-sem').forEach(s => {
+      const t = s.dataset.thema;
+      s.style.display = (!thema || t === thema) ? '' : 'none';
+    });
+  }
+  window.filterLF = filterLF;
+})();
+</script>
 <style>
 /* ── ORANGE ACTIVE STATES (alle Seiten) ── */
 

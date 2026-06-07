@@ -2198,6 +2198,100 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
   font-weight:600 !important;
   background:var(--accent-soft) !important;
 }
+
+/* ══ VARIANTE C: NEUTRAL + RECHTSBÜNDIG ══════════════════════════════════ */
+
+/* PAGE-HERO linksbündig */
+.page-hero-inner { text-align:left !important; }
+.page-hero h1 {
+  font-family:var(--serif) !important;
+  font-size:clamp(1.8rem,4vw,2.8rem) !important;
+  font-weight:700 !important;
+  letter-spacing:-.03em !important;
+  text-align:left !important;
+}
+.page-hero p { text-align:left !important; }
+
+/* TERM-HEADER: neutral + rechts, inline-Farben überschreiben */
+.term-header {
+  background:var(--surface) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-end !important;
+  padding:.6rem 1rem !important;
+  border-bottom:1px solid var(--border) !important;
+  gap:2px !important;
+}
+.term-name {
+  font-family:var(--serif) !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  color:var(--text) !important;
+  text-align:right !important;
+}
+/* Badge → dezenter Subtext */
+.term-sem-badge {
+  background:transparent !important;
+  border:none !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  font-size:10.5px !important;
+  font-weight:400 !important;
+  color:var(--muted) !important;
+  text-align:right !important;
+  text-transform:none !important;
+  letter-spacing:0 !important;
+}
+
+/* SEM-BANNER: neutral */
+.sem-banner {
+  background:var(--surface) !important;
+  border:1px solid var(--border) !important;
+  border-radius:10px 10px 0 0 !important;
+}
+.sem-banner::before { display:none !important; }
+.sem-banner-num { display:none !important; }
+.sem-banner-inner {
+  justify-content:flex-end !important;
+  gap:.75rem !important;
+  padding:1rem 1.5rem !important;
+}
+.sem-banner-text { text-align:right !important; }
+.sem-banner-sub {
+  color:var(--muted) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.1em !important;
+  font-size:10px !important;
+  font-weight:700 !important;
+}
+.sem-banner-title {
+  color:var(--text) !important;
+  font-size:22px !important;
+}
+.sem-banner-count { color:var(--muted) !important; }
+
+/* SUBSECTION-TITLE: neutral */
+.subsection-title {
+  background:var(--surface-2) !important;
+  border-bottom:1px solid var(--border) !important;
+  border-radius:0 !important;
+}
+.subsection-label { color:var(--text-3) !important; }
+
+/* KURS-BADGE (für spätere P4/P2-Klassifizierung) */
+.kurs-badge {
+  display:inline-flex;
+  font-size:10px;
+  font-weight:600;
+  padding:2px 7px;
+  border-radius:4px;
+  background:var(--surface-2);
+  color:var(--text-3);
+  border:1px solid var(--border-2);
+  vertical-align:middle;
+  margin-left:.35rem;
+}
+.kurs-badge:empty { display:none; }
 </style>
 </body>
 </html>
