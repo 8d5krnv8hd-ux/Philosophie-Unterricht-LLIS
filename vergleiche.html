@@ -3381,7 +3381,12 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
 /* ══ VARIANTE C + SIDEBAR (Begriffe-Stil) ════════════════════════════════ */
 
 /* PAGE-HERO linksbündig */
-.page-hero-inner { text-align:left !important; }
+.page-hero-inner {
+  text-align:left !important;
+  max-width:none !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
 .page-hero h1 {
   font-family:var(--serif) !important;
   font-size:clamp(1.8rem,4vw,2.8rem) !important;
@@ -3389,7 +3394,7 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
   letter-spacing:-.03em !important;
   text-align:left !important;
 }
-.page-hero p { text-align:left !important; }
+.page-hero p { text-align:left !important; max-width:none !important; }
 
 /* SIDEBAR: Begriffe-Struktur */
 .sidebar-inner { padding:.5rem 0 2rem; }

@@ -817,7 +817,12 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
 }
 
 /* ══ PAGE-HERO linksbündig ════════════════════════════════ */
-.page-hero-inner { text-align:left !important; }
+.page-hero-inner {
+  text-align:left !important;
+  max-width:none !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
 .page-hero h1 {
   font-family:var(--serif) !important;
   font-size:clamp(1.8rem,4vw,2.8rem) !important;
@@ -825,7 +830,16 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
   letter-spacing:-.03em !important;
   text-align:left !important;
 }
-.page-hero p { text-align:left !important; }
+.page-hero p { text-align:left !important; max-width:none !important; }
+
+/* PHILOSOPHEN-KARTEN: Farbbalken + Schulen-Text neutral */
+.pbar { background:var(--border) !important; }
+.pstroem { color:var(--muted) !important; }
+.qchip {
+  background:var(--surface-2) !important;
+  color:var(--text-3) !important;
+  border-color:var(--border-2) !important;
+}
 
 /* KURS-BADGE (P4/P2, für spätere Klassifizierung) */
 .kurs-badge {
