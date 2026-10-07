@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>/* Philo-CI: hell ist Standard */try{var _t=localStorage.getItem('philo-theme');if(_t!=='dark'){document.documentElement.classList.add('light');if(!_t)localStorage.setItem('philo-theme','light');}}catch(e){document.documentElement.classList.add('light');}</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Philosophie 4 – Leitfragen</title>
+<title>Philosophie 4 - Leitfragen</title>
 <style>
 :root {
   --bg:#0f172a; --bg-2:#1e293b; --surface:#1e293b; --surface-2:#273548;
   --text:#f1f5f9; --text-2:#cbd5e1; --text-3:#94a3b8; --muted:#64748b;
   --border:rgba(255,255,255,.09); --border-2:rgba(255,255,255,.14);
   --nav-bg:rgba(15,23,42,.85);
-  --accent:#f97316; --accent-hover:#fb923c;
-  --accent-soft:rgba(249,115,22,.12); --accent-glow:rgba(249,115,22,.25);
+  --accent:#003462; --accent-hover:#0B4A85;
+  --accent-soft:rgba(0,52,98,.12); --accent-glow:rgba(0,52,98,.25);
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",system-ui,sans-serif;
   --serif:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Georgia,serif;
   --r:10px; --rl:14px;
@@ -26,14 +29,14 @@ html.light {
   --text:#0f172a; --text-2:#1e293b; --text-3:#475569; --muted:#94a3b8;
   --border:rgba(0,0,0,.08); --border-2:rgba(0,0,0,.13);
   --nav-bg:rgba(255,255,255,.88);
-  --accent:#ea6c00; --accent-hover:#f97316;
-  --accent-soft:rgba(234,108,0,.1); --accent-glow:rgba(234,108,0,.2);
+  --accent:#003462; --accent-hover:#003462;
+  --accent-soft:rgba(0,52,98,.1); --accent-glow:rgba(0,52,98,.2);
   --b:#0f172a; --bm:#475569; --bl:rgba(0,0,0,.08); --ba:#64748b;
   --w:#ffffff; --br:rgba(0,0,0,.08);
   --gold:#d97706; --goldl:rgba(217,119,6,.1);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{padding-top:52px;font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;}
+body{padding-top:52px;font-family:var(--font);background:var(--bg);color:var(--text);font-size:17px;}
 
 
 
@@ -49,17 +52,17 @@ body{padding-top:52px;font-family:var(--font);background:var(--bg);color:var(--t
 .lf-wrap{max-width:960px;margin:0 auto;padding:1.25rem;}
 .lf-hero{background:linear-gradient(135deg,var(--b),var(--bm));color:#fff;
   border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:1.25rem;}
-.lf-hero h1{font-size:18px;font-weight:600;margin-bottom:2px;}
-.lf-hero p{font-size:12.5px;opacity:.85;}
+.lf-hero h1{font-size:20px;font-weight:600;margin-bottom:2px;}
+.lf-hero p{font-size:16px;opacity:.85;}
 .lf-sem{margin-bottom:1.5rem;}
-.lf-sem-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+.lf-sem-hdr{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
   padding:5px 0;margin-bottom:.6rem;border-bottom:2px solid;}
 .lf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;}
 .lf-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:12px 14px;}
-.lf-topic{font-size:10.5px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
-.lf-q{font-size:13.5px;color:var(--text-2);font-style:italic;line-height:1.55;margin-bottom:8px;}
-.lf-pos{font-size:11px;color:var(--muted);margin-bottom:7px;}
-.lf-btn{font-size:11.5px;color:var(--bm);background:none;border:none;cursor:pointer;
+.lf-topic{font-size:13.5px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.lf-q{font-size:16px;color:var(--text-2);font-style:italic;line-height:1.55;margin-bottom:8px;}
+.lf-pos{font-size:14.5px;color:var(--muted);margin-bottom:7px;}
+.lf-btn{font-size:15px;color:var(--bm);background:none;border:none;cursor:pointer;
   font-weight:600;padding:0;font-family:inherit;}
 .lf-btn:hover{text-decoration:underline;}
 
@@ -67,8 +70,8 @@ body{padding-top:52px;font-family:var(--font);background:var(--bg);color:var(--t
   background:#1a1d24;height:48px;
   display:flex;align-items:center;padding:0 1rem;gap:.25rem;
   box-shadow:0 2px 10px rgba(26,29,36,.18);}
-.topnav .brand{color:#fff;font-weight:700;font-size:13px;margin-right:.5rem;white-space:nowrap;flex-shrink:0;}
-.topnav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:11.5px;
+.topnav .brand{color:#fff;font-weight:700;font-size:15.5px;margin-right:.5rem;white-space:nowrap;flex-shrink:0;}
+.topnav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:15px;
   padding:4px 8px;border-radius:5px;transition:all .15s;white-space:nowrap;flex-shrink:0;}
 .topnav a:hover{background:rgba(255,255,255,.12);color:#fff;}
 .topnav a.active{background:rgba(255,255,255,.2);color:#fff;font-weight:600;}
@@ -84,12 +87,13 @@ html.light .topnav .nav-hamburger{background:rgba(0,0,0,.05);border-color:rgba(0
   .topnav .nav-hamburger{display:flex;}
   .topnav .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--nav-bg,rgba(15,23,42,.95));backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border);flex-direction:column;padding:.5rem 1rem .75rem;gap:.25rem;z-index:299;}
   .topnav .nav-links.open{display:flex;}
-  .topnav .nav-links a{font-size:14px;padding:10px 12px;border-radius:8px;width:100%;}
+  .topnav .nav-links a{font-size:17px;padding:10px 12px;border-radius:8px;width:100%;}
 }
+.ci-lvl{font-weight:400;color:var(--text-3,#6B7785)}
 </style>
 <style>
 /* ═══════════════════════════════════════════════
-   NEW DESIGN SYSTEM — injected override
+   NEW DESIGN SYSTEM - injected override
    ═══════════════════════════════════════════════ */
 
 html.light {
@@ -97,8 +101,8 @@ html.light {
   --text:#0f172a; --text-2:#1e293b; --text-3:#475569; --muted:#94a3b8;
   --border:rgba(0,0,0,.07); --border-2:rgba(0,0,0,.11);
   --nav-bg:rgba(255,255,255,.85);
-  --accent:#ea6c00; --accent-hover:#f97316;
-  --accent-soft:rgba(234,108,0,.1); --accent-glow:rgba(234,108,0,.2);
+  --accent:#003462; --accent-hover:#003462;
+  --accent-soft:rgba(0,52,98,.1); --accent-glow:rgba(0,52,98,.2);
   --b:#0f172a; --bm:#475569; --bl:rgba(0,0,0,.07); --ba:#64748b;
   --w:#ffffff; --br:rgba(0,0,0,.07);
 }
@@ -127,14 +131,14 @@ html.light body { color:var(--text) !important; }
   padding:0 1.5rem !important; gap:.25rem !important;
 }
 .topnav .brand, .topnav .nav-home {
-  color:var(--text) !important; font-weight:700 !important; font-size:15px !important;
+  color:var(--text) !important; font-weight:700 !important; font-size:16.5px !important;
   margin-right:1.25rem !important; white-space:nowrap !important;
   letter-spacing:-.02em !important; text-decoration:none !important;
   flex-shrink:0 !important;
 }
 .topnav .brand span, .topnav .nav-home span { color:var(--accent) !important; }
 .topnav a {
-  color:var(--text-3) !important; text-decoration:none !important; font-size:13px !important;
+  color:var(--text-3) !important; text-decoration:none !important; font-size:15.5px !important;
   padding:6px 11px !important; border-radius:6px !important;
   transition:background .15s,color .15s !important; font-weight:400 !important;
   white-space:nowrap !important; flex-shrink:0 !important;
@@ -159,7 +163,7 @@ html.light .topnav a:hover { background:rgba(0,0,0,.05) !important; }
 html.light .topnav .srch input { background:rgba(0,0,0,.04) !important; }
 .topnav .nav-print, .topnav button:not(.theme-toggle) {
   background:rgba(255,255,255,.07) !important; border:1px solid var(--border-2) !important;
-  color:var(--text-3) !important; border-radius:6px !important; font-size:12px !important;
+  color:var(--text-3) !important; border-radius:6px !important; font-size:15.5px !important;
   font-family:var(--font) !important;
 }
 .theme-toggle {
@@ -167,7 +171,7 @@ html.light .topnav .srch input { background:rgba(0,0,0,.04) !important; }
   color:var(--text-3) !important; width:32px !important; height:32px !important;
   border-radius:8px !important; display:flex !important;
   align-items:center !important; justify-content:center !important;
-  cursor:pointer !important; font-size:15px !important;
+  cursor:pointer !important; font-size:16.5px !important;
   transition:all .15s !important; flex-shrink:0 !important;
 }
 .theme-toggle:hover { background:rgba(255,255,255,.14) !important; }
@@ -212,7 +216,7 @@ html.light .fbtn, html.light .nb, html.light .vb {
 
 /* ── Highlight boxes ──────────────────────────── */
 .pkernidee {
-  background:rgba(249,115,22,.08) !important;
+  background:rgba(0,52,98,.08) !important;
   border-left-color:var(--accent) !important;
   color:var(--text-2) !important;
 }
@@ -221,7 +225,7 @@ html.light .fbtn, html.light .nb, html.light .vb {
   border-left-color:#22c55e !important;
   color:#86efac !important;
 }
-html.light .pkernidee { background:#fff7ed !important; color:#7c2d12 !important; }
+html.light .pkernidee { background:#EEF3F8 !important; color:#003462 !important; }
 html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important; }
 
 /* ── Sidebar (begriffe, vergleiche) ──────────────*/
@@ -243,7 +247,7 @@ html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important;
 .sb-sub-link:hover, .sb-sub-link.active { color:var(--accent) !important; background:var(--accent-soft) !important; }
 html.light .sidebar { background:#f8fafc !important; border-color:rgba(0,0,0,.08) !important; }
 html.light .ni { color:#374151 !important; }
-html.light .ni.on { background:rgba(234,108,0,.08) !important; color:#ea6c00 !important; border-left-color:#ea6c00 !important; }
+html.light .ni.on { background:rgba(0,52,98,.08) !important; color:#003462 !important; border-left-color:#003462 !important; }
 html.light .sb-sem-name { color:#0f172a !important; }
 html.light .sb-sub-link { color:#475569 !important; }
 
@@ -259,13 +263,13 @@ html.light .sb-sub-link { color:#475569 !important; }
 .ptbl tbody tr:nth-child(even) td.rl { background:var(--surface-2) !important; }
 .ptbl tbody tr:nth-child(even):hover td { background:rgba(255,255,255,.04) !important; }
 /* Merksatz row in table */
-.mr td { background:rgba(249,115,22,.12) !important; color:#fed7aa !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
-.mr td.rl { background:rgba(249,115,22,.25) !important; color:#fdba74 !important; }
+.mr td { background:rgba(0,52,98,.12) !important; color:#C9D6E8 !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
+.mr td.rl { background:rgba(0,52,98,.25) !important; color:#8EC5F0 !important; }
 html.light .ptbl td { color:#1e293b !important; border-color:rgba(0,0,0,.06) !important; }
 html.light .ptbl th.rh, html.light .ptbl td.rl { background:#f8fafc !important; color:#94a3b8 !important; }
 html.light .ptbl tr:hover td { background:#f8fafc !important; }
-html.light .mr td { background:#fff7ed !important; color:#92400e !important; }
-html.light .mr td.rl { background:#fed7aa !important; color:#7c2d12 !important; }
+html.light .mr td { background:#EEF3F8 !important; color:#92400e !important; }
+html.light .mr td.rl { background:#C9D6E8 !important; color:#003462 !important; }
 
 /* ── Hero/stats boxes (vergleiche) ───────────────*/
 .hero {
@@ -280,7 +284,7 @@ html.light .mr td.rl { background:#fed7aa !important; color:#7c2d12 !important; 
 html.light .hero { background:linear-gradient(135deg,#1e293b,#334155) !important; }
 html.light .stat { background:rgba(255,255,255,.15) !important; }
 html.light .htab { background:var(--surface) !important; }
-html.light .lf { background:#fff7ed !important; border-left-color:#ea6c00 !important; color:#7c2d12 !important; }
+html.light .lf { background:#EEF3F8 !important; border-left-color:#003462 !important; color:#003462 !important; }
 
 /* ── Karteikarten ─────────────────────────────── */
 .card-shell, .card-inner, .card-front, .card-back { border-color:var(--border) !important; }
@@ -322,12 +326,12 @@ html.light .entry, html.light .bcard, html.light .article-wrap {
 .qcard-title { color:var(--text) !important; }
 .qcard-body, .qa-body { color:var(--text-2) !important; }
 .antwort, .answer-block {
-  background:rgba(249,115,22,.07) !important;
+  background:rgba(0,52,98,.07) !important;
   border-left:3px solid var(--accent) !important;
   color:var(--text-2) !important;
 }
 html.light .qcard, html.light .qblock { background:var(--surface) !important; }
-html.light .antwort { background:#fff7ed !important; color:#7c2d12 !important; }
+html.light .antwort { background:#EEF3F8 !important; color:#003462 !important; }
 
 /* ── Scrollbar ────────────────────────────────── */
 ::-webkit-scrollbar { width:5px; height:5px; }
@@ -362,13 +366,13 @@ body {
   padding:0 1.5rem !important; gap:.2rem !important;
 }
 .topnav .brand, .topnav .nav-home {
-  color:var(--text) !important; font-weight:700 !important; font-size:15px !important;
+  color:var(--text) !important; font-weight:700 !important; font-size:16.5px !important;
   margin-right:1.25rem !important; white-space:nowrap !important;
   letter-spacing:-.02em !important; text-decoration:none !important; flex-shrink:0 !important;
 }
 .topnav .brand span { color:var(--accent) !important; }
 .topnav a {
-  color:var(--text-3) !important; text-decoration:none !important; font-size:13px !important;
+  color:var(--text-3) !important; text-decoration:none !important; font-size:15.5px !important;
   padding:6px 10px !important; border-radius:6px !important;
   font-weight:400 !important; white-space:nowrap !important; flex-shrink:0 !important;
   transition:background .15s,color .15s !important;
@@ -397,7 +401,7 @@ html.light .topnav .srch input, html.light .topnav input { background:rgba(0,0,0
   background:rgba(255,255,255,.08) !important; border:1px solid var(--border-2) !important;
   color:var(--text-3) !important; width:32px !important; height:32px !important;
   border-radius:8px !important; display:flex !important; align-items:center !important;
-  justify-content:center !important; cursor:pointer !important; font-size:15px !important;
+  justify-content:center !important; cursor:pointer !important; font-size:16.5px !important;
   flex-shrink:0 !important; transition:all .15s !important;
 }
 .theme-toggle:hover { background:rgba(255,255,255,.14) !important; }
@@ -412,13 +416,13 @@ html.light .theme-toggle { background:rgba(0,0,0,.05) !important; border-color:r
 }
 .page-hero::before {
   content:''; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 70% 60% at 50% -10%, rgba(249,115,22,.14) 0%, transparent 60%);
+  background:radial-gradient(ellipse 70% 60% at 50% -10%, rgba(0,52,98,.14) 0%, transparent 60%);
 }
 .page-hero-inner { max-width:1100px; margin:0 auto; position:relative; }
 .page-hero-badge {
   display:inline-flex; align-items:center; gap:6px;
-  background:var(--accent-soft); border:1px solid rgba(249,115,22,.28);
-  color:var(--accent); font-size:11px; font-weight:700; letter-spacing:.08em;
+  background:var(--accent-soft); border:1px solid rgba(0,52,98,.28);
+  color:var(--accent); font-size:14.5px; font-weight:700; letter-spacing:.08em;
   text-transform:uppercase; padding:4px 12px; border-radius:99px; margin-bottom:1.25rem;
 }
 .page-hero h1 {
@@ -465,21 +469,21 @@ html.light .fbtn, html.light .vb { background:#fff !important; border-color:rgba
 
 /* ── HIGHLIGHT BOXES ── */
 .pkernidee {
-  background:rgba(249,115,22,.08) !important; border-left-color:var(--accent) !important;
+  background:rgba(0,52,98,.08) !important; border-left-color:var(--accent) !important;
   color:var(--text-2) !important; border-radius:0 8px 8px 0 !important;
 }
 .pmerksatz {
   background:rgba(34,197,94,.07) !important; border-left-color:#22c55e !important;
   color:#86efac !important; border-radius:0 8px 8px 0 !important;
 }
-html.light .pkernidee { background:#fff7ed !important; color:#7c2d12 !important; }
+html.light .pkernidee { background:#EEF3F8 !important; color:#003462 !important; }
 html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important; }
 
 /* ── LEITFRAGEN ── */
 .lf-wrap { max-width:1100px !important; margin:0 auto !important; padding:2rem !important; }
 .lf-hero { display:none !important; } /* replaced by page-hero */
 .lf-sem-hdr {
-  font-size:11px !important; font-weight:700 !important; text-transform:uppercase !important;
+  font-size:14.5px !important; font-weight:700 !important; text-transform:uppercase !important;
   letter-spacing:.08em !important; padding:4px 0 !important; margin-bottom:.75rem !important;
   border-bottom-width:2px !important; border-bottom-style:solid !important;
   font-family:var(--font) !important; opacity:1 !important;
@@ -490,10 +494,10 @@ html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important;
   transition:border-color .15s, box-shadow .15s !important;
 }
 .lf-card:hover { border-color:var(--accent) !important; box-shadow:0 4px 20px rgba(0,0,0,.25) !important; }
-.lf-topic { color:var(--muted) !important; font-size:10.5px !important; }
-.lf-q { color:var(--text) !important; font-size:14px !important; font-style:normal !important; font-weight:500 !important; line-height:1.5 !important; }
-.lf-pos { color:var(--text-3) !important; font-size:11px !important; }
-.lf-btn { color:var(--accent) !important; font-size:12px !important; font-weight:600 !important; font-family:var(--font) !important; }
+.lf-topic { color:var(--muted) !important; font-size:13.5px !important; }
+.lf-q { color:var(--text) !important; font-size:17px !important; font-style:normal !important; font-weight:500 !important; line-height:1.5 !important; }
+.lf-pos { color:var(--text-3) !important; font-size:14.5px !important; }
+.lf-btn { color:var(--accent) !important; font-size:15.5px !important; font-weight:600 !important; font-family:var(--font) !important; }
 .lf-btn:hover { opacity:.8 !important; text-decoration:none !important; }
 .lf-sem { margin-bottom:2.5rem !important; }
 .lf-grid { gap:12px !important; }
@@ -515,7 +519,7 @@ html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important;
 .fni { color:var(--text-3) !important; }
 .fni:hover, .fni.on { background:var(--goldl) !important; color:var(--gold) !important; border-left-color:var(--gold) !important; }
 .nd { opacity:.7 !important; }
-.slbl { color:var(--muted) !important; font-size:9px !important; }
+.slbl { color:var(--muted) !important; font-size:11.5px !important; }
 .cbar { background:var(--surface) !important; border-bottom-color:var(--border) !important; }
 .cnt { background:var(--bg) !important; }
 .hero {
@@ -544,16 +548,16 @@ html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important;
 .ptbl tr:hover td.rl { background:var(--surface-2) !important; }
 .ptbl tbody tr:nth-child(even) td { background:rgba(255,255,255,.02) !important; }
 .ptbl tbody tr:nth-child(even) td.rl { background:var(--surface-2) !important; }
-.mr td { background:rgba(249,115,22,.1) !important; color:#fed7aa !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
-.mr td.rl { background:rgba(249,115,22,.2) !important; color:#fdba74 !important; }
+.mr td { background:rgba(0,52,98,.1) !important; color:#C9D6E8 !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
+.mr td.rl { background:rgba(0,52,98,.2) !important; color:#8EC5F0 !important; }
 .pc { background:var(--surface) !important; border-color:var(--border) !important; }
 
 html.light .ptbl { background:#fff !important; }
 html.light .ptbl th.rh, html.light .ptbl td.rl { background:#f8fafc !important; color:#94a3b8 !important; }
 html.light .ptbl td { color:#1e293b !important; border-top-color:rgba(0,0,0,.05) !important; }
 html.light .ptbl tr:hover td { background:#f8fafc !important; }
-html.light .mr td { background:#fff7ed !important; color:#92400e !important; }
-html.light .mr td.rl { background:#fed7aa !important; color:#7c2d12 !important; }
+html.light .mr td { background:#EEF3F8 !important; color:#92400e !important; }
+html.light .mr td.rl { background:#C9D6E8 !important; color:#003462 !important; }
 
 /* ── BEGRIFFE sidebar ── */
 .sb-sem-link { border-left-color:transparent !important; }
@@ -568,7 +572,7 @@ html.light .mr td.rl { background:#fed7aa !important; color:#7c2d12 !important; 
 html.light .sb-sem-name { color:#0f172a !important; }
 html.light .sb-sub-link { color:#475569 !important; }
 html.light .ni { color:#374151 !important; }
-html.light .ni.on { background:rgba(234,108,0,.08) !important; color:#ea6c00 !important; border-left-color:#ea6c00 !important; }
+html.light .ni.on { background:rgba(0,52,98,.08) !important; color:#003462 !important; border-left-color:#003462 !important; }
 
 /* ── KARTEIKARTEN ── */
 .deck-btn, .ctrl-btn, .mode-btn {
@@ -599,7 +603,7 @@ html.light ::-webkit-scrollbar-thumb { background:#cbd5e1; }
   background:rgba(15,23,42,.75); backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.1);
-  color:#64748b; font-size:10px; font-weight:600;
+  color:#64748b; font-size:13px; font-weight:600;
   letter-spacing:.06em; padding:4px 10px; border-radius:99px;
   pointer-events:none; user-select:none;
 }
@@ -609,12 +613,12 @@ html.light .version-badge {
 </style>
 </head>
 <body>
-<nav class="topnav"><a class="brand" href="index.html" style="display:flex;align-items:center;"><svg fill="currentColor" width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent);flex-shrink:0;margin-right:6px;vertical-align:middle"><path d="m76.445 93.746-63.941 0.003906c-1.7266 0-3.125-1.3984-3.125-3.125s1.3984-3.125 3.125-3.125h18.477c0.054687-0.19922 0.12891-0.39844 0.22266-0.59375l3.8672-7.832c0.058594-0.10938 0.11719-0.21484 0.18359-0.31641-0.33984-0.33594-0.67578-0.68359-1.0039-1.0312-9.3242-9.9727-14.098-24.75-13.934-44.914v-0.023438c0-0.39062 0.007813-0.77344 0.019532-1.1562-0.011719-0.125-0.019532-0.25391-0.019532-0.38281 0-1.5352 0.21094-3.0234 0.60547-4.4297 2.7734-13.516 14.75-23.695 29.082-23.695 14.332 0 26.305 10.18 29.082 23.695 0.39062 1.4062 0.60547 2.8945 0.60547 4.4297 0 0.12891-0.011718 0.25781-0.023437 0.38281 0.015625 0.39063 0.023437 0.78125 0.023437 1.1797v54.688h7.8125c1.7227 0 3.125 1.3984 3.125 3.125s-1.4023 3.125-3.125 3.125h-10.82c-0.078125 0-0.16016 0-0.23828-0.003906zm-3.0039-7.8438v-34.875c-4.2266 5.4258-10.289 9.3477-17.25 10.824 1.8477 3.7461 5.0156 9.7109 8.832 15.055 2.3398 3.2773 4.9141 6.3242 7.5938 8.3945 0.27344 0.21094 0.54687 0.41406 0.82422 0.60156zm-23.879-23.406c-8.2227-0.11719-15.637-3.5859-20.945-9.0977 1.9648 8.2031 5.3438 14.867 10.199 20.059 6.2148 6.6445 14.801 10.801 25.684 12.77-0.37109-0.40234-0.74219-0.8125-1.1055-1.2383-6.4375-7.5273-11.809-18.219-13.832-22.492zm-22.996-29.684v0.023438c0.011719 12.926 10.508 23.414 23.438 23.414 12.934 0 23.438-10.504 23.438-23.438 0-1.5391-0.15234-3.0469-0.43359-4.5039-1.2656-4.1758-5.1406-7.2148-9.7227-7.2148-5.6055 0-10.156 4.5508-10.156 10.156 0 1.7266-1.4023 3.125-3.125 3.125-1.7266 0-3.125-1.3984-3.125-3.125 0-5.6055-4.5508-10.156-10.156-10.156-4.582 0-8.4609 3.0391-9.7227 7.2148-0.28516 1.457-0.43359 2.9648-0.43359 4.5039zm20.309 10.938c0-1.7266 1.3984-3.125 3.125-3.125s3.125 1.3984 3.125 3.125v3.125c0 1.7266-1.3984 3.125-3.125 3.125s-3.125-1.3984-3.125-3.125zm16.406-15.625c2.1562 0 3.9062 1.75 3.9062 3.9062s-1.75 3.9062-3.9062 3.9062-3.9062-1.75-3.9062-3.9062 1.75-3.9062 3.9062-3.9062zm-26.562 0c2.1562 0 3.9062 1.75 3.9062 3.9062s-1.75 3.9062-3.9062 3.9062-3.9062-1.75-3.9062-3.9062 1.75-3.9062 3.9062-3.9062zm28.453-13.176c-4.0898-3.4727-9.3867-5.5742-15.168-5.5742s-11.078 2.1016-15.168 5.5742c0.61719-0.070313 1.25-0.10547 1.8867-0.10547 5.457 0 10.301 2.6719 13.281 6.7734 2.9805-4.1016 7.8203-6.7734 13.281-6.7734 0.63672 0 1.2695 0.035156 1.8867 0.10547zm-27.289 72.551h9.8945c-2.7539-1.3125-5.3047-2.8281-7.6445-4.5547z" fill-rule="evenodd"/></svg><span style="color:var(--accent)">Philosophie</span></a><div class="nav-links" id="navLinks"><a href="leitfragen.html" class="active">Leitfragen</a><a href="vergleiche.html" class="">Vergleiche</a><a href="begriffe.html" class="">Begriffe</a><a href="philosophen.html" class="">Philosophen</a><a href="karteikarten.html" class="">Karteikarten</a></div><span class="sp"></span><button class="theme-toggle" onclick="window.print()" title="Drucken" style="margin-right:.25rem;"><svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g><path d="m3.125 84.375h18.75v12.5c0 1.7266 1.3984 3.125 3.125 3.125h50c1.7266 0 3.125-1.3984 3.125-3.125v-12.5h18.75c1.7266 0 3.125-1.3984 3.125-3.125v-50c0-1.7266-1.3984-3.125-3.125-3.125h-18.75v-25c0-1.7266-1.3984-3.125-3.125-3.125h-50c-1.7266 0-3.125 1.3984-3.125 3.125v25h-18.75c-1.7266 0-3.125 1.3984-3.125 3.125v50c0 1.7266 1.3984 3.125 3.125 3.125zm68.75 9.375h-43.75v-31.25h43.75zm-43.75-87.5h43.75v21.875h-43.75zm-21.875 28.125h87.5v43.75h-15.625v-18.75c0-1.7266-1.3984-3.125-3.125-3.125h-50c-1.7266 0-3.125 1.3984-3.125 3.125v18.75h-15.625z"/><path d="m17.828 39.984c-1.1562-1.1719-3.25-1.1719-4.4062 0-0.59375 0.57812-0.92188 1.375-0.92188 2.2031 0 0.8125 0.32812 1.625 0.92188 2.2188 0.57812 0.57812 1.375 0.90625 2.2031 0.90625s1.625-0.32812 2.2188-0.92188c0.57812-0.57812 0.90625-1.3906 0.90625-2.2031 0-0.82812-0.32812-1.625-0.92188-2.2031z"/><path d="m25 45.312c0.82812 0 1.625-0.32812 2.2031-0.92188 0.59375-0.57812 0.92188-1.3906 0.92188-2.2031s-0.32812-1.625-0.92188-2.2188c-1.1562-1.1562-3.25-1.1562-4.4062 0.015625-0.59375 0.57812-0.92188 1.375-0.92188 2.2031 0 0.8125 0.32812 1.625 0.92188 2.2188 0.57812 0.57812 1.375 0.90625 2.2031 0.90625z"/><path d="m65.625 68.75h-31.25c-1.7266 0-3.125 1.3984-3.125 3.125s1.3984 3.125 3.125 3.125h31.25c1.7266 0 3.125-1.3984 3.125-3.125s-1.3984-3.125-3.125-3.125z"/><path d="m65.625 81.25h-31.25c-1.7266 0-3.125 1.3984-3.125 3.125s1.3984 3.125 3.125 3.125h31.25c1.7266 0 3.125-1.3984 3.125-3.125s-1.3984-3.125-3.125-3.125z"/></g></svg></button><button class="theme-toggle" id="themeBtn" title="Hell/Dunkel"><svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m51.625 95.188c-14.523-0.11328-28.168-6.9531-36.953-18.52-8.7852-11.562-11.715-26.543-7.9336-40.566 3.7852-14.02 13.852-25.496 27.262-31.07l1.9062-0.75 2.9688 2.875-0.71875 1.9688c-3.9297 9.8828-3.8281 20.914 0.28125 30.723 4.1133 9.8086 11.91 17.613 21.715 21.738 9.8047 4.125 20.836 4.2383 30.723 0.32031l1.875-0.75 2.9688 2.8125-0.6875 2.0938c-3.4844 8.6445-9.4844 16.047-17.223 21.238-7.7422 5.1953-16.863 7.9414-26.184 7.8867zm-21.469-81.25c-10.801 6.6953-17.848 18.055-19.043 30.707-1.1953 12.648 3.5938 25.129 12.949 33.73 7.375 6.6719 16.922 10.441 26.867 10.602 9.9453 0.16016 19.609-3.2969 27.195-9.7266 3.1367-2.6914 5.8359-5.8555 8-9.375-15.652 3.4961-32.008-1.2539-43.352-12.594-11.344-11.336-16.102-27.688-12.617-43.344z"/></svg></button><button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect y="2" width="16" height="1.5" rx=".75"/><rect y="7.25" width="16" height="1.5" rx=".75"/><rect y="12.5" width="16" height="1.5" rx=".75"/></svg></button></nav>
+<nav class="topnav"><a class="brand" href="index.html" aria-label="Startseite"><svg class="ci-logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#003462"/><g fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 50c0-15 10-24 24-24s24 9 24 24v22c0 17-11 27-24 27S36 89 36 72Z"/><path d="M39 38l3-13 11 7M81 38l-3-13-11 7"/><path d="M49 82c2.5 2.5 5.5 2.5 8 0 2.5 2.5 5.5 2.5 8 0M53 90c2.5 2.5 5.5 2.5 8 0" stroke-width="2.8"/><path d="M28 100h64"/><path d="M50 99v-3M56 99v-3M64 99v-3M70 99v-3" stroke-width="2.8"/></g><circle cx="49" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="71" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="49" cy="53" r="3.6" fill="#003462"/><circle cx="71" cy="53" r="3.6" fill="#003462"/><path d="M56.5 64h7L60 70.5Z" fill="#F2A516" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Philosophieunterricht <span class="ci-lvl">S6/S7</span></b></a><div class="nav-links" id="navLinks"><a href="leitfragen.html" class="active">Leitfragen</a><a href="vergleiche.html" class="">Vergleiche</a><a href="begriffe.html" class="">Begriffe</a><a href="philosophen.html" class="">Philosophen</a><a href="karteikarten.html" class="">Karteikarten</a></div><span class="sp"></span><button class="theme-toggle" onclick="window.print()" title="Drucken" aria-label="Drucken"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6M7 18H4v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7h-3"/><path d="M7 14h10v7H7Z"/></svg></button><button class="theme-toggle" id="themeBtn" title="Hell/Dunkel" aria-label="Hell/Dunkel wechseln"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg></button><button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></nav>
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="page-hero-badge">Prüfungsvorbereitung</div>
     <h1>Leitfragen</h1>
-    <p>Die zentralen Prüfungsfragen zu allen Themenbereichen — direkt verlinkt mit den Positionsvergleichen.</p>
+    <p>Die zentralen Prüfungsfragen zu allen Themenbereichen - direkt verlinkt mit den Positionsvergleichen.</p>
   </div>
 </div>
 <div class="lf-filter-bar" id="lfFilterBar">
@@ -626,22 +630,22 @@ html.light .version-badge {
 </div>
 <div class="lf-wrap">
   <div class="lf-hero"><h1>Leitfragen</h1>
-    <p>Die zentralen Fragen zu allen 22 Themen — direkt zur Vergleichstabelle verlinkt.</p>
+    <p>Die zentralen Fragen zu allen 22 Themen - direkt zur Vergleichstabelle verlinkt.</p>
   </div>
   <div class="lf-sem" data-thema="Erkenntnistheorie"><div class="lf-sem-hdr">Erkenntnistheorie</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Klassische Erkenntnistheorie</div>
-  <div class="lf-q">Woher stammt unser Wissen — aus der Vernunft, der Erfahrung, oder beiden?</div>
+  <div class="lf-q">Woher stammt unser Wissen - aus der Vernunft, der Erfahrung, oder beiden?</div>
   <div class="lf-pos">Rationalismus · Empirismus · Kritizismus</div>
   <a class="lf-btn" href="vergleiche.html?id=rationalismus">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Wissenschaftstheorie</div>
-  <div class="lf-q">Was macht eine Theorie wissenschaftlich — und wie funktioniert wissenschaftlicher Fortschritt?</div>
-  <div class="lf-pos">Karl Popper (1902–1994) · Thomas Kuhn (1922–1996) · Paul Feyerabend (1924–1994)</div>
+  <div class="lf-q">Was macht eine Theorie wissenschaftlich - und wie funktioniert wissenschaftlicher Fortschritt?</div>
+  <div class="lf-pos">Karl Popper (1902-1994) · Thomas Kuhn (1922-1996) · Paul Feyerabend (1924-1994)</div>
   <a class="lf-btn" href="vergleiche.html?id=wissenschaft">Positionen ansehen →</a>
 </div></div></div><div class="lf-sem" data-thema="Ethik"><div class="lf-sem-hdr">Ethik</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Hedonismus vs. Eudämonismus</div>
-  <div class="lf-q">Was ist das Ziel des menschlichen Lebens — Lust, Seelenruhe oder tugendhafte Vollendung?</div>
-  <div class="lf-pos">(Purer) Hedonismus · Hedonismus nach Epikur (Epikurismus) · Eudämonismus (Tugendethik)</div>
+  <div class="lf-q">Was ist das Ziel des menschlichen Lebens - Lust, Seelenruhe oder tugendhafte Vollendung?</div>
+  <div class="lf-pos">(Purer) Hedonismus · Hedonismus nach Epikur (Epikureismus) · Eudämonismus (Tugendethik)</div>
   <a class="lf-btn" href="vergleiche.html?id=hedonismus">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Utilitarismus vs. Pflichtethik</div>
@@ -650,106 +654,106 @@ html.light .version-badge {
   <a class="lf-btn" href="vergleiche.html?id=utilitarismus">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Verantwortung in ethischen Kontexten</div>
-  <div class="lf-q">Wer trägt Verantwortung — und wofür, wie weit und gegenüber wem?</div>
-  <div class="lf-pos">Albert Schweitzer (1875–1965) · Hans Jonas (1903–1993) · Peter Singer (*1946)</div>
+  <div class="lf-q">Wer trägt Verantwortung - und wofür, wie weit und gegenüber wem?</div>
+  <div class="lf-pos">Albert Schweitzer (1875-1965) · Hans Jonas (1903-1993) · Peter Singer (*1946)</div>
   <a class="lf-btn" href="vergleiche.html?id=verantwortung">Positionen ansehen →</a>
 </div><div class="lf-card">
-  <div class="lf-topic">Freiheit: Determinismus – Indeterminismus – Kompatibilismus</div>
-  <div class="lf-q">Ist der Wille absolut frei — oder sind alle Entscheidungen durch Ursachen bestimmt?</div>
+  <div class="lf-topic">Freiheit: Determinismus - Indeterminismus - Kompatibilismus</div>
+  <div class="lf-q">Ist der Wille absolut frei - oder sind alle Entscheidungen durch Ursachen bestimmt?</div>
   <div class="lf-pos">Determinismus · Indeterminismus (Libertarismus) · Kompatibilismus</div>
   <a class="lf-btn" href="vergleiche.html?id=freiheit">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Relativismus vs. Universalismus</div>
-  <div class="lf-q">Gibt es universelle moralische Werte — oder ist Moral immer kulturell bedingt?</div>
+  <div class="lf-q">Gibt es universelle moralische Werte - oder ist Moral immer kulturell bedingt?</div>
   <div class="lf-pos">Moralischer Relativismus · Universalismus · Kritische Intoleranz</div>
   <a class="lf-btn" href="vergleiche.html?id=relativismus">Positionen ansehen →</a>
 </div><div class="lf-card">
-  <div class="lf-topic">Moralkritik: Nietzsche – Marx – Foucault – Butler</div>
-  <div class="lf-q">Ist Moral ein Instrument der Herrschaft — oder gibt es moralische Prinzipien jenseits von Machtverhältnissen?</div>
-  <div class="lf-pos">Friedrich Nietzsche (1844–1900) · Karl Marx (1818–1883) · Michel Foucault (1926–1984) · Judith Butler (*1956)</div>
+  <div class="lf-topic">Moralkritik: Nietzsche - Marx - Foucault - Butler</div>
+  <div class="lf-q">Ist Moral ein Instrument der Herrschaft - oder gibt es moralische Prinzipien jenseits von Machtverhältnissen?</div>
+  <div class="lf-pos">Friedrich Nietzsche (1844-1900) · Karl Marx (1818-1883) · Michel Foucault (1926-1984) · Judith Butler (*1956)</div>
   <a class="lf-btn" href="vergleiche.html?id=moralkritik">Positionen ansehen →</a>
 </div></div></div><div class="lf-sem" data-thema="Staatsphilosophie"><div class="lf-sem-hdr">Staatsphilosophie</div><div class="lf-grid"><div class="lf-card">
   <div class="lf-topic">Antike Staatstheorien: Platon & Aristoteles</div>
-  <div class="lf-q">Was ist der Zweck des Staates — und wer soll regieren?</div>
+  <div class="lf-q">Was ist der Zweck des Staates - und wer soll regieren?</div>
   <div class="lf-pos">Platon
-428–348 v. Chr. · Aristoteles
-384–322 v. Chr.</div>
+428-348 v. Chr. · Aristoteles
+384-322 v. Chr.</div>
   <a class="lf-btn" href="vergleiche.html?id=platon">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Vertragstheorie</div>
-  <div class="lf-q">Worauf gründet die Legitimität des Staates — und was darf das Volk verlangen?</div>
+  <div class="lf-q">Worauf gründet die Legitimität des Staates - und was darf das Volk verlangen?</div>
   <div class="lf-pos">Thomas Hobbes
-1588–1679 · John Locke
-1632–1704 · Jean-Jacques Rousseau
-1712–1778 · John Rawls
-1921–2002
-NEU — Moderne Weiterentwicklung</div>
+1588-1679 · John Locke
+1632-1704 · Jean-Jacques Rousseau
+1712-1778 · John Rawls
+1921-2002
+NEU - Moderne Weiterentwicklung</div>
   <a class="lf-btn" href="vergleiche.html?id=vertragstheorie">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Machttheorie</div>
-  <div class="lf-q">Was ist Macht — Kontrolle, Konsens oder Herrschaft?</div>
+  <div class="lf-q">Was ist Macht - Kontrolle, Konsens oder Herrschaft?</div>
   <div class="lf-pos">Macht als Kontrolle und Strategie · Macht als kollektive Zustimmung · Macht als Herrschaft und Legitimität</div>
   <a class="lf-btn" href="vergleiche.html?id=machttheorie">Positionen ansehen →</a>
 </div><div class="lf-card">
-  <div class="lf-topic">Liberalismus – Kommunitarismus – Autoritarismus</div>
-  <div class="lf-q">Was alles sollte der Staat bestimmen dürfen — und wo liegen die Grenzen?</div>
+  <div class="lf-topic">Liberalismus - Kommunitarismus - Autoritarismus</div>
+  <div class="lf-q">Was alles sollte der Staat bestimmen dürfen - und wo liegen die Grenzen?</div>
   <div class="lf-pos">Liberalismus · Kommunitarismus · Autoritarismus</div>
   <a class="lf-btn" href="vergleiche.html?id=liberalismus">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Soziale Gerechtigkeit</div>
-  <div class="lf-q">Impliziert Gerechtigkeit Gleichbehandlung — oder kann Ungleichheit gerecht sein?</div>
+  <div class="lf-q">Impliziert Gerechtigkeit Gleichbehandlung - oder kann Ungleichheit gerecht sein?</div>
   <div class="lf-pos">Karl Marx
-1818–1883 · John Rawls
-1921–2002 · Robert Nozick
-1938–2002</div>
+1818-1883 · John Rawls
+1921-2002 · Robert Nozick
+1938-2002</div>
   <a class="lf-btn" href="vergleiche.html?id=sozgerechtigkeit">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Demokratiekonzepte</div>
-  <div class="lf-q">Ist Demokratie die beste aller Regierungsformen — und was macht sie aus?</div>
+  <div class="lf-q">Ist Demokratie die beste aller Regierungsformen - und was macht sie aus?</div>
   <div class="lf-pos">Alexis de Tocqueville
-1805–1859 · Josef Alois Schumpeter
-1883–1950 · Hannah Arendt
-1906–1975</div>
+1805-1859 · Josef Alois Schumpeter
+1883-1950 · Hannah Arendt
+1906-1975</div>
   <a class="lf-btn" href="vergleiche.html?id=demokratie">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Naturrecht vs. Positives Recht</div>
-  <div class="lf-q">Ist das Legale auch das Gerechte — oder muss Recht an einem übergeordneten Maßstab gemessen werden?</div>
+  <div class="lf-q">Ist das Legale auch das Gerechte - oder muss Recht an einem übergeordneten Maßstab gemessen werden?</div>
   <div class="lf-pos">Positives Recht (Rechtspositivismus) · Naturrecht (Naturrechtslehre)</div>
   <a class="lf-btn" href="vergleiche.html?id=naturrecht">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Menschenrechte</div>
-  <div class="lf-q">Sind Menschenrechte universell gültig — oder ein historisch geprägtes Konstrukt?</div>
-  <div class="lf-pos">Immanuel Kant (1724–1804) · Martha Nussbaum (*1947) · Richard Rorty (1931–2007) · Friedrich Nietzsche (1844–1900)</div>
+  <div class="lf-q">Sind Menschenrechte universell gültig - oder ein historisch geprägtes Konstrukt?</div>
+  <div class="lf-pos">Immanuel Kant (1724-1804) · Martha Nussbaum (*1947) · Richard Rorty (1931-2007) · Friedrich Nietzsche (1844-1900)</div>
   <a class="lf-btn" href="vergleiche.html?id=menschenrechte">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Grenzen staatlicher Macht</div>
-  <div class="lf-q">Wie weit darf staatliche Macht gehen — und wann muss man ihr widerstehen?</div>
-  <div class="lf-pos">Anarchismus · Libertarismus · Republikanismus · Totalitarismus ⚠ Keine normative Position — analytische Gegenfolie</div>
+  <div class="lf-q">Wie weit darf staatliche Macht gehen - und wann muss man ihr widerstehen?</div>
+  <div class="lf-pos">Anarchismus · Libertarismus · Republikanismus · Totalitarismus ⚠ Keine normative Position - analytische Gegenfolie</div>
   <a class="lf-btn" href="vergleiche.html?id=grenzen">Positionen ansehen →</a>
 </div></div></div><div class="lf-sem" data-thema="Anthropologie"><div class="lf-sem-hdr">Anthropologie</div><div class="lf-grid"><div class="lf-card">
-  <div class="lf-topic">Essentialismus – Existentialismus – Konstruktivismus</div>
-  <div class="lf-q">Hat der Mensch ein vorgegebenes Wesen — oder erschafft er sich selbst?</div>
-  <div class="lf-pos">Essentialismus · Existentialismus · Feministische Existenzphilosophie NEU — Simone de Beauvoir · (Konstruktivismus)</div>
+  <div class="lf-topic">Essentialismus - Existenzialismus - Konstruktivismus</div>
+  <div class="lf-q">Hat der Mensch ein vorgegebenes Wesen - oder erschafft er sich selbst?</div>
+  <div class="lf-pos">Essentialismus · Existenzialismus · Feministische Existenzphilosophie NEU - Simone de Beauvoir · (Konstruktivismus)</div>
   <a class="lf-btn" href="vergleiche.html?id=essentialismus">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Menschenmodelle im Vergleich</div>
   <div class="lf-q">Was ist der Mensch seinem Wesen nach?</div>
-  <div class="lf-pos">Homo Faber · Homo Economicus · Mängelwesen (Gehlen) · Animal Symbolicum (Cassirer)</div>
+  <div class="lf-pos">Homo Faber · Homo oeconomicus · Mängelwesen (Gehlen) · Animal Symbolicum (Cassirer)</div>
   <a class="lf-btn" href="vergleiche.html?id=menschenmodelle">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Technologie: Wesen oder Gefahr?</div>
-  <div class="lf-q">Besteht in der Technik das Wesen des Menschen — oder entfremdet Technik den Menschen?</div>
-  <div class="lf-pos">Gehlen – Technik als Notwendigkeit · Jonas – Technik als Gefahr · Mittelstraß – Technik als Chance · Rousseau – Technik als Verfall</div>
+  <div class="lf-q">Besteht in der Technik das Wesen des Menschen - oder entfremdet Technik den Menschen?</div>
+  <div class="lf-pos">Gehlen - Technik als Notwendigkeit · Jonas - Technik als Gefahr · Mittelstraß - Technik als Chance · Rousseau - Technik als Verfall</div>
   <a class="lf-btn" href="vergleiche.html?id=technologie">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Identität und Sinn</div>
-  <div class="lf-q">Gibt es einen Sinn des Lebens — oder muss der Mensch sich selbst einen geben?</div>
-  <div class="lf-pos">Sartre – Existentialismus · Camus – Absurdismus · Aristoteles – Teleologie · Frankl – Logotherapie</div>
+  <div class="lf-q">Gibt es einen Sinn des Lebens - oder muss der Mensch sich selbst einen geben?</div>
+  <div class="lf-pos">Sartre - Existenzialismus · Camus - Absurdismus · Aristoteles - Teleologie · Frankl - Logotherapie</div>
   <a class="lf-btn" href="vergleiche.html?id=sinn">Positionen ansehen →</a>
 </div><div class="lf-card">
   <div class="lf-topic">Arbeit: Selbstverwirklichung oder Entfremdung?</div>
-  <div class="lf-q">Besteht Selbstverwirklichung im Arbeiten — oder ist Arbeit primär Notwendigkeit und Entfremdung?</div>
-  <div class="lf-pos">Hegel – Arbeit als Selbsterschaffung · Marx – Arbeit und Entfremdung · Arendt – Drei Tätigkeitsformen · Hüther – Arbeit und Gehirn</div>
+  <div class="lf-q">Besteht Selbstverwirklichung im Arbeiten - oder ist Arbeit primär Notwendigkeit und Entfremdung?</div>
+  <div class="lf-pos">Hegel - Arbeit als Selbsterschaffung · Marx - Arbeit und Entfremdung · Arendt - Drei Tätigkeitsformen · Hüther - Arbeit und Gehirn</div>
   <a class="lf-btn" href="vergleiche.html?id=arbeit">Positionen ansehen →</a>
 </div></div></div>
 </div>
@@ -796,7 +800,7 @@ NEU — Moderne Weiterentwicklung</div>
   color: var(--text-3) !important;
   border-color: var(--border-2) !important;
   text-align: left !important;
-  font-size: 11px !important;
+  font-size:14.5px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: .08em !important;
@@ -808,7 +812,7 @@ NEU — Moderne Weiterentwicklung</div>
 /* ── KURS-BADGE (Platzhalter) ── */
 .lf-kurs-badge {
   display: inline-flex;
-  font-size: 10px;
+  font-size:13px;
   font-weight: 600;
   padding: 2px 7px;
   border-radius: 4px;
@@ -827,7 +831,7 @@ NEU — Moderne Weiterentwicklung</div>
   border-radius: 99px !important;
   background: var(--surface) !important;
   cursor: pointer !important;
-  font-size: 12px !important;
+  font-size:15.5px !important;
   color: var(--text-3) !important;
   font-family: inherit !important;
   transition: all .15s !important;
@@ -851,13 +855,13 @@ html.light .fbtn.on { background: var(--accent) !important; color: #fff !importa
 /* ── CARD: Frage linksbündig, Thema als Subtext ── */
 .lf-topic {
   text-align: left !important;
-  font-size: 10.5px !important;
+  font-size:13.5px !important;
   color: var(--muted) !important;
   margin-bottom: 3px !important;
 }
 .lf-q {
   text-align: left !important;
-  font-size: 13.5px !important;
+  font-size:16px !important;
   font-weight: 500 !important;
   font-style: normal !important;
   color: var(--text) !important;
@@ -940,5 +944,128 @@ html.light .fbtn.on { background:var(--accent) !important; border-color:var(--ac
   l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');h.setAttribute('aria-expanded','false');h.innerHTML=BAR;});});
 })();
 </script>
+<style>
+/* ═══ Philo-CI Skin v1 (Styleguide v1.1): überschreibt die alten Farben, Schrift und Navigation ═══ */
+html.light{
+  --bg:#FBFAF7; --bg-2:#F4F5F7; --surface:#FFFFFF; --surface-2:#EEF1F5;
+  --text:#16202B; --text-2:#2B3742; --text-3:#4A5663; --muted:#6B7785;
+  --border:#E4E2DC; --border-2:#D3D8DF;
+  --nav-bg:rgba(238,241,245,.92);
+  --accent:#003462; --accent-hover:#0B4A85; --accent-soft:rgba(0,52,98,.07); --accent-glow:rgba(0,52,98,.12);
+  --gold:#8A5A00; --goldl:#FDF0D3;
+  --b:#16202B; --bm:#4A5663; --bl:#E4E2DC; --ba:#6B7785; --w:#FFFFFF; --br:#E4E2DC;
+  --orange-text:#C24F00; --amber:#F2A516; --amber-soft:#FDF0D3; --sky:#8EC5F0;
+}
+html:not(.light){
+  --bg:#0B1C2E; --bg-2:#0E2236; --surface:#0F2236; --surface-2:#12283F;
+  --text:#E8EDF2; --text-2:#C9D3DC; --text-3:#A3AFBC; --muted:#8797A7;
+  --border:#1F3A55; --border-2:#2A4A69;
+  --nav-bg:rgba(18,40,63,.92);
+  --accent:#8EC5F0; --accent-hover:#B5DAF6; --accent-soft:rgba(142,197,240,.12); --accent-glow:rgba(142,197,240,.2);
+  --gold:#F7B42C; --goldl:#33270C;
+  --b:#E8EDF2; --bm:#A3AFBC; --bl:#1F3A55; --ba:#8797A7; --w:#0F2236; --br:#1F3A55;
+  --orange-text:#F28C3A; --amber:#F7B42C; --amber-soft:#33270C; --sky:#8EC5F0;
+}
+:root{
+  --font:"Gill Sans","Gill Sans MT","Lato",Calibri,sans-serif !important;
+  --serif:"Gill Sans","Gill Sans MT","Lato",Calibri,sans-serif !important;
+  --r:14px; --rl:22px;
+}
+@media screen{
+  body{padding-top:88px !important;font-family:var(--font) !important;font-size:16px !important;line-height:1.6;background:var(--bg) !important;-webkit-font-smoothing:antialiased}
+  .sidebar{top:88px !important;height:calc(100vh - 88px) !important;background:var(--bg) !important;border-right:1px solid var(--border) !important}
+  .layout{height:calc(100vh - 88px) !important}
+
+  /* Navigation als Pille wie auf der Startseite */
+  .topnav{top:12px !important;left:max(12px,calc(50% - 590px)) !important;right:max(12px,calc(50% - 590px)) !important;
+    height:64px !important;border-radius:99px !important;background:var(--nav-bg) !important;border:0 !important;
+    box-shadow:0 8px 30px rgba(0,52,98,.06) !important;padding:0 12px 0 10px !important;gap:.2rem !important;
+    backdrop-filter:blur(14px) saturate(160%) !important;-webkit-backdrop-filter:blur(14px) saturate(160%) !important}
+  .topnav .brand{display:flex !important;align-items:center;gap:10px;margin-right:auto !important;padding:0 !important;background:none !important;text-decoration:none}
+  .topnav .brand .ci-logo{width:44px;height:44px;flex-shrink:0}
+  .topnav .brand b{font-size:17px;font-weight:700;color:var(--text)}
+  .topnav .nav-links{margin:0 auto !important}
+  .topnav a:not(.brand){font-size:15.5px !important;padding:8px 16px !important;border-radius:99px !important;color:var(--text-3) !important;background:none !important;font-weight:400 !important;text-decoration:none}
+  .topnav a:not(.brand):hover{background:var(--surface) !important;color:var(--text) !important}
+  .topnav a.active{background:var(--surface) !important;color:var(--text) !important;font-weight:700 !important}
+  .topnav .sp{flex:1}
+  .topnav .nav-hamburger{display:none !important}
+  html .topnav .theme-toggle,html .topnav .nav-hamburger,html.light .topnav .theme-toggle,html.light .topnav .nav-hamburger{width:42px !important;height:42px !important;border-radius:50% !important;border:0 !important;background:var(--surface) !important;color:var(--text-3) !important;box-shadow:none !important}
+  .topnav .theme-toggle:hover,.topnav .nav-hamburger:hover{color:var(--text) !important;transform:none !important}
+
+  /* Kopfbereiche */
+  .page-hero-badge,.hero-badge{background:var(--surface) !important;border:1px solid var(--border) !important;color:var(--accent) !important;border-radius:99px !important;font-size:12.5px !important;letter-spacing:.1em}
+  h1,h2,h3{font-family:var(--font) !important;letter-spacing:-.01em}
+  .version-badge{display:none !important}
+
+  /* Filter-Knöpfe */
+  .fbtn,.sbtn,.vtbtn,.mode-btn{font-family:var(--font) !important;font-size:14.5px !important;border-radius:99px !important;padding:8px 16px !important}
+  .fbtn.active,.fbtn.on,.vtbtn.active,.mode-btn.active,.sbtn.active{background:var(--text) !important;color:var(--bg) !important;border-color:var(--text) !important}
+  html:not(.light) .fbtn:not(.active):not(.on),html:not(.light) .vtbtn:not(.active),html:not(.light) .sbtn:not(.active),html:not(.light) .mode-btn:not(.active):not(.on){background:var(--surface-2) !important;color:var(--text-2) !important;border-color:var(--border) !important}
+  input[type=search],input[type=text],.toolbar input{background:var(--surface) !important;color:var(--text) !important;border-color:var(--border-2) !important;font-family:var(--font) !important;font-size:16px !important;border-radius:99px !important}
+
+  /* Themenfeld-Punkt statt Emoji */
+  .ci-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+
+  /* Vergleichstabellen: gut lesbar */
+  .ptbl td,.ctbl td{line-height:1.55 !important;padding:12px 14px !important;vertical-align:top}
+  .ptbl th,.ctbl th{padding:12px 14px !important;line-height:1.35 !important}
+  .ptbl td.rl,.ctbl td.rl{color:var(--text-3) !important;letter-spacing:.06em}
+  html.light .mr td{background:#EEF3F8 !important;color:#003462 !important;font-style:normal !important;font-weight:600;border-top:2px solid #003462 !important;border-bottom:2px solid #003462 !important}
+  html.light .mr td.rl{background:#003462 !important;color:#fff !important}
+  html:not(.light) .mr td{background:#12355A !important;color:#E8EDF2 !important;font-style:normal !important;font-weight:600;border-top:2px solid #8EC5F0 !important;border-bottom:2px solid #8EC5F0 !important}
+  html:not(.light) .mr td.rl{background:#8EC5F0 !important;color:#0B1C2E !important}
+
+  /* Keine Seitenstreifen an Kästen (CI 04.10.2026) */
+  .def-label,.intro-note,.antwort,.answer-block,.pcm,.qqt,.lf,.cb-label,.term-card.hl{border-left:0 !important;box-shadow:none !important}
+  .def-label{border-radius:12px;padding:.6rem .9rem !important;background:var(--surface-2) !important}
+  .def-label:has(.lbl-wichtig){background:var(--amber-soft) !important}
+  .lf,.qqt{border-radius:14px !important}
+  html.light .lbl-wichtig{color:#8A5A00 !important}
+  .thdr h2{font-size:26px !important;line-height:1.2}
+  html.light .lf,html .lf{background:#003462 !important;padding:14px 18px !important;font-size:17px !important;border:0 !important}
+  html.light .lf,html.light .lf *,html .lf,html .lf *{color:#fff !important}
+  html:not(.light) .lf{background:#12355A !important}
+
+  /* Abschnitte in Vergleichen klar trennen */
+  .ci-ul{margin:.2rem 0 .4rem 0 !important;padding:0 0 0 1.1rem !important;display:grid;gap:.55rem}
+  .ci-ul li{padding-left:.2rem;line-height:1.55}
+  .ci-ul li::marker{color:var(--accent)}
+  .ci-sub{font-weight:700;margin:.9rem 0 .35rem !important;color:var(--text)}
+  .ci-sub:first-child{margin-top:0 !important}
+  .ci-note{margin:.4rem 0 !important;padding:.4rem .7rem;border-radius:10px;background:var(--surface-2);font-weight:600}
+  .ci-p{margin:.4rem 0 !important}
+  .pcd .dl{display:inline-block !important;margin:1.8rem 0 .7rem !important;padding:5px 14px !important;border-radius:99px !important;
+    background:#003462 !important;color:#fff !important;font-size:12.5px !important;font-weight:700 !important;letter-spacing:.1em !important;text-transform:uppercase}
+  html:not(.light) .pcd .dl{background:#8EC5F0 !important;color:#0B1C2E !important}
+  .pcd .dl:first-child{margin-top:.6rem !important}
+  .pcd .dt{padding:0 0 1.4rem !important;border-bottom:1px solid var(--border) !important;font-size:16px !important;line-height:1.6 !important}
+  .pcd .dt:last-child{border-bottom:0 !important}
+  .ptbl tbody td{border-top:1px solid var(--border) !important}
+  html .ptbl td.rl,html.light .ptbl td.rl{font-weight:700 !important;color:var(--accent) !important;font-size:13px !important;letter-spacing:.08em !important}
+
+  /* Links */
+  a{color:inherit}
+}
+@media (max-width:900px){
+  .topnav .nav-links{display:none;position:fixed !important;top:84px !important;left:12px !important;right:12px !important;
+    flex-direction:column;background:var(--bg) !important;border-radius:24px !important;padding:.75rem !important;box-shadow:0 12px 40px rgba(0,0,0,.14) !important;margin:0 !important}
+  .topnav .nav-links.open{display:flex !important}
+  .topnav .nav-hamburger{display:flex !important;align-items:center;justify-content:center}
+  .topnav .brand b{display:none}
+}
+
+</style>
+
+<style>.topnav .brand .ci-lvl{color:var(--muted) !important;font-weight:400 !important}.topnav .brand{margin-right:0 !important}.topnav .nav-links{margin:0 auto !important}</style>
+<style>/* Leitfragen: Frage groß, keine Positionen-Vorschau */
+html .lf-pos{display:none !important}
+html .lf-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr)) !important;gap:16px !important}
+html .lf-card{display:flex !important;flex-direction:column;padding:26px 28px 24px !important;border-radius:24px !important;min-height:220px}
+html .lf-topic{font-size:12.5px !important;letter-spacing:.1em !important;text-transform:uppercase;color:var(--muted) !important;margin-bottom:12px !important}
+html .lf-q{font-size:25px !important;line-height:1.3 !important;font-weight:600 !important;font-style:normal !important;color:var(--text) !important;margin-bottom:22px !important}
+html .lf-btn{margin-top:auto !important;font-size:15px !important}
+@media(max-width:640px){html .lf-q{font-size:21px !important}html .lf-grid{grid-template-columns:1fr !important}}
+</style>
 </body>
 </html>
