@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>/* Philo-CI: hell ist Standard */try{var _t=localStorage.getItem('philo-theme');if(_t!=='dark'){document.documentElement.classList.add('light');if(!_t)localStorage.setItem('philo-theme','light');}}catch(e){document.documentElement.classList.add('light');}</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Philosophie 4 - Essay-Werkstatt</title>
+<style>
+:root {
+  --bg:#0f172a; --bg-2:#1e293b; --surface:#1e293b; --surface-2:#273548;
+  --text:#f1f5f9; --text-2:#cbd5e1; --text-3:#94a3b8; --muted:#64748b;
+  --border:rgba(255,255,255,.09); --border-2:rgba(255,255,255,.14);
+  --nav-bg:rgba(15,23,42,.85);
+  --accent:#003462; --accent-hover:#0B4A85;
+  --accent-soft:rgba(0,52,98,.12); --accent-glow:rgba(0,52,98,.25);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",system-ui,sans-serif;
+  --serif:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Georgia,serif;
+  --r:10px; --rl:14px;
+  --topnav-h:52px; --sidebar-w:220px;
+  /* legacy aliases */
+  --b:#f1f5f9; --bm:#94a3b8; --bl:rgba(255,255,255,.09); --ba:#64748b;
+  --w:#1e293b; --br:rgba(255,255,255,.09);
+  --gold:#fbbf24; --goldl:rgba(251,191,36,.12);
+}
+html.light {
+  --bg:#ffffff; --bg-2:#f8fafc; --surface:#f8fafc; --surface-2:#f1f5f9;
+  --text:#0f172a; --text-2:#1e293b; --text-3:#475569; --muted:#94a3b8;
+  --border:rgba(0,0,0,.08); --border-2:rgba(0,0,0,.13);
+  --nav-bg:rgba(255,255,255,.88);
+  --accent:#003462; --accent-hover:#003462;
+  --accent-soft:rgba(0,52,98,.1); --accent-glow:rgba(0,52,98,.2);
+  --b:#0f172a; --bm:#475569; --bl:rgba(0,0,0,.08); --ba:#64748b;
+  --w:#ffffff; --br:rgba(0,0,0,.08);
+  --gold:#d97706; --goldl:rgba(217,119,6,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{padding-top:52px;font-family:var(--font);background:var(--bg);color:var(--text);font-size:17px;}
+
+
+
+
+
+
+
+
+
+
+
+
+.lf-wrap{max-width:960px;margin:0 auto;padding:1.25rem;}
+.lf-hero{background:linear-gradient(135deg,var(--b),var(--bm));color:#fff;
+  border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:1.25rem;}
+.lf-hero h1{font-size:20px;font-weight:600;margin-bottom:2px;}
+.lf-hero p{font-size:16px;opacity:.85;}
+.lf-sem{margin-bottom:1.5rem;}
+.lf-sem-hdr{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:5px 0;margin-bottom:.6rem;border-bottom:2px solid;}
+.lf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;}
+.lf-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:12px 14px;}
+.lf-topic{font-size:13.5px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.lf-q{font-size:16px;color:var(--text-2);font-style:italic;line-height:1.55;margin-bottom:8px;}
+.lf-pos{font-size:14.5px;color:var(--muted);margin-bottom:7px;}
+.lf-btn{font-size:15px;color:var(--bm);background:none;border:none;cursor:pointer;
+  font-weight:600;padding:0;font-family:inherit;}
+.lf-btn:hover{text-decoration:underline;}
+
+.topnav{position:fixed;top:0;left:0;right:0;z-index:300;
+  background:#1a1d24;height:48px;
+  display:flex;align-items:center;padding:0 1rem;gap:.25rem;
+  box-shadow:0 2px 10px rgba(26,29,36,.18);}
+.topnav .brand{color:#fff;font-weight:700;font-size:15.5px;margin-right:.5rem;white-space:nowrap;flex-shrink:0;}
+.topnav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:15px;
+  padding:4px 8px;border-radius:5px;transition:all .15s;white-space:nowrap;flex-shrink:0;}
+.topnav a:hover{background:rgba(255,255,255,.12);color:#fff;}
+.topnav a.active{background:rgba(255,255,255,.2);color:#fff;font-weight:600;}
+.topnav .sp{flex:1;}
+
+
+/* ── HAMBURGER MOBILE ── */
+.topnav .nav-hamburger{display:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);width:34px;height:34px;border-radius:8px;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s;}
+.topnav .nav-hamburger:hover{background:rgba(255,255,255,.15);color:#fff;}
+html.light .topnav .nav-hamburger{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);color:var(--text-3);}
+.topnav .nav-links{display:contents;}
+@media(max-width:640px){
+  .topnav .nav-hamburger{display:flex;}
+  .topnav .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--nav-bg,rgba(15,23,42,.95));backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border);flex-direction:column;padding:.5rem 1rem .75rem;gap:.25rem;z-index:299;}
+  .topnav .nav-links.open{display:flex;}
+  .topnav .nav-links a{font-size:17px;padding:10px 12px;border-radius:8px;width:100%;}
+}
+.ci-lvl{font-weight:400;color:var(--text-3,#6B7785)}
+</style>
+<style>
+/* ═══════════════════════════════════════════════
+   NEW DESIGN SYSTEM - injected override
+   ═══════════════════════════════════════════════ */
+
+html.light {
+  --bg:#ffffff; --bg-2:#f8fafc; --surface:#f8fafc; --surface-2:#f1f5f9;
+  --text:#0f172a; --text-2:#1e293b; --text-3:#475569; --muted:#94a3b8;
+  --border:rgba(0,0,0,.07); --border-2:rgba(0,0,0,.11);
+  --nav-bg:rgba(255,255,255,.85);
+  --accent:#003462; --accent-hover:#003462;
+  --accent-soft:rgba(0,52,98,.1); --accent-glow:rgba(0,52,98,.2);
+  --b:#0f172a; --bm:#475569; --bl:rgba(0,0,0,.07); --ba:#64748b;
+  --w:#ffffff; --br:rgba(0,0,0,.07);
+}
+
+/* ── Base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing:border-box; }
+body {
+  background:var(--bg) !important;
+  color:var(--text) !important;
+  font-family:var(--font) !important;
+  padding-top:52px !important;
+  -webkit-font-smoothing:antialiased;
+}
+html.light body { color:var(--text) !important; }
+
+/* ── Nav ──────────────────────────────────────── */
+.topnav {
+  position:fixed !important; top:0 !important; left:0 !important; right:0 !important;
+  z-index:300 !important; height:52px !important;
+  background:var(--nav-bg) !important;
+  backdrop-filter:saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px) !important;
+  border-bottom:1px solid var(--border) !important;
+  box-shadow:none !important;
+  display:flex !important; align-items:center !important;
+  padding:0 1.5rem !important; gap:.25rem !important;
+}
+.topnav .brand, .topnav .nav-home {
+  color:var(--text) !important; font-weight:700 !important; font-size:16.5px !important;
+  margin-right:1.25rem !important; white-space:nowrap !important;
+  letter-spacing:-.02em !important; text-decoration:none !important;
+  flex-shrink:0 !important;
+}
+.topnav .brand span, .topnav .nav-home span { color:var(--accent) !important; }
+.topnav a {
+  color:var(--text-3) !important; text-decoration:none !important; font-size:15.5px !important;
+  padding:6px 11px !important; border-radius:6px !important;
+  transition:background .15s,color .15s !important; font-weight:400 !important;
+  white-space:nowrap !important; flex-shrink:0 !important;
+}
+.topnav a:hover { background:rgba(255,255,255,.07) !important; color:var(--text) !important; }
+html.light .topnav a:hover { background:rgba(0,0,0,.05) !important; }
+.topnav a.active {
+  color:var(--accent) !important; font-weight:600 !important;
+  background:var(--accent-soft) !important;
+}
+.topnav .sp { flex:1 !important; min-width:0 !important; }
+.topnav .srch input {
+  background:rgba(255,255,255,.07) !important; border:1px solid var(--border-2) !important;
+  color:var(--text) !important; border-radius:8px !important;
+  font-family:var(--font) !important;
+}
+.topnav .srch input:focus {
+  background:var(--surface) !important; border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px var(--accent-soft) !important;
+}
+.topnav .srch input::placeholder { color:var(--muted) !important; }
+html.light .topnav .srch input { background:rgba(0,0,0,.04) !important; }
+.topnav .nav-print, .topnav button:not(.theme-toggle) {
+  background:rgba(255,255,255,.07) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-3) !important; border-radius:6px !important; font-size:15.5px !important;
+  font-family:var(--font) !important;
+}
+.theme-toggle {
+  background:rgba(255,255,255,.08) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-3) !important; width:32px !important; height:32px !important;
+  border-radius:8px !important; display:flex !important;
+  align-items:center !important; justify-content:center !important;
+  cursor:pointer !important; font-size:16.5px !important;
+  transition:all .15s !important; flex-shrink:0 !important;
+}
+.theme-toggle:hover { background:rgba(255,255,255,.14) !important; }
+html.light .theme-toggle {
+  background:rgba(0,0,0,.05) !important; border-color:rgba(0,0,0,.1) !important;
+}
+
+/* ── Cards / surfaces ─────────────────────────── */
+.pcard, .tile, .pc, .card, .bgcard, .htab,
+.ptbl, .sidebar, .main .cbar {
+  background:var(--surface) !important;
+  border-color:var(--border) !important;
+}
+.pcard:hover { border-color:var(--border-2) !important; box-shadow:0 4px 20px rgba(0,0,0,.25) !important; }
+.pcard.exp { border-color:var(--accent) !important; box-shadow:0 4px 16px var(--accent-soft) !important; }
+
+/* ── Filter bars ──────────────────────────────── */
+.filter-bar, .cbar, .lf-filter-bar {
+  background:var(--surface) !important; border-color:var(--border) !important;
+}
+.fbtn, .nb, .vb {
+  background:var(--surface) !important; border-color:var(--border-2) !important;
+  color:var(--text-3) !important; font-family:var(--font) !important;
+}
+.fbtn:hover, .nb:hover { border-color:var(--accent) !important; color:var(--text) !important; background:rgba(255,255,255,.05) !important; }
+.fbtn.on, .nb.on, .vb.on {
+  background:var(--accent) !important; color:#fff !important;
+  border-color:var(--accent) !important;
+}
+html.light .fbtn, html.light .nb, html.light .vb {
+  background:var(--surface) !important; border-color:rgba(0,0,0,.12) !important; color:#374151 !important;
+}
+
+/* ── Text overrides ───────────────────────────── */
+.pname, .tn { color:var(--text) !important; }
+.pstroem, .pdates, .tp, .stl { color:var(--text-3) !important; }
+.pmerk, .pbio, .pkonzept, .ptbl td { color:var(--text-2) !important; }
+.pkernidee-lbl, .pkonzepte-lbl, .pmerksatz-lbl, .pquer-lbl,
+.slbl, .shdr, .lbl { color:var(--muted) !important; }
+.no-r { color:var(--muted) !important; }
+.parr { color:var(--muted) !important; }
+
+/* ── Highlight boxes ──────────────────────────── */
+.pkernidee {
+  background:rgba(0,52,98,.08) !important;
+  border-left-color:var(--accent) !important;
+  color:var(--text-2) !important;
+}
+.pmerksatz {
+  background:rgba(34,197,94,.07) !important;
+  border-left-color:#22c55e !important;
+  color:#86efac !important;
+}
+html.light .pkernidee { background:#EEF3F8 !important; color:#003462 !important; }
+html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important; }
+
+/* ── Sidebar (begriffe, vergleiche) ──────────────*/
+.sidebar {
+  background:var(--surface) !important;
+  border-color:var(--border) !important;
+}
+.ni { color:var(--text-3) !important; }
+.ni:hover { background:rgba(255,255,255,.05) !important; color:var(--text) !important; }
+.ni.on { background:var(--accent-soft) !important; color:var(--accent) !important; border-left-color:var(--accent) !important; }
+.fni { color:var(--text-3) !important; }
+.fni:hover, .fni.on { background:rgba(234,179,8,.1) !important; color:#fbbf24 !important; border-left-color:#fbbf24 !important; }
+.sb-sem-link { border-left-color:transparent !important; }
+.sb-sem-link:hover { background:rgba(255,255,255,.05) !important; border-left-color:var(--accent) !important; }
+.sb-sem-link.active { background:var(--accent-soft) !important; border-left-color:var(--accent) !important; }
+.sb-sem-name { color:var(--text) !important; }
+.sb-sem-sub { color:var(--muted) !important; }
+.sb-sub-link { color:var(--text-3) !important; }
+.sb-sub-link:hover, .sb-sub-link.active { color:var(--accent) !important; background:var(--accent-soft) !important; }
+html.light .sidebar { background:#f8fafc !important; border-color:rgba(0,0,0,.08) !important; }
+html.light .ni { color:#374151 !important; }
+html.light .ni.on { background:rgba(0,52,98,.08) !important; color:#003462 !important; border-left-color:#003462 !important; }
+html.light .sb-sem-name { color:#0f172a !important; }
+html.light .sb-sub-link { color:#475569 !important; }
+
+/* ── Vergleich table ──────────────────────────── */
+.ptbl { border-color:var(--border) !important; }
+.ptbl th { color:var(--text) !important; }
+.ptbl th.rh { background:var(--surface-2) !important; color:var(--muted) !important; }
+.ptbl td { color:var(--text-2) !important; border-color:rgba(255,255,255,.04) !important; }
+.ptbl td.rl { background:var(--surface-2) !important; color:var(--muted) !important; border-right-color:var(--border) !important; }
+.ptbl tr:hover td { background:rgba(255,255,255,.03) !important; }
+.ptbl tr:hover td.rl { background:var(--surface-2) !important; }
+.ptbl tbody tr:nth-child(even) td { background:rgba(255,255,255,.02) !important; }
+.ptbl tbody tr:nth-child(even) td.rl { background:var(--surface-2) !important; }
+.ptbl tbody tr:nth-child(even):hover td { background:rgba(255,255,255,.04) !important; }
+/* Merksatz row in table */
+.mr td { background:rgba(0,52,98,.12) !important; color:#C9D6E8 !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
+.mr td.rl { background:rgba(0,52,98,.25) !important; color:#8EC5F0 !important; }
+html.light .ptbl td { color:#1e293b !important; border-color:rgba(0,0,0,.06) !important; }
+html.light .ptbl th.rh, html.light .ptbl td.rl { background:#f8fafc !important; color:#94a3b8 !important; }
+html.light .ptbl tr:hover td { background:#f8fafc !important; }
+html.light .mr td { background:#EEF3F8 !important; color:#92400e !important; }
+html.light .mr td.rl { background:#C9D6E8 !important; color:#003462 !important; }
+
+/* ── Hero/stats boxes (vergleiche) ───────────────*/
+.hero {
+  background:linear-gradient(135deg,rgba(15,23,42,1),rgba(30,41,59,1)) !important;
+  border:1px solid var(--border) !important;
+}
+.stat { background:rgba(255,255,255,.08) !important; }
+.stat .stn { color:var(--accent) !important; }
+.htab { border:1px solid var(--border) !important; color:var(--text-2) !important; }
+.htab h3 { color:var(--text) !important; }
+.lf { background:rgba(255,255,255,.05) !important; border-left-color:var(--accent) !important; color:var(--text-2) !important; font-style:italic; }
+html.light .hero { background:linear-gradient(135deg,#1e293b,#334155) !important; }
+html.light .stat { background:rgba(255,255,255,.15) !important; }
+html.light .htab { background:var(--surface) !important; }
+html.light .lf { background:#EEF3F8 !important; border-left-color:#003462 !important; color:#003462 !important; }
+
+/* ── Karteikarten ─────────────────────────────── */
+.card-shell, .card-inner, .card-front, .card-back { border-color:var(--border) !important; }
+.card-front { background:var(--surface) !important; }
+.card-back { background:var(--surface-2) !important; }
+.card-front-term { color:var(--text) !important; }
+.card-back-body { color:var(--text-2) !important; }
+.deck-btn, .ctrl-btn {
+  background:var(--surface) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-2) !important; font-family:var(--font) !important;
+}
+.deck-btn:hover, .ctrl-btn:hover { border-color:var(--accent) !important; color:var(--text) !important; }
+.deck-btn.active { background:var(--accent) !important; border-color:var(--accent) !important; color:#fff !important; }
+.progress-bar { background:var(--border) !important; }
+.progress-fill { background:var(--accent) !important; }
+
+/* ── Begriffe article ─────────────────────────── */
+.article-wrap, .entry, .bcard {
+  background:var(--surface) !important; border-color:var(--border) !important;
+}
+.entry-title, .bcard-title, .art-h1, .art-h2 { color:var(--text) !important; }
+.entry-body, .bcard-body { color:var(--text-2) !important; }
+.tag-pill, .alpha-sb-link {
+  background:var(--surface-2) !important; border-color:var(--border) !important;
+  color:var(--text-3) !important;
+}
+.tag-pill:hover, .alpha-sb-link:hover, .alpha-sb-link.active {
+  background:var(--accent-soft) !important; color:var(--accent) !important; border-color:var(--accent) !important;
+}
+html.light .entry, html.light .bcard, html.light .article-wrap {
+  background:var(--surface) !important; border-color:rgba(0,0,0,.07) !important;
+}
+
+/* ── Leitfragen ───────────────────────────────── */
+.qcard, .qblock, .qa-wrap {
+  background:var(--surface) !important; border-color:var(--border) !important;
+}
+.qcard:hover { border-color:var(--accent) !important; }
+.qcard-title { color:var(--text) !important; }
+.qcard-body, .qa-body { color:var(--text-2) !important; }
+.antwort, .answer-block {
+  background:rgba(0,52,98,.07) !important;
+  border-left:3px solid var(--accent) !important;
+  color:var(--text-2) !important;
+}
+html.light .qcard, html.light .qblock { background:var(--surface) !important; }
+html.light .antwort { background:#EEF3F8 !important; color:#003462 !important; }
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--bg-3,#334155); border-radius:99px; }
+html.light ::-webkit-scrollbar-thumb { background:#cbd5e1; }
+</style>
+<style>
+/* ═══ DESIGN SYSTEM ═══════════════════════════════ */
+
+*, *::before, *::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg) !important;
+  color:var(--text) !important;
+  font-family:var(--font) !important;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ── NAV ── */
+.topnav {
+  position:fixed !important; top:0 !important; left:0 !important; right:0 !important;
+  z-index:300 !important; height:52px !important;
+  background:var(--nav-bg) !important;
+  backdrop-filter:saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px) !important;
+  border-bottom:1px solid var(--border) !important;
+  box-shadow:none !important;
+  display:flex !important; align-items:center !important;
+  padding:0 1.5rem !important; gap:.2rem !important;
+}
+.topnav .brand, .topnav .nav-home {
+  color:var(--text) !important; font-weight:700 !important; font-size:16.5px !important;
+  margin-right:1.25rem !important; white-space:nowrap !important;
+  letter-spacing:-.02em !important; text-decoration:none !important; flex-shrink:0 !important;
+}
+.topnav .brand span { color:var(--accent) !important; }
+.topnav a {
+  color:var(--text-3) !important; text-decoration:none !important; font-size:15.5px !important;
+  padding:6px 10px !important; border-radius:6px !important;
+  font-weight:400 !important; white-space:nowrap !important; flex-shrink:0 !important;
+  transition:background .15s,color .15s !important;
+}
+.topnav a:hover { background:rgba(255,255,255,.07) !important; color:var(--text) !important; }
+html.light .topnav a:hover { background:rgba(0,0,0,.05) !important; }
+.topnav a.active { color:var(--accent) !important; font-weight:600 !important; background:var(--accent-soft) !important; }
+.topnav .sp, .topnav .nav-sp { flex:1 !important; min-width:0 !important; }
+.topnav .srch input, .topnav input {
+  background:rgba(255,255,255,.07) !important; border:1px solid var(--border-2) !important;
+  color:var(--text) !important; border-radius:8px !important; font-family:var(--font) !important;
+}
+.topnav .srch input::placeholder, .topnav input::placeholder { color:var(--muted) !important; }
+.topnav .srch input:focus, .topnav input:focus {
+  background:var(--surface) !important; border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px var(--accent-soft) !important; outline:none !important;
+}
+html.light .topnav .srch input, html.light .topnav input { background:rgba(0,0,0,.04) !important; }
+.topnav .nav-print, .topnav .nb {
+  background:rgba(255,255,255,.07) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-3) !important; border-radius:6px !important; font-family:var(--font) !important;
+}
+
+/* theme toggle */
+.theme-toggle {
+  background:rgba(255,255,255,.08) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-3) !important; width:32px !important; height:32px !important;
+  border-radius:8px !important; display:flex !important; align-items:center !important;
+  justify-content:center !important; cursor:pointer !important; font-size:16.5px !important;
+  flex-shrink:0 !important; transition:all .15s !important;
+}
+.theme-toggle:hover { background:rgba(255,255,255,.14) !important; }
+html.light .theme-toggle { background:rgba(0,0,0,.05) !important; border-color:rgba(0,0,0,.1) !important; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background:var(--bg);
+  padding:3.5rem 2rem 2.5rem;
+  position:relative; overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.page-hero::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 50% -10%, rgba(0,52,98,.14) 0%, transparent 60%);
+}
+.page-hero-inner { max-width:1100px; margin:0 auto; position:relative; }
+.page-hero-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--accent-soft); border:1px solid rgba(0,52,98,.28);
+  color:var(--accent); font-size:14.5px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; padding:4px 12px; border-radius:99px; margin-bottom:1.25rem;
+}
+.page-hero h1 {
+  font-size:clamp(1.8rem,4vw,3rem); font-weight:700; letter-spacing:-.03em;
+  line-height:1.1; color:var(--text); margin-bottom:.75rem;
+}
+.page-hero p {
+  font-size:1rem; color:var(--text-3); max-width:560px; line-height:1.65;
+}
+
+/* ── CARDS / SURFACES ── */
+.pcard, .lf-card, .tile, .pc, .qcard, .bcard, .htab, .pgrid .pcard {
+  background:var(--surface) !important;
+  border-color:var(--border) !important;
+  color:var(--text-2) !important;
+}
+.pcard:hover, .lf-card:hover, .tile:hover {
+  border-color:var(--accent) !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.3) !important;
+}
+.pcard.exp { border-color:var(--accent) !important; box-shadow:0 4px 16px var(--accent-soft) !important; }
+
+/* ── FILTER BARS ── */
+.filter-bar, .cbar, .lf-filter-bar {
+  background:var(--surface) !important; border-color:var(--border) !important;
+}
+.fbtn, .vb {
+  background:rgba(255,255,255,.05) !important; border-color:var(--border-2) !important;
+  color:var(--text-3) !important; font-family:var(--font) !important;
+  transition:all .15s !important;
+}
+.fbtn:hover, .vb:hover { border-color:var(--accent) !important; color:var(--text) !important; }
+.fbtn.on, .vb.on { background:var(--accent) !important; color:#fff !important; border-color:var(--accent) !important; }
+html.light .fbtn, html.light .vb { background:#fff !important; border-color:rgba(0,0,0,.12) !important; color:#374151 !important; }
+
+/* ── TYPOGRAPHY ── */
+.pname, .tn, .lf-card h3, .qcard-title { color:var(--text) !important; }
+.pstroem, .pdates, .tp { color:var(--text-3) !important; }
+.pkonzept, .pbio { color:var(--text-2) !important; }
+.pkernidee-lbl, .pkonzepte-lbl, .pmerksatz-lbl, .pquer-lbl,
+.slbl, .lbl { color:var(--muted) !important; font-family:var(--font) !important; }
+.no-r { color:var(--muted) !important; }
+.parr { color:var(--muted) !important; }
+
+/* ── HIGHLIGHT BOXES ── */
+.pkernidee {
+  background:rgba(0,52,98,.08) !important; border-left-color:var(--accent) !important;
+  color:var(--text-2) !important; border-radius:0 8px 8px 0 !important;
+}
+.pmerksatz {
+  background:rgba(34,197,94,.07) !important; border-left-color:#22c55e !important;
+  color:#86efac !important; border-radius:0 8px 8px 0 !important;
+}
+html.light .pkernidee { background:#EEF3F8 !important; color:#003462 !important; }
+html.light .pmerksatz { background:#f0fdf4 !important; color:#166534 !important; }
+
+/* ── LEITFRAGEN ── */
+.lf-wrap { max-width:1100px !important; margin:0 auto !important; padding:2rem !important; }
+.lf-hero { display:none !important; } /* replaced by page-hero */
+.lf-sem-hdr {
+  font-size:14.5px !important; font-weight:700 !important; text-transform:uppercase !important;
+  letter-spacing:.08em !important; padding:4px 0 !important; margin-bottom:.75rem !important;
+  border-bottom-width:2px !important; border-bottom-style:solid !important;
+  font-family:var(--font) !important; opacity:1 !important;
+}
+.lf-card {
+  background:var(--surface) !important; border:1px solid var(--border) !important;
+  border-radius:12px !important; padding:1.1rem 1.25rem !important;
+  transition:border-color .15s, box-shadow .15s !important;
+}
+.lf-card:hover { border-color:var(--accent) !important; box-shadow:0 4px 20px rgba(0,0,0,.25) !important; }
+.lf-topic { color:var(--muted) !important; font-size:13.5px !important; }
+.lf-q { color:var(--text) !important; font-size:17px !important; font-style:normal !important; font-weight:500 !important; line-height:1.5 !important; }
+.lf-pos { color:var(--text-3) !important; font-size:14.5px !important; }
+.lf-btn { color:var(--accent) !important; font-size:15.5px !important; font-weight:600 !important; font-family:var(--font) !important; }
+.lf-btn:hover { opacity:.8 !important; text-decoration:none !important; }
+.lf-sem { margin-bottom:2.5rem !important; }
+.lf-grid { gap:12px !important; }
+
+/* ── PHILOSOPHEN ── */
+.pexp { border-top-color:var(--border) !important; }
+.pquer-chips .qchip { transition:all .15s !important; }
+
+/* ── VERGLEICHE sidebar + layout ── */
+.layout { height:calc(100vh - 52px) !important; }
+.sidebar {
+  top:52px !important; height:calc(100vh - 52px) !important;
+  background:var(--surface) !important; border-right-color:var(--border) !important;
+}
+.sidebar::-webkit-scrollbar-thumb { background:var(--surface-2) !important; }
+.ni { color:var(--text-3) !important; font-family:var(--font) !important; }
+.ni:hover { background:rgba(255,255,255,.05) !important; color:var(--text) !important; }
+.ni.on { background:var(--accent-soft) !important; color:var(--accent) !important; border-left-color:var(--accent) !important; }
+.fni { color:var(--text-3) !important; }
+.fni:hover, .fni.on { background:var(--goldl) !important; color:var(--gold) !important; border-left-color:var(--gold) !important; }
+.nd { opacity:.7 !important; }
+.slbl { color:var(--muted) !important; font-size:11.5px !important; }
+.cbar { background:var(--surface) !important; border-bottom-color:var(--border) !important; }
+.cnt { background:var(--bg) !important; }
+.hero {
+  background:linear-gradient(135deg,var(--bg-2),var(--surface-2)) !important;
+  border:1px solid var(--border) !important;
+}
+.stat { background:rgba(255,255,255,.07) !important; }
+.stat .stn { color:var(--accent) !important; }
+.htab { border:1px solid var(--border) !important; }
+.htab h3 { color:var(--text) !important; }
+.lf { background:var(--accent-soft) !important; border-left-color:var(--accent) !important; color:var(--text-2) !important; }
+.tile { background:var(--surface) !important; border-color:var(--border) !important; }
+.tile:hover { border-color:var(--accent) !important; }
+.tn { color:var(--text) !important; }
+.tp { color:var(--muted) !important; }
+.thdr h2 { color:var(--text) !important; }
+.sbdg { opacity:.9 !important; }
+
+/* ── VERGLEICHE TABLE ── */
+.ptbl { border-color:var(--border) !important; background:var(--surface) !important; }
+.ptbl th { color:var(--text) !important; }
+.ptbl th.rh { background:var(--surface-2) !important; color:var(--muted) !important; }
+.ptbl td { color:var(--text-2) !important; border-top-color:rgba(255,255,255,.04) !important; }
+.ptbl td.rl { background:var(--surface-2) !important; color:var(--muted) !important; border-right-color:var(--border) !important; }
+.ptbl tr:hover td { background:rgba(255,255,255,.03) !important; }
+.ptbl tr:hover td.rl { background:var(--surface-2) !important; }
+.ptbl tbody tr:nth-child(even) td { background:rgba(255,255,255,.02) !important; }
+.ptbl tbody tr:nth-child(even) td.rl { background:var(--surface-2) !important; }
+.mr td { background:rgba(0,52,98,.1) !important; color:#C9D6E8 !important; border-top-color:var(--accent) !important; border-bottom-color:var(--accent) !important; }
+.mr td.rl { background:rgba(0,52,98,.2) !important; color:#8EC5F0 !important; }
+.pc { background:var(--surface) !important; border-color:var(--border) !important; }
+
+html.light .ptbl { background:#fff !important; }
+html.light .ptbl th.rh, html.light .ptbl td.rl { background:#f8fafc !important; color:#94a3b8 !important; }
+html.light .ptbl td { color:#1e293b !important; border-top-color:rgba(0,0,0,.05) !important; }
+html.light .ptbl tr:hover td { background:#f8fafc !important; }
+html.light .mr td { background:#EEF3F8 !important; color:#92400e !important; }
+html.light .mr td.rl { background:#C9D6E8 !important; color:#003462 !important; }
+
+/* ── BEGRIFFE sidebar ── */
+.sb-sem-link { border-left-color:transparent !important; }
+.sb-sem-link:hover { background:rgba(255,255,255,.05) !important; border-left-color:var(--accent) !important; }
+.sb-sem-link.active { background:var(--accent-soft) !important; border-left-color:var(--accent) !important; }
+.sb-sem-name { color:var(--text) !important; }
+.sb-sem-sub { color:var(--muted) !important; }
+.sb-sub-link { color:var(--text-3) !important; }
+.sb-sub-link:hover, .sb-sub-link.active { color:var(--accent) !important; background:var(--accent-soft) !important; border-left-color:var(--accent) !important; }
+.alpha-sb-link { background:var(--surface-2) !important; border-color:var(--border) !important; color:var(--text-3) !important; }
+.alpha-sb-link:hover, .alpha-sb-link.active { background:var(--accent-soft) !important; color:var(--accent) !important; border-color:var(--accent) !important; }
+html.light .sb-sem-name { color:#0f172a !important; }
+html.light .sb-sub-link { color:#475569 !important; }
+html.light .ni { color:#374151 !important; }
+html.light .ni.on { background:rgba(0,52,98,.08) !important; color:#003462 !important; border-left-color:#003462 !important; }
+
+/* ── KARTEIKARTEN ── */
+.deck-btn, .ctrl-btn, .mode-btn {
+  background:var(--surface) !important; border:1px solid var(--border-2) !important;
+  color:var(--text-2) !important; font-family:var(--font) !important;
+}
+.deck-btn:hover, .ctrl-btn:hover { border-color:var(--accent) !important; color:var(--text) !important; }
+.deck-btn.active, .mode-btn.active { background:var(--accent) !important; border-color:var(--accent) !important; color:#fff !important; }
+.progress-bar { background:var(--border) !important; }
+.progress-fill { background:var(--accent) !important; }
+
+/* ── BEGRIFFE entries ── */
+.entry, .bcard, .article-wrap {
+  background:var(--surface) !important; border-color:var(--border) !important;
+}
+.entry-title, .bcard-title, .art-h1 { color:var(--text) !important; }
+.entry-body, .bcard-body { color:var(--text-2) !important; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--surface-2); border-radius:99px; }
+html.light ::-webkit-scrollbar-thumb { background:#cbd5e1; }
+</style>
+<style>
+.version-badge {
+  position:fixed; bottom:1rem; right:1rem; z-index:500;
+  background:rgba(15,23,42,.75); backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  color:#64748b; font-size:13px; font-weight:600;
+  letter-spacing:.06em; padding:4px 10px; border-radius:99px;
+  pointer-events:none; user-select:none;
+}
+html.light .version-badge {
+  background:rgba(255,255,255,.85); border-color:rgba(0,0,0,.08); color:#94a3b8;
+}
+</style>
+</head>
+<body>
+<nav class="topnav"><a class="brand" href="index.html" aria-label="Startseite"><svg class="ci-logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#003462"/><g fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 50c0-15 10-24 24-24s24 9 24 24v22c0 17-11 27-24 27S36 89 36 72Z"/><path d="M39 38l3-13 11 7M81 38l-3-13-11 7"/><path d="M49 82c2.5 2.5 5.5 2.5 8 0 2.5 2.5 5.5 2.5 8 0M53 90c2.5 2.5 5.5 2.5 8 0" stroke-width="2.8"/><path d="M28 100h64"/><path d="M50 99v-3M56 99v-3M64 99v-3M70 99v-3" stroke-width="2.8"/></g><circle cx="49" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="71" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="49" cy="53" r="3.6" fill="#003462"/><circle cx="71" cy="53" r="3.6" fill="#003462"/><path d="M56.5 64h7L60 70.5Z" fill="#F2A516" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Philosophieunterricht <span class="ci-lvl">S6/S7</span></b></a><div class="nav-links" id="navLinks"><a href="leitfragen.html" class="">Leitfragen</a><a href="vergleiche.html" class="">Vergleiche</a><a href="begriffe.html" class="">Begriffe</a><a href="philosophen.html" class="">Philosophen</a><a href="karteikarten.html" class="">Karteikarten</a><a href="essay.html" class="active">Essay</a></div><span class="sp"></span><button class="theme-toggle" onclick="window.print()" title="Drucken" aria-label="Drucken"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6M7 18H4v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7h-3"/><path d="M7 14h10v7H7Z"/></svg></button><button class="theme-toggle" id="themeBtn" title="Hell/Dunkel" aria-label="Hell/Dunkel wechseln"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg></button><button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></nav>
+<div class="page-hero"><div class="page-hero-inner"><div class="page-hero-badge">Prüfungsvorbereitung</div><h1>Essay-Werkstatt</h1><p>Was das Bac verlangt, wie ein starker Essay aussieht und wie du ihn Schritt für Schritt aufbaust.</p></div></div><div class="es-tabs" role="tablist" id="esTabs"><button type="button" role="tab" class="es-tab" data-tab="bac" aria-controls="tab-bac">Das Bac</button><button type="button" role="tab" class="es-tab" data-tab="checkliste" aria-controls="tab-checkliste">Checkliste</button><button type="button" role="tab" class="es-tab" data-tab="beispiel" aria-controls="tab-beispiel">Bac-Beispiel 2026</button><button type="button" role="tab" class="es-tab" data-tab="werkzeug" aria-controls="tab-werkzeug">Werkzeugkasten</button><button type="button" role="tab" class="es-tab" data-tab="training" aria-controls="tab-training">Training</button></div><div class="es-wrap"><section class="es-pane" id="tab-bac" role="tabpanel" hidden><div class="es-card es-lead"><h2>So läuft die Prüfung</h2><p><b>4 Stunden, ein Essay</b> zu einer Pflichtfrage. Dazu bekommst du einen <b>Pflichttext</b>, <b>Leitfragen</b> und <b>weitere Dokumente</b>. Du verbindest die Frage mit dem Pflichttext und mit <b>mindestens zwei</b> der vier Bereiche: Erkenntnistheorie, Ethik, Politische Philosophie, Anthropologie. Die Frage orientiert sich stark an den Leitfragen des Lehrplans.</p></div><h2 class="es-h">Deine Zeit</h2><p class="es-sub">Vier Stunden, im richtigen Verhältnis.</p><div class="es-zeit"><div class="es-z"><div class="es-zl"><b>30 Min.</b><span>Lesen</span></div><div class="es-zr"><div class="es-zt"><i style="left:0.000%;width:12.500%"></i></div><p>Frage klären, Pflichttext mit der Frage im Kopf lesen, Kernthesen mit Zeilen notieren.</p></div></div><div class="es-z"><div class="es-zl"><b>30 Min.</b><span>Planen</span></div><div class="es-zr"><div class="es-zt"><i style="left:12.500%;width:12.500%"></i></div><p>Problem, These, Gliederung, Autoren und Beispiele festlegen.</p></div></div><div class="es-z es-z-main"><div class="es-zl"><b>2 h 30</b><span>Schreiben</span></div><div class="es-zr"><div class="es-zt"><i style="left:25.000%;width:62.500%"></i></div><p>Einleitung, Hauptteil mit Zwischenfazits, Schluss, der die Frage beantwortet.</p></div></div><div class="es-z"><div class="es-zl"><b>30 Min.</b><span>Überlesen</span></div><div class="es-zr"><div class="es-zt"><i style="left:87.500%;width:12.500%"></i></div><p>Ergänzen, korrigieren, Einleitung und Schluss aufeinander abstimmen.</p></div></div></div><h2 class="es-h">Die sieben Kriterien</h2><p class="es-sub">Alle sieben zählen gemeinsam für eine Gesamtnote. Klapp ein Kriterium auf: Du siehst die Frage, die du dir beim Überlesen stellst, und was „gut“ von „sehr gut“ unterscheidet.</p><div class="es-acc"><details class="es-d"><summary><span class="es-nr">1</span><span class="es-dt">Philosophisches Problem erkennen</span></summary><div class="es-db"><p class="es-frage">Sage ich, warum die Frage schwierig ist? Kläre ich ihre Begriffe?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du erkennst ein zentrales Problem gut und klar genug.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du erkennst die zentralen Probleme genau und klar.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">2</span><span class="es-dt">Eigene Position aufbauen und begründen</span></summary><div class="es-db"><p class="es-frage">Steht meine These früh da und wächst sie mit Zwischenfazits?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du baust eine eigene, kritische Sicht auf und begründest sie gut.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du begründest deine Sicht vollständig, vertieft und methodisch, mit Strenge und eigenen Ideen.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">3</span><span class="es-dt">Fachwissen vernünftig nutzen</span></summary><div class="es-db"><p class="es-frage">Trägt jeder Autor ein Argument? Stimmt, was ich ihm zuschreibe?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du zeigst solides Fachwissen und begründest sauber.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du setzt vertieftes, genaues Wissen im richtigen Moment und mit präziser Begründung ein.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">4</span><span class="es-dt">Reflexion und Analyse</span></summary><div class="es-db"><p class="es-frage">Prüfe ich Text und Positionen? Antworte ich auf Einwände?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du reflektierst und erkennst Mehrdeutigkeiten und Widersprüche ausreichend.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Deine Reflexion ist streng, fein und vielschichtig. Du erfasst Mehrdeutigkeiten und Widersprüche.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">5</span><span class="es-dt">Mindestens zwei Bereiche verknüpfen</span></summary><div class="es-db"><p class="es-frage">Wo verknüpfe ich zwei der vier Bereiche, und warum gerade dort?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du verstehst mindestens zwei Bereiche gut und siehst Verbindungen zwischen ihnen.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du verknüpfst die Bereiche genau und mit echtem Gespür. Deine Beispiele sind treffend gewählt.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">6</span><span class="es-dt">Theorie und Erfahrung verbinden</span></summary><div class="es-db"><p class="es-frage">Zeigen meine Beispiele (Gegenwart, Geschichte, eigenes Leben) etwas?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du verbindest Abstraktes mit Konkretem, mit eigener Erfahrung und Kultur.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du verbindest Theorie und Erfahrung präzise und überzeugend, mit eigenständigen Ideen.</p></div></div></div></details><details class="es-d"><summary><span class="es-nr">7</span><span class="es-dt">Fachbegriffe richtig verwenden</span></summary><div class="es-db"><p class="es-frage">Verwende ich Fachbegriffe präzise und erkläre ich sie, wo nötig?</p><div class="es-gs"><div><span class="es-tag">gut</span><p>Du verwendest Fachbegriffe im Allgemeinen passend.</p></div><div><span class="es-tag es-tag-a">sehr gut</span><p>Du verwendest Fachbegriffe präzise, klar und treffend.</p></div></div></div></details></div><div class="es-merk"><b>Nicht auswendig lernen, sondern erklären können.</b> Im Bac gibt es keine Detailfragen und keine Biographien. Lerne Zusammenfassungen und Begriffe so, dass du eine Position in eigenen Worten erklären und mit einer anderen vergleichen kannst. Die <a href="vergleiche.html">Vergleiche</a> solltest du sehr gut kennen.</div></section><section class="es-pane" id="tab-checkliste" role="tabpanel" hidden><div class="es-card es-intro"><p>Geh die Fragen beim Planen und beim Überlesen durch und hake ab, was du erfüllst. Deine Häkchen bleiben in diesem Browser gespeichert. Beim Hausessay druckst du die Checkliste aus und gibst sie mit ab.</p><div class="es-tools"><button type="button" class="es-btn" onclick="window.print()">Drucken</button><button type="button" class="es-btn es-btn-soft" id="esReset">Häkchen löschen</button></div></div><div class="es-checklist"><section class="es-teil"><div class="es-teil-h"><span class="es-nr">1</span><h2>Vor dem Schreiben</h2><span class="es-bar"><span></span></span></div><div class="es-ab"><h3>a) Bewertungskriterien</h3><ul><li><label><input type="checkbox" data-id="c1"><span class="es-box" aria-hidden="true"></span><span class="es-t">Kenne ich die sieben Bewertungskriterien?</span></label></li><li><label><input type="checkbox" data-id="c2"><span class="es-box" aria-hidden="true"></span><span class="es-t">Schreibe ich den Essay so, dass ich diese Kriterien gezielt erfülle?</span></label></li></ul></div><div class="es-ab"><h3>b) Frage und Material</h3><ul><li><label><input type="checkbox" data-id="c3"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich die Schlüsselbegriffe der Frage markiert?</span></label></li><li><label><input type="checkbox" data-id="c4"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich den Pflichttext mit der Frage im Kopf gelesen und die Kernthesen mit Zeilen notiert?</span></label></li><li><label><input type="checkbox" data-id="c5"><span class="es-box" aria-hidden="true"></span><span class="es-t">Nutze ich die Leitfragen und die weiteren Dokumente, um das Problem zu erkennen?</span></label></li></ul></div><div class="es-ab"><h3>c) Plan</h3><ul><li><label><input type="checkbox" data-id="c6"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich eine Gliederung, bevor ich zu schreiben beginne?</span></label></li><li><label><input type="checkbox" data-id="c7"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich meine Zeit eingeteilt (30 / 30 / 150 / 30 Minuten), damit der Schluss vollständig wird?</span></label></li></ul></div></section><section class="es-teil"><div class="es-teil-h"><span class="es-nr">2</span><h2>Einleitung</h2><span class="es-bar"><span></span></span></div><div class="es-ab"><h3>a) Einstieg / Hinführung</h3><ul><li><label><input type="checkbox" data-id="c8"><span class="es-box" aria-hidden="true"></span><span class="es-t">Passt die Einleitung zum Thema?</span></label></li><li><label><input type="checkbox" data-id="c9"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ist sie eigenständig (keine Standardformel wie „Schon immer haben sich Menschen gefragt …“)?</span></label></li><li><label><input type="checkbox" data-id="c10"><span class="es-box" aria-hidden="true"></span><span class="es-t">Zeigt sie, dass ich etwas über das Thema weiß (keine Plattitüden)?</span></label></li><li><label><input type="checkbox" data-id="c11"><span class="es-box" aria-hidden="true"></span><span class="es-t">Nutze ich ggf. den Pflichttext, die weiteren Dokumente oder ein Bild, um den Einstieg zu verbessern?</span></label></li></ul></div><div class="es-ab"><h3>b) Schlüsselbegriffe</h3><ul><li><label><input type="checkbox" data-id="c12"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich alle wichtigen Begriffe der Frage identifiziert?</span></label></li><li><label><input type="checkbox" data-id="c13"><span class="es-box" aria-hidden="true"></span><span class="es-t">Sind die Begriffe richtig und präzise definiert?</span></label></li><li><label><input type="checkbox" data-id="c14"><span class="es-box" aria-hidden="true"></span><span class="es-t">Halte ich mich im ganzen Essay an meine Definitionen?<span class="es-hint"><b>Bac 2026:</b> Wer „Realität“ nicht geklärt hatte, suchte überall nach Antworten und verlor den roten Faden.</span></span></label></li></ul></div><div class="es-ab"><h3>c) Problem und Fragestellung</h3><ul><li><label><input type="checkbox" data-id="c15"><span class="es-box" aria-hidden="true"></span><span class="es-t">Zeige ich, wo der Konflikt der Frage liegt, also warum sie schwierig ist?</span></label></li><li><label><input type="checkbox" data-id="c16"><span class="es-box" aria-hidden="true"></span><span class="es-t">Muss ich die Frage leicht umformulieren, um präziser zu arbeiten?</span></label></li><li><label><input type="checkbox" data-id="c17"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ist die Formulierung gut begründet und für den Leser nachvollziehbar?</span></label></li></ul></div><div class="es-ab"><h3>d) These</h3><ul><li><label><input type="checkbox" data-id="c18"><span class="es-box" aria-hidden="true"></span><span class="es-t">Formuliere ich eine These, die ich im Hauptteil prüfe?<span class="es-hint"><b>Bac 2026:</b> In den meisten Arbeiten kam die eigene Position erst am Schluss und blieb knapp.</span></span></label></li><li><label><input type="checkbox" data-id="c19"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ist die These eine begründbare Antwort auf die Frage und nicht bloß eine Meinung?</span></label></li></ul></div><div class="es-ab"><h3>e) Vorschau / Struktur</h3><ul><li><label><input type="checkbox" data-id="c20"><span class="es-box" aria-hidden="true"></span><span class="es-t">Zeige ich dem Leser kurz, wie mein Essay aufgebaut ist?</span></label></li><li><label><input type="checkbox" data-id="c21"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ist diese Struktur logisch und nachvollziehbar?</span></label></li></ul></div></section><section class="es-teil"><div class="es-teil-h"><span class="es-nr">3</span><h2>Hauptteil</h2><span class="es-bar"><span></span></span></div><div class="es-ab"><h3>a) Pflichttext</h3><ul><li><label><input type="checkbox" data-id="c22"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich den Text wirklich gelesen und verstanden?</span></label></li><li><label><input type="checkbox" data-id="c23"><span class="es-box" aria-hidden="true"></span><span class="es-t">Wie antwortet der Text auf die Fragestellung?</span></label></li><li><label><input type="checkbox" data-id="c24"><span class="es-box" aria-hidden="true"></span><span class="es-t">Welche Argumente kann ich daraus verwenden, und wo baue ich sie ein?</span></label></li><li><label><input type="checkbox" data-id="c25"><span class="es-box" aria-hidden="true"></span><span class="es-t">Prüfe ich die Argumente des Textes kritisch (mit Zeilenangabe), statt sie nachzuerzählen?<span class="es-hint"><b>Bac 2026:</b> Die stärksten Arbeiten prüften den Pflichttext Schritt für Schritt mit eigenen Gegenbeispielen.</span></span></label></li></ul></div><div class="es-ab"><h3>b) Argumentation &amp; Struktur</h3><ul><li><label><input type="checkbox" data-id="c26"><span class="es-box" aria-hidden="true"></span><span class="es-t">Hat mein Essay einen roten Faden und führt klar auf eine Schlussfolgerung hin?</span></label></li><li><label><input type="checkbox" data-id="c27"><span class="es-box" aria-hidden="true"></span><span class="es-t">Dienen alle Argumente der Frage (nichts schreiben, nur um zu füllen)?</span></label></li><li><label><input type="checkbox" data-id="c28"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich zu jedem Argument auch eine Gegenposition (Antithese) bedacht?</span></label></li><li><label><input type="checkbox" data-id="c29"><span class="es-box" aria-hidden="true"></span><span class="es-t">Antworte ich auf die Einwände, statt sie nur zu nennen?</span></label></li><li><label><input type="checkbox" data-id="c30"><span class="es-box" aria-hidden="true"></span><span class="es-t">Erkläre ich meine Argumente klar und ausreichend?</span></label></li><li><label><input type="checkbox" data-id="c31"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ziehe ich nach jedem Abschnitt ein Zwischenfazit, das zur Frage zurückführt?<span class="es-hint"><b>Bac 2026:</b> Die beste Arbeit hatte drei Teile, jeder mit eigenem Zwischenfazit.</span></span></label></li><li><label><input type="checkbox" data-id="c32"><span class="es-box" aria-hidden="true"></span><span class="es-t">Verknüpfe ich <b>mindestens zwei</b> Bereiche der Philosophie (Erkenntnistheorie, Ethik, Politische Philosophie, Anthropologie)?</span></label></li></ul></div><div class="es-ab"><h3>c) Beispiele</h3><ul><li><label><input type="checkbox" data-id="c33"><span class="es-box" aria-hidden="true"></span><span class="es-t">Belebe ich meine Argumente mit passenden Beispielen?</span></label></li><li><label><input type="checkbox" data-id="c34"><span class="es-box" aria-hidden="true"></span><span class="es-t">Nutze ich, wenn möglich, eigenständige Beispiele aus meiner eigenen Lebenswelt?</span></label></li></ul></div><div class="es-ab"><h3>d) Philosophische Theorien</h3><ul><li><label><input type="checkbox" data-id="c35"><span class="es-box" aria-hidden="true"></span><span class="es-t">Unterstützen die verwendeten Theorien wirklich meine Schlussfolgerung?</span></label></li><li><label><input type="checkbox" data-id="c36"><span class="es-box" aria-hidden="true"></span><span class="es-t">Sind Theorien und Begriffe korrekt und präzise wiedergegeben?</span></label></li><li><label><input type="checkbox" data-id="c37"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ordne ich jede Theorie dem richtigen Philosophen zu?<span class="es-hint"><b>Bac 2026:</b> Fehlzuschreibungen kosten Punkte, zum Beispiel „Mängelwesen“, das von Gehlen stammt.</span></span></label></li><li><label><input type="checkbox" data-id="c38"><span class="es-box" aria-hidden="true"></span><span class="es-t">Sind Namen der Philosophen richtig geschrieben?</span></label></li><li><label><input type="checkbox" data-id="c39"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich unterschiedliche (auch konträre) Positionen eingebaut?</span></label></li><li><label><input type="checkbox" data-id="c40"><span class="es-box" aria-hidden="true"></span><span class="es-t">Wäge ich die Positionen gegeneinander ab, statt sie nacheinander darzustellen („X sagt …, Y sagt …“)?<span class="es-hint"><b>Bac 2026:</b> Der häufigste Kritikpunkt: viele Philosophen, aber nebeneinander statt gegeneinander.</span></span></label></li><li><label><input type="checkbox" data-id="c41"><span class="es-box" aria-hidden="true"></span><span class="es-t">Welche Theorien stimmen überein, welche widersprechen?</span></label></li><li><label><input type="checkbox" data-id="c42"><span class="es-box" aria-hidden="true"></span><span class="es-t">Bearbeite ich lieber wenige Positionen gründlich als viele oberflächlich?</span></label></li><li><label><input type="checkbox" data-id="c43"><span class="es-box" aria-hidden="true"></span><span class="es-t">Erkläre ich immer, warum eine Theorie genau hier sinnvoll ist?</span></label></li></ul></div></section><section class="es-teil"><div class="es-teil-h"><span class="es-nr">4</span><h2>Schlussfolgerung</h2><span class="es-bar"><span></span></span></div><div class="es-ab"><h3>a) Zusammenfassung und Antwort</h3><ul><li><label><input type="checkbox" data-id="c44"><span class="es-box" aria-hidden="true"></span><span class="es-t">Fasse ich die wichtigsten Punkte kurz und klar zusammen?</span></label></li><li><label><input type="checkbox" data-id="c45"><span class="es-box" aria-hidden="true"></span><span class="es-t">Beantworte ich wirklich die ursprüngliche Fragestellung?</span></label></li><li><label><input type="checkbox" data-id="c46"><span class="es-box" aria-hidden="true"></span><span class="es-t">Passt meine Antwort zu meiner These und zu den Argumenten aus dem Hauptteil?</span></label></li><li><label><input type="checkbox" data-id="c47"><span class="es-box" aria-hidden="true"></span><span class="es-t">Ist die Antwort eigenständig und nicht nur Wiederholung?</span></label></li></ul></div><div class="es-ab"><h3>b) Ausblick</h3><ul><li><label><input type="checkbox" data-id="c48"><span class="es-box" aria-hidden="true"></span><span class="es-t">Kann ich die Diskussion auf ein angrenzendes/verwandtes Thema ausweiten?</span></label></li><li><label><input type="checkbox" data-id="c49"><span class="es-box" aria-hidden="true"></span><span class="es-t">Kann ich die Relevanz des Themas für meine Lebenswelt fruchtbar machen und dies erklären?</span></label></li><li><label><input type="checkbox" data-id="c50"><span class="es-box" aria-hidden="true"></span><span class="es-t">Kann ich offene Fragen identifizieren und diese kurz erklären?</span></label></li></ul></div></section><section class="es-teil"><div class="es-teil-h"><span class="es-nr">5</span><h2>Letzter Check</h2><span class="es-bar"><span></span></span></div><div class="es-ab"><ul><li><label><input type="checkbox" data-id="c51"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich Einleitung und Schluss aufeinander abgestimmt (These und Antwort passen zusammen)?</span></label></li><li><label><input type="checkbox" data-id="c52"><span class="es-box" aria-hidden="true"></span><span class="es-t">Habe ich den Text auf unklare Sätze und Rechtschreibung überlesen?</span></label></li></ul></div></section></div><div class="es-card es-formal"><h3>Formales für den Hausessay</h3><ul><li>Länge: mindestens 1000, höchstens etwa 2000 Wörter.</li><li>Abgabe über Teams als PDF, getippt. Die Checkliste gibst du mit ab.</li><li>Direkte und indirekte Zitate zusammen höchstens 25 % der Arbeit, immer als Zitat erkennbar.</li><li>Jede Übernahme fremder Gedanken, Formulierungen oder KI-Texte wird belegt. Sonst ist es ein Plagiat, auch wenn du von Mitschülern abschreibst.</li></ul></div><p class="es-quelle">Checkliste Essay V1.3 · T. Retter</p></section><section class="es-pane" id="tab-beispiel" role="tabpanel" hidden><div class="es-card es-frage26"><span class="es-eyebrow">Bac Juni 2026 · Pflichtfrage</span><h2>Verändert Technologie unser Verständnis von der Realität?</h2><p><b>Pflichttext:</b> Jacques Ellul, <i>Das technologische System</i> (1977). Kernthese, in eigenen Worten: Die Technik ist nicht mehr nur ein Mittel, sie ist selbst zum Maßstab geworden. Was den technischen Fortschritt fördert, gilt als gut, wer ihn begrenzen will, als rückständig. Die Technik entzieht sich damit zunehmend der Kontrolle des Menschen.</p><p><b>Dazu:</b> Leitfragen und weitere Dokumente, unter anderem zum Verhältnis von Mensch, Technik und Natur.</p></div><h2 class="es-h">1 · Die Frage knacken</h2><p class="es-sub">Vier Schritte, bevor du den ersten Satz schreibst.</p><div class="es-steps"><div class="es-step"><span class="es-sn">1</span><h3>Schlüsselbegriffe</h3><dl><dt>verändert</dt><dd>behauptet einen Wandel: vorher und nachher. Wandel ist nicht automatisch Verlust.</dd><dt>Technologie</dt><dd>nicht ein einzelnes Gerät, sondern ein System, vom Werkzeug bis zur KI.</dd><dt>unser Verständnis</dt><dd>nicht die Realität selbst, sondern wie wir sie erkennen, deuten und bewerten.</dd><dt>Realität</dt><dd>muss definiert werden, sonst wird die Antwort schwammig.</dd></dl></div><div class="es-step"><span class="es-sn">2</span><h3>Konflikt</h3><p>Technik erweitert unseren Zugang zur Realität (Mikroskop, Teleskop, Messgeräte). Technik bestimmt aber auch, was wir für real und richtig halten (Bildbearbeitung, KI, Algorithmen). Spannung: Erweiterung oder Verzerrung? Mittel oder Maßstab?</p></div><div class="es-step"><span class="es-sn">3</span><h3>Leitfrage</h3><p class="es-weak"><span>Schwach</span>„Was ist Technologie?“</p><p class="es-strong"><span>Stark</span>„Erweitert Technologie nur unseren Zugang zur Realität, oder bestimmt sie inzwischen selbst, was wir für real und richtig halten?“</p></div><div class="es-step"><span class="es-sn">4</span><h3>Hypothese</h3><p class="es-weak"><span>Schwach</span>„Ja, Technologie verändert sehr viel.“</p><p class="es-strong"><span>Stark</span>„Technologie verändert nicht die Realität selbst, wohl aber die Maßstäbe, mit denen wir sie erkennen und bewerten. Gefährlich wird das, wenn wir diese Maßstäbe nicht mehr prüfen.“</p></div></div><h2 class="es-h">2 · Ein kommentierter Essay</h2><p class="es-sub">Auszüge aus einem <b>Musteressay</b> zur Bac-Frage, geschrieben für diese Seite (keine echte Bac-Arbeit). Wähle ein Kriterium, und die passenden Stellen werden markiert.</p><div class="es-chips" id="esChips"><button type="button" class="es-chip on" data-k="">Alle</button><button type="button" class="es-chip" data-k="1"><b>1</b> Problem</button><button type="button" class="es-chip" data-k="2"><b>2</b> Position</button><button type="button" class="es-chip" data-k="3"><b>3</b> Fachwissen</button><button type="button" class="es-chip" data-k="4"><b>4</b> Reflexion</button><button type="button" class="es-chip" data-k="5"><b>5</b> Zwei Bereiche</button><button type="button" class="es-chip" data-k="6"><b>6</b> Erfahrung</button><button type="button" class="es-chip" data-k="7"><b>7</b> Begriffe</button></div><div class="es-essay" id="esEssay"><div class="es-plabel">Einleitung</div><div class="es-para"><p><mark class="es-m" data-k="6">Wer heute ein Foto sieht, fragt sich zuerst: Ist das echt? Vor zwanzig Jahren galt ein Foto noch als Beweis. Heute erzeugt eine KI in Sekunden ein Bild, das von einer Aufnahme nicht zu unterscheiden ist.<sup class="es-ks">6</sup></mark> Ob Technologie unser Verständnis von der Realität verändert, ist deshalb keine Frage der Zukunft.</p><aside>Einstieg aus der Lebenswelt, der direkt zur Frage führt.</aside></div><div class="es-para"><p><mark class="es-m" data-k="1 7">Mit „Realität“ meine ich in diesem Essay das, was unabhängig davon besteht, was wir darüber meinen. Unser „Verständnis“ der Realität ist dagegen die Art, wie wir sie erkennen, deuten und bewerten.<sup class="es-ks">1, 7</sup></mark> Die Frage zielt also nicht darauf, ob Technik die Welt verändert, das tut sie offensichtlich, sondern ob sie verändert, wie wir die Welt begreifen.</p><aside>Die beiden Schlüsselbegriffe werden getrennt und definiert. Daran hält sich der ganze Essay.</aside></div><div class="es-para"><p><mark class="es-m" data-k="1">Hier liegt die Spannung: Technik kann unseren Zugang zur Realität erweitern, wie das Mikroskop, das Unsichtbares sichtbar macht. Sie kann aber auch bestimmen, was wir überhaupt für real und richtig halten.<sup class="es-ks">1</sup></mark> <mark class="es-m" data-k="2">Meine These lautet: Technologie verändert nicht die Realität selbst, wohl aber die Maßstäbe, mit denen wir sie erkennen und bewerten. Gefährlich wird das, wenn wir diese Maßstäbe nicht mehr prüfen.<sup class="es-ks">2</sup></mark> Ich prüfe diese These zuerst an Elluls Pflichttext, dann aus Sicht der Erkenntnistheorie und schließlich der Ethik.</p><aside>Konflikt der Frage, eigene These, kurze Vorschau. Die Einleitung ist fertig, bevor der erste Philosoph auftaucht.</aside></div><div class="es-plabel">Hauptteil (Auszug)</div><div class="es-para"><p><mark class="es-m" data-k="3">Ellul geht weiter als meine These. Für ihn ist die Technik nicht mehr nur ein Mittel, sondern selbst zum Maßstab der Moral geworden: Was den Fortschritt fördert, gilt als gut, wer ihn begrenzen will, als rückständig.<sup class="es-ks">3</sup></mark> Wenn das stimmt, verändert Technik nicht nur unser Wissen über die Welt, sondern auch unsere Werte. <mark class="es-m" data-k="4">Das Argument beruht allerdings auf einer Annahme, die man prüfen muss: dass Menschen die Technik nicht mehr kontrollieren.<sup class="es-ks">4</sup></mark> <mark class="es-m" data-k="6">Dagegen spricht, dass Gesellschaften der Technik durchaus Grenzen setzen. Die EU hat 2024 mit dem AI Act bestimmte Anwendungen künstlicher Intelligenz verboten.<sup class="es-ks">6</sup></mark> <mark class="es-m" data-k="2">Elluls Diagnose beschreibt also eine Tendenz, kein Naturgesetz.<sup class="es-ks">2</sup></mark></p><aside>Der Pflichttext wird nicht nacherzählt, sondern geprüft: Annahme benennen, Gegenbeispiel, eigenes Urteil.</aside></div><div class="es-para"><p>Erkenntnistheoretisch lässt sich zeigen, warum diese Tendenz trotzdem ernst zu nehmen ist. <mark class="es-m" data-k="3 5 7">Kant hat gezeigt, dass wir die Dinge nie so erkennen, wie sie an sich sind, sondern nur als Erscheinungen, geformt durch Raum, Zeit und die Kategorien unseres Verstandes.<sup class="es-ks">3, 5, 7</sup></mark> Unser Verständnis der Realität war also immer schon vermittelt. <mark class="es-m" data-k="4">Neu ist, dass ein weiterer Filter hinzukommt, der nicht in uns liegt: der Algorithmus, der auswählt, welche Bilder und Nachrichten wir überhaupt sehen. Anders als Kants Kategorien ist dieser Filter weder allgemein noch notwendig. Er ist bei jedem Menschen anders und kann von anderen mit eigenen Interessen verändert werden.<sup class="es-ks">4</sup></mark></p><aside>Zweiter Bereich (Erkenntnistheorie). Kant trägt ein Argument und wird mit dem neuen Problem verglichen, statt nur genannt zu werden.</aside></div><div class="es-para"><p><mark class="es-m" data-k="2">Bis hierhin zeigt sich: Technik verändert unser Verständnis der Realität dort, wo sie sich zwischen uns und die Welt schiebt, ohne dass wir es merken.<sup class="es-ks">2</sup></mark></p><aside>Zwischenfazit, das zur Frage und zur These zurückführt.</aside></div><div class="es-plabel">Schluss</div><div class="es-para"><p><mark class="es-m" data-k="2">Technologie verändert unser Verständnis der Realität, aber nicht so vollständig, wie Ellul behauptet. Sie verschiebt die Maßstäbe, mit denen wir erkennen und bewerten: was als Beweis gilt, was wir zu sehen bekommen, was als Fortschritt und damit als gut erscheint.<sup class="es-ks">2</sup></mark> <mark class="es-m" data-k="4">Entscheidend ist deshalb nicht, ob Technik unser Verständnis verändert, sondern ob wir die neuen Maßstäbe noch prüfen können.<sup class="es-ks">4</sup></mark> <mark class="es-m" data-k="3 5">Hans Jonas gibt mit seiner Heuristik der Furcht eine Richtung vor: Bei Techniken mit unabsehbaren Folgen soll die schlechte Prognose Vorrang vor der guten haben.<sup class="es-ks">3, 5</sup></mark> Offen bleibt, wer diese Prüfung leisten soll: der Einzelne, der jedes Bild hinterfragt, oder der Staat, der Regeln setzt. Damit wird aus einer erkenntnistheoretischen Frage eine politische.</p><aside>Antwort auf die Frage, passend zur These. Dritter Bereich (Ethik) und ein Ausblick, der eine neue Frage öffnet.</aside></div></div><div class="es-merk"><b>Wie lang ist das im Bac?</b> Der Auszug hat etwa 520 Wörter, von Hand rund zwei Seiten. Er zeigt nur <b>einen</b> Hauptteil-Abschnitt. Ein vollständiger Essay hat meist drei solcher Teile, jeder mit Zwischenfazit, und ist damit etwa dreimal so lang: rund 1500 Wörter oder sechs bis sieben handgeschriebene Seiten. Entscheidend ist aber nicht die Länge, sondern dass jeder Absatz deine These voranbringt.</div><h2 class="es-h">3 · Schwach oder stark?</h2><p class="es-sub">Drei Stellen, an denen im Bac 2026 Punkte verloren gingen. Die Beispiele sind konstruiert.</p><div class="es-pair"><h3>Begriff klären</h3><div class="es-pg"><div class="es-weak"><span>Schwach</span><p>In diesem Essay geht es um Technologie und Realität. Technologie ist heute überall, und viele Philosophen haben sich mit diesem Thema beschäftigt.</p></div><div class="es-strong"><span>Stark</span><p>Mit „Realität“ meine ich das, was unabhängig davon besteht, was wir darüber meinen. Unser „Verständnis“ ist die Art, wie wir sie erkennen und bewerten. Die Frage zielt also darauf, ob Technik verändert, wie wir die Welt begreifen.</p></div></div><p class="es-warum">Ohne Definition sucht der Essay überall nach Antworten. Mit Definition weiß der Leser, was geprüft wird.</p></div><div class="es-pair"><h3>Autoren einsetzen</h3><div class="es-pg"><div class="es-weak"><span>Schwach</span><p>Descartes würde sagen, dass man der Technik nicht trauen darf. Popper würde sagen, dass Technik Fortschritt bringt. Gehlen würde sagen, dass Technik ein Werkzeug ist.</p></div><div class="es-strong"><span>Stark</span><p>Gehlen erklärt, warum Technik zum Menschen gehört: Als Mängelwesen braucht er Werkzeuge, um zu überleben. Genau hier setzt Ellul an: Was als Werkzeug begann, wird zum Maßstab. Während Gehlen die Technik vom Menschen her denkt, denkt Ellul den Menschen von der Technik her.</p></div></div><p class="es-warum">Links stehen drei Namen nebeneinander. Rechts tragen zwei Autoren ein Argument und werden miteinander verglichen.</p></div><div class="es-pair"><h3>Pflichttext nutzen</h3><div class="es-pg"><div class="es-weak"><span>Schwach</span><p>Ellul sagt in seinem Text, dass die Technik jenseits von Gut und Böse ist. Er sagt auch, dass man den Fortschritt nicht aufhalten kann. Das finde ich interessant.</p></div><div class="es-strong"><span>Stark</span><p>Elluls Argument beruht auf einer Annahme: dass Menschen die Technik nicht mehr kontrollieren. Dagegen spricht, dass Gesellschaften Grenzen setzen, etwa durch Verbote bestimmter KI-Anwendungen. Ellul beschreibt also eine Tendenz, kein Naturgesetz.</p></div></div><p class="es-warum">Links wird der Text nacherzählt und mit einem Gefühl kommentiert. Rechts wird er geprüft und beurteilt.</p></div><h2 class="es-h">4 · Fünf typische Fehler aus dem Bac 2026</h2><div class="es-fehler"><div class="es-f"><span class="es-nr">1</span><div><p class="es-ff">Der Pflichttext bleibt an der Oberfläche oder tritt hinter andere Positionen zurück.</p><p>Arbeite mit mindestens zwei Schritten des Textes (mit Zeilen): Was behauptet er, worauf beruht es, wo hält es nicht?</p></div></div><div class="es-f"><span class="es-nr">2</span><div><p class="es-ff">Positionen werden aneinandergereiht („X sagt …, Y sagt …“).</p><p>Jeder Autor beantwortet eine Frage deines Arguments. Vergleiche: „Während X …, zeigt Y …“</p></div></div><div class="es-f"><span class="es-nr">3</span><div><p class="es-ff">Der eigene Standpunkt kommt spät und bleibt dünn, oft nur im Fazit.</p><p>These in der Einleitung, Zwischenfazit nach jedem Teil, Schluss als Antwort auf die Frage.</p></div></div><div class="es-f"><span class="es-nr">4</span><div><p class="es-ff">Der zentrale Begriff der Frage wird nicht geklärt, die Antwort wird schwammig.</p><p>Kläre die Schlüsselbegriffe in der Einleitung und halte dich im ganzen Essay an deine Klärung.</p></div></div><div class="es-f"><span class="es-nr">5</span><div><p class="es-ff">Zu viele Positionen, der rote Faden geht verloren.</p><p>Lieber zwei oder drei sauber verglichene Positionen als sechs angerissene. Prüfe auch, ob du jedem Autor nur zuschreibst, was er wirklich vertritt.</p></div></div></div></section><section class="es-pane" id="tab-werkzeug" role="tabpanel" hidden><h2 class="es-h">Bauform eines Hauptteil-Absatzes</h2><div class="es-flow"><div class="es-fl"><span class="es-sn">1</span><b>Behauptung</b><p>Was zeigt dieser Schritt für die Frage?</p></div><div class="es-fl"><span class="es-sn">2</span><b>Textschritt oder Theorie</b><p>Was sagt der Autor genau? Beim Pflichttext mit Zeile.</p></div><div class="es-fl"><span class="es-sn">3</span><b>Prüfung</b><p>Worauf beruht der Schritt? Unter welcher Bedingung hält er nicht?</p></div><div class="es-fl"><span class="es-sn">4</span><b>Beispiel oder Gegenbeispiel</b><p>Eigenes Beispiel, kurz und funktional.</p></div><div class="es-fl"><span class="es-sn">5</span><b>Zwischenfazit</b><p>„Bis hierhin zeigt sich, dass …“: zurück zur Frage.</p></div></div><h2 class="es-h">Die Leitfragen für jeden Teil</h2><p class="es-sub">Nach Jonas Pfister, <i>Wie schreibe ich einen guten philosophischen Essay?</i> (2006).</p><div class="es-3"><div class="es-card"><h3>Einleitung</h3><ul><li>Was ist die Frage, die ich beantworten will?</li><li>Weshalb ist diese Frage wichtig?</li><li>Was will ich zeigen?</li><li>Wie werde ich dabei vorgehen?</li></ul></div><div class="es-card"><h3>Hauptteil</h3><ul><li>Was ist mein Argument für das, was ich zeigen will?</li><li>Weshalb sind die Prämissen in diesem Argument wahr?</li><li>Was kann man gegen das Argument einwenden?</li><li>Weshalb sind diese Einwände nicht stichhaltig?</li></ul></div><div class="es-card"><h3>Schluss</h3><ul><li>Was habe ich gezeigt?</li><li>Was ist (noch) nicht gezeigt?</li></ul></div></div><h2 class="es-h">Essay oder Stellungnahme?</h2><div class="es-2"><div class="es-card"><h3>Stellungnahme</h3><ul><li>kürzer, konzentriert sich darauf, eine klare Meinung zu einem bestimmten Thema oder einer Fragestellung abzugeben</li><li>stellt die persönliche Sichtweise dar und kann einfach begründet werden, ohne dass alle Seiten eines Arguments ausführlich beleuchtet werden müssen</li></ul></div><div class="es-card es-card-a"><h3>Essay</h3><ul><li>umfassender und erfordert eine tiefere Auseinandersetzung mit dem Thema</li><li>es werden verschiedene Perspektiven und relevante philosophische Theorien diskutiert</li><li>die Argumentation muss logisch und systematisch für oder gegen bestimmte Ansichten formuliert werden</li></ul></div></div><p class="es-sub">Ein Essay ist also eher eine detaillierte Erörterung, während eine Stellungnahme eine direkte und persönliche Antwort auf eine Frage ist.</p><h2 class="es-h">Formulierungshilfen</h2><p class="es-sub">Kein Auswendiglernen. Gezielt einsetzen. Ein guter Essay zeigt nicht, was du weißt, sondern wie du denkst.</p><div class="es-chips" id="esFChips"><button type="button" class="es-chip on" data-f="">Alle</button><button type="button" class="es-chip" data-f="0">Position darstellen</button><button type="button" class="es-chip" data-f="1">Begründungen sichtbar machen</button><button type="button" class="es-chip" data-f="2">Übergang zur Kritik</button><button type="button" class="es-chip" data-f="3">Zustimmung formulieren</button><button type="button" class="es-chip" data-f="4">Positionen vergleichen</button><button type="button" class="es-chip" data-f="5">Beispiele und Gedankenexperimente</button><button type="button" class="es-chip" data-f="6">Konsequenzen aufzeigen</button><button type="button" class="es-chip" data-f="7">Eigene Stellungnahme</button><button type="button" class="es-chip" data-f="8">Weiterdenken</button><button type="button" class="es-chip" data-f="9">Struktur und Zwischenfazit</button><button type="button" class="es-chip" data-f="10">Abwägender Schluss</button></div><div class="es-fgrid"><div class="es-card es-fc" data-f="0"><h3>Position darstellen</h3><ul><li>„Der Autor / die Autorin vertritt die Auffassung, dass …“</li><li>„Nach Ansicht von … ist …“</li><li>„Zentral für diese Position ist die Annahme, dass …“</li><li>„Die These des Textes lautet, dass …“</li></ul></div><div class="es-card es-fc" data-f="1"><h3>Begründungen sichtbar machen</h3><ul><li>„Dies wird damit begründet, dass …“</li><li>„Das Argument beruht auf der Annahme, dass …“</li><li>„Entscheidend für diese Argumentation ist …“</li><li>„Aus dieser Annahme folgt, dass …“</li></ul></div><div class="es-card es-fc" data-f="2"><h3>Übergang zur Kritik</h3><ul><li>„Problematisch erscheint an dieser Stelle jedoch, dass …“</li><li>Nicht überzeugend erscheint mir jedoch der Gedanke, die Idee, die Argumentation, etc., mit dessen Hilfe begründet wird, dass …</li><li>„Fraglich ist allerdings, ob …“</li><li>„Nicht überzeugend ist der Gedanke, dass …“</li><li>„Hier zeigt sich eine zentrale Schwierigkeit der Position: …“</li><li>(Nicht) gut begründet wurde in dem Text der Gedanke …</li></ul></div><div class="es-card es-fc" data-f="3"><h3>Zustimmung formulieren</h3><ul><li>„Diese Argumentation überzeugt, weil …“</li><li>„Dem kann zugestimmt werden, insofern …“</li><li>„Der Gedanke erscheint plausibel, da …“</li><li>„Besonders überzeugend ist hierbei, dass …“</li><li>Angenommen, … hätte Recht, dann wäre …</li><li>Der Autor / die Autorin überzeugt mich, weil er / sie …</li></ul></div><div class="es-card es-fc" data-f="4"><h3>Positionen vergleichen</h3><ul><li>„Im Gegensatz zu … vertritt … die Auffassung, dass …“</li><li>„Während … davon ausgeht, dass …, betont …“</li><li>„Beide Positionen stimmen darin überein, dass …, unterscheiden sich jedoch in …“</li><li>„Verglichen mit der Position von … erscheint … überzeugender, weil …“</li><li>Die These von … steht im Widerspruch zu der These von …</li><li>Im Vergleich mit der Position von … erscheint mir die Position von … überzeugender, weil sie …</li></ul></div><div class="es-card es-fc" data-f="5"><h3>Beispiele und Gedankenexperimente</h3><ul><li>„Man kann sich dies an folgendem Beispiel verdeutlichen: …“</li><li>„Angenommen, … wäre der Fall, dann …“</li><li>„Ein Gedankenexperiment verdeutlicht diese Position: …“</li><li>„Dies lässt sich etwa an folgender Situation zeigen: …“</li></ul></div><div class="es-card es-fc" data-f="6"><h3>Konsequenzen aufzeigen</h3><ul><li>„Daraus ergibt sich, dass …“</li><li>„Dies hätte zur Folge, dass …“</li><li>„Unter dieser Voraussetzung müsste man annehmen, dass …“</li><li>„Für Individuum / Gesellschaft / Staat bedeutet dies, dass …“</li></ul></div><div class="es-card es-fc" data-f="7"><h3>Eigene Stellungnahme</h3><ul><li>„Aus meiner Sicht lässt sich einwenden, dass …“</li><li>„Vor diesem Hintergrund erscheint die Position nur bedingt überzeugend, da …“</li><li>„Ich schließe mich dieser Auffassung insofern an, als …“</li><li>„Diese Position überzeugt nur unter der Bedingung, dass …“</li><li>Bezogen auf meine eigenen Überlegungen / Erfahrungen kann ich dem Autor oder der Autorin (nicht) zustimmen, weil …</li></ul></div><div class="es-card es-fc" data-f="8"><h3>Weiterdenken</h3><ul><li>„Der Gedanke ließe sich weiterführen, indem …“</li><li>Den Gedanken von … möchte ich wie folgt erweitern / umformulieren / neu denken: …</li><li>„Diese Position könnte ergänzt werden durch …“</li><li>„Eine mögliche Weiterentwicklung dieses Arguments wäre …“</li><li>„Damit wird jedoch eine neue Frage aufgeworfen, nämlich …“</li></ul></div><div class="es-card es-fc" data-f="9"><h3>Struktur und Zwischenfazit</h3><ul><li>„Zusammenfassend lässt sich festhalten, dass …“</li><li>„Bis hierhin zeigt sich, dass …“</li><li>„Die bisherigen Überlegungen machen deutlich, dass …“</li></ul></div><div class="es-card es-fc" data-f="10"><h3>Abwägender Schluss</h3><ul><li>„Insgesamt zeigt sich ein Spannungsverhältnis zwischen …“</li><li>„Eine eindeutige Antwort lässt sich daher nicht geben, wohl aber festhalten, dass …“</li><li>„Die Frage bleibt letztlich offen, da …“</li></ul></div></div><h2 class="es-h">Besser vermeiden</h2><div class="es-acc"><details class="es-d"><summary><span class="es-nr es-nr-x">1</span><span class="es-dt">„Ich finde / Ich denke / Meiner Meinung nach …“</span></summary><div class="es-db"><p>Das ist keine philosophische Position, sondern ein Stimmungsbericht.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Ich finde, dass Kant hier Recht hat.“</p></div><div class="es-strong"><span>Besser</span><p>„Kants Argumentation überzeugt, da sie …“</p></div></div><p class="es-regel"><b>Regel:</b> Eigene Meinung immer als begründete Position, nie als Gefühl.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">2</span><span class="es-dt">Rhetorische Fragen</span></summary><div class="es-db"><p>Sie ersetzen Analyse durch Show. Der Text fragt dann mehr, als er denkt.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Was ist Freiheit?“</p><p>„Braucht der Mensch Regeln?“</p></div><div class="es-strong"><span>Besser</span><p>„Die Frage nach der Freiheit lässt sich daher als Problem der … formulieren.“</p></div></div><p class="es-regel"><b>Regel:</b> Fragen gehören in die Aufgabenstellung, nicht in den Essaytext.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">3</span><span class="es-dt">Inhaltsangaben statt Argumentation</span></summary><div class="es-db"><p>Zusammenfassen ist nicht Denken. Prüfer sehen sofort: kein eigener Zugriff.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Zuerst erklärt der Autor …, dann sagt er …, danach …“</p></div><div class="es-strong"><span>Besser</span><p>„Das zentrale Argument des Autors besteht darin, dass …“</p></div></div><p class="es-regel"><b>Regel:</b> Nicht was steht im Text, sondern was wird damit behauptet.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">4</span><span class="es-dt">Aufzählung von Philosophen („Name-Dropping“)</span></summary><div class="es-db"><p>Viele Namen, keine Gedanken. Wirkt gelernt, nicht verstanden.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Platon sagt …, Aristoteles sagt …, Hobbes sagt …, Kant sagt …“</p></div><div class="es-strong"><span>Besser</span><p>„Während Hobbes Sicherheit priorisiert, betont Kant …“</p></div></div><p class="es-regel"><b>Regel:</b> Lieber 2-3 sauber verglichene Positionen als 6 angerissene.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">5</span><span class="es-dt">Umgangssprache / Alltagssprache</span></summary><div class="es-db"><p>Senkt das argumentative Niveau sofort.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Das macht irgendwie keinen Sinn.“</p><p>„Das ist halt schwierig.“</p><p>„Jetzt disst Kant Descartes voll, …“</p></div><div class="es-strong"><span>Besser</span><p>„Dies erscheint widersprüchlich, da …“</p></div></div><p class="es-regel"><b>Regel:</b> Sachlich, präzise, distanziert. Kein Gesprächston.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">6</span><span class="es-dt">Absolute Aussagen ohne Einschränkung</span></summary><div class="es-db"><p>Philosophie ist selten absolut. Solche Sätze sind fast immer falsch.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Freiheit ist immer gut.“</p><p>„Der Staat ist niemals gerecht.“</p></div><div class="es-strong"><span>Besser</span><p>„Unter bestimmten Bedingungen lässt sich argumentieren, dass …“</p></div></div><p class="es-regel"><b>Regel:</b> Denken in Bedingungen, Spannungen, Grenzen.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">7</span><span class="es-dt">Moralische Empörung statt Analyse</span></summary><div class="es-db"><p>Moral ersetzt Argument. Das ist kein Ethik-Essay, sondern Kommentarspalte.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Das ist unfair und unmenschlich.“</p></div><div class="es-strong"><span>Besser</span><p>„Aus dieser Position ergibt sich ein Problem der sozialen Gerechtigkeit, da …“</p></div></div><p class="es-regel"><b>Regel:</b> Nicht bewerten, begründen.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">8</span><span class="es-dt">Beispiele als Geschichten</span></summary><div class="es-db"><p>Beispiele sollen klären, nicht unterhalten.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Stellen wir uns vor, Max geht morgens zur Schule und …“</p></div><div class="es-strong"><span>Besser</span><p>„Man denke an eine Gesellschaft, in der …“</p></div></div><p class="es-regel"><b>Regel:</b> Beispiele abstrakt, kurz, funktional.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">9</span><span class="es-dt">Schein-Schlüsse („Also ist klar, dass …“)</span></summary><div class="es-db"><p>Vortäuschung von Eindeutigkeit, wo keine ist.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>„Also ist klar, dass Kant Recht hat.“</p></div><div class="es-strong"><span>Besser</span><p>„Insgesamt spricht dieses Argument für …, bleibt jedoch in Bezug auf … problematisch.“</p></div></div><p class="es-regel"><b>Regel:</b> Philosophische Schlüsse sind abwägend, nicht endgültig.</p></div></details><details class="es-d"><summary><span class="es-nr es-nr-x">10</span><span class="es-dt">Fehlende Übergänge</span></summary><div class="es-db"><p>Gedanken stehen nebeneinander, aber hängen nicht zusammen.</p><div class="es-gs"><div class="es-weak"><span>Schlecht</span><p>Neuer Absatz ohne Begründung.</p></div><div class="es-strong"><span>Besser</span><p>„Vor diesem Hintergrund lässt sich nun die Position von … betrachten.“</p></div></div><p class="es-regel"><b>Regel:</b> Jeder neue Gedanke braucht ein sprachliches Gelenk.</p></div></details></div><p class="es-quelle">Aus: Satzanfänge &amp; Formulierungen für den Essay (Unterrichtsmaterial).</p></section><section class="es-pane" id="tab-training" role="tabpanel" hidden><div class="es-card es-lead"><h2>Frage knacken: üben</h2><p>Wähle eine Frage und geh die vier Schritte durch. Schreib zuerst selbst, dann vergleiche mit dem Lösungsvorschlag. Es gibt nicht die eine richtige Lösung: Der Vorschlag zeigt eine mögliche, gut begründete Richtung.</p></div><div class="es-qlist" id="esQList"><button type="button" class="es-q" data-i="0"><span>Politische Philosophie</span>Reduziert die moderne Demokratie die Bürger auf bloße Wähler?</button><button type="button" class="es-q" data-i="1"><span>Politische Philosophie</span>Ist Freiheit ohne rechtliche Ordnung möglich?</button><button type="button" class="es-q" data-i="2"><span>Erkenntnistheorie</span>Können wir sicher sein, dass die Welt so ist, wie wir sie wahrnehmen?</button><button type="button" class="es-q" data-i="3"><span>Ethik</span>Kommt es beim moralischen Handeln nur auf die Folgen an?</button><button type="button" class="es-q" data-i="4"><span>Anthropologie</span>Bestimmt die Gesellschaft, wer wir sind?</button></div><div class="es-train" id="esTrain"></div></section></div><script>
+(function(){
+  var btn=document.getElementById('themeBtn');
+  var html=document.documentElement;
+  var MOON='<svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m51.625 95.188c-14.523-0.11328-28.168-6.9531-36.953-18.52-8.7852-11.562-11.715-26.543-7.9336-40.566 3.7852-14.02 13.852-25.496 27.262-31.07l1.9062-0.75 2.9688 2.875-0.71875 1.9688c-3.9297 9.8828-3.8281 20.914 0.28125 30.723 4.1133 9.8086 11.91 17.613 21.715 21.738 9.8047 4.125 20.836 4.2383 30.723 0.32031l1.875-0.75 2.9688 2.8125-0.6875 2.0938c-3.4844 8.6445-9.4844 16.047-17.223 21.238-7.7422 5.1953-16.863 7.9414-26.184 7.8867zm-21.469-81.25c-10.801 6.6953-17.848 18.055-19.043 30.707-1.1953 12.648 3.5938 25.129 12.949 33.73 7.375 6.6719 16.922 10.441 26.867 10.602 9.9453 0.16016 19.609-3.2969 27.195-9.7266 3.1367-2.6914 5.8359-5.8555 8-9.375-15.652 3.4961-32.008-1.2539-43.352-12.594-11.344-11.336-16.102-27.688-12.617-43.344z"/></svg>';
+  var SUN='<svg fill="currentColor" width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m48 17v6h4v-6zm-19.906 8.25-2.8438 2.8125 4.25 4.25 2.8125-2.8438zm43.812 0-4.2188 4.2188 2.8125 2.8438 4.25-4.25zm-21.906 3.75c-11.574 0-21 9.4258-21 21s9.4258 21 21 21 21-9.4258 21-21-9.4258-21-21-21zm0 4c9.4141 0 17 7.5859 17 17s-7.5859 17-17 17-17-7.5859-17-17 7.5859-17 17-17zm-33 15v4h6v-4zm60 0v4h6v-4zm-47.5 19.656-1.4062 1.4375-1.4375 1.4062-1.4062 1.4062 2.8438 2.8438 1.4062-1.4375 2.8125-2.8125zm41 0-2.8125 2.8438 2.8125 2.8125 1.4062 1.4375 2.8438-2.8438-1.4062-1.4062-1.4375-1.4062zm-22.5 9.3438v6h4v-6z"/></svg>';
+  function setIcon(isLight){ if(btn) btn.innerHTML=isLight?SUN:MOON; }
+  if(localStorage.getItem('philo-theme')==='light'){ html.classList.add('light'); setIcon(true); }
+  else { setIcon(false); }
+  if(btn){ btn.addEventListener('click',function(){
+    var l=html.classList.toggle('light');
+    setIcon(l);
+    localStorage.setItem('philo-theme',l?'light':'dark');
+  }); }
+})();
+</script>
+<div class="version-badge">v1.0</div>
+<style>
+/* ── PAGE HERO: Inhalt links, Titel rechts ── */
+.page-hero-inner { text-align: left !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+.page-hero h1 {
+  font-family: var(--serif) !important;
+  font-size: clamp(1.8rem,4vw,2.8rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  text-align: left !important;
+  margin-bottom: .5rem !important;
+}
+.page-hero p {
+  text-align: left !important;
+}
+
+/* ── VOLLBILD: kein max-width ── */
+.lf-wrap { max-width: none !important; padding: 1.5rem 2rem !important; }
+
+/* ── SEKTIONS-HEADER: neutral, rechtsbündig ── */
+.lf-sem-hdr {
+  color: var(--text-3) !important;
+  border-color: var(--border-2) !important;
+  text-align: left !important;
+  font-size:14.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .08em !important;
+  padding: 4px 0 !important;
+  margin-bottom: .75rem !important;
+  border-bottom-width: 1px !important;
+}
+
+/* ── KURS-BADGE (Platzhalter) ── */
+.lf-kurs-badge {
+  display: inline-flex;
+  font-size:13px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text-3);
+  border: 1px solid var(--border-2);
+  vertical-align: middle;
+  margin-left: .4rem;
+}
+.lf-kurs-badge:empty { display: none; }
+
+/* ── FILTER-BUTTONS: Basis-Styling (Pills wie auf anderen Seiten) ── */
+.fbtn {
+  padding: 4px 13px !important;
+  border: 1px solid var(--border-2) !important;
+  border-radius: 99px !important;
+  background: var(--surface) !important;
+  cursor: pointer !important;
+  font-size:15.5px !important;
+  color: var(--text-3) !important;
+  font-family: inherit !important;
+  transition: all .15s !important;
+}
+.fbtn:hover { border-color: var(--accent) !important; color: var(--text) !important; }
+.fbtn.on { background: var(--accent) !important; color: #fff !important; border-color: var(--accent) !important; font-weight: 600 !important; }
+html.light .fbtn { background: var(--surface) !important; border-color: rgba(0,0,0,.12) !important; color: #374151 !important; }
+html.light .fbtn.on { background: var(--accent) !important; color: #fff !important; }
+
+/* ── FILTERLEISTE: identisch zu .filter-bar ── */
+.lf-filter-bar {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: .55rem 1.25rem !important;
+  display: flex !important;
+  gap: .4rem !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+/* ── CARD: Frage linksbündig, Thema als Subtext ── */
+.lf-topic {
+  text-align: left !important;
+  font-size:13.5px !important;
+  color: var(--muted) !important;
+  margin-bottom: 3px !important;
+}
+.lf-q {
+  text-align: left !important;
+  font-size:16px !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  color: var(--text) !important;
+}
+</style>
+<style>
+/* ── ORANGE ACTIVE STATES (alle Seiten) ── */
+
+/* Filter-Buttons */
+.fbtn.on, .fbtn.on.sem-E, .fbtn.on.sem-Et, .fbtn.on.sem-S, .fbtn.on.sem-A,
+.fbtn.on.sem-all {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+  font-weight:600 !important;
+}
+html.light .fbtn.on { background:var(--accent) !important; border-color:var(--accent) !important; }
+
+/* Karteikarten: Stapel-Buttons + Modus */
+.sbtn.on, .sbtn.on.sem-E, .sbtn.on.sem-Et, .sbtn.on.sem-S,
+.sbtn.on.sem-A, .sbtn.on.sem-all {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+  font-weight:600 !important;
+}
+.mode-btn.on {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+}
+
+/* Vergleiche: View-Buttons, Nav-Buttons */
+.vb.on {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+}
+.nb.on, .nb.fw.on {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+}
+
+/* Begriffe: View-Toggle */
+.vtbtn.on, .vtbtn.active {
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+}
+
+/* Nav active link */
+.topnav a.active {
+  color:var(--accent) !important;
+  font-weight:600 !important;
+  background:var(--accent-soft) !important;
+}
+</style>
+
+<script>
+(function(){
+  var h=document.getElementById('navHamburger'),l=document.getElementById('navLinks');
+  if(!h||!l)return;
+  var BAR='<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect y="2" width="16" height="1.5" rx=".75"/><rect y="7.25" width="16" height="1.5" rx=".75"/><rect y="12.5" width="16" height="1.5" rx=".75"/></svg>';
+  var X='<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><line x1="2" y1="2" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="2" x2="2" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  h.addEventListener('click',function(){var o=l.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?X:BAR;});
+  l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');h.setAttribute('aria-expanded','false');h.innerHTML=BAR;});});
+})();
+</script>
+<style>
+/* ═══ Philo-CI Skin v1 (Styleguide v1.1): überschreibt die alten Farben, Schrift und Navigation ═══ */
+html.light{
+  --bg:#FBFAF7; --bg-2:#F4F5F7; --surface:#FFFFFF; --surface-2:#EEF1F5;
+  --text:#16202B; --text-2:#2B3742; --text-3:#4A5663; --muted:#6B7785;
+  --border:#E4E2DC; --border-2:#D3D8DF;
+  --nav-bg:rgba(238,241,245,.92);
+  --accent:#003462; --accent-hover:#0B4A85; --accent-soft:rgba(0,52,98,.07); --accent-glow:rgba(0,52,98,.12);
+  --gold:#8A5A00; --goldl:#FDF0D3;
+  --b:#16202B; --bm:#4A5663; --bl:#E4E2DC; --ba:#6B7785; --w:#FFFFFF; --br:#E4E2DC;
+  --orange-text:#C24F00; --amber:#F2A516; --amber-soft:#FDF0D3; --sky:#8EC5F0;
+}
+html:not(.light){
+  --bg:#0B1C2E; --bg-2:#0E2236; --surface:#0F2236; --surface-2:#12283F;
+  --text:#E8EDF2; --text-2:#C9D3DC; --text-3:#A3AFBC; --muted:#8797A7;
+  --border:#1F3A55; --border-2:#2A4A69;
+  --nav-bg:rgba(18,40,63,.92);
+  --accent:#8EC5F0; --accent-hover:#B5DAF6; --accent-soft:rgba(142,197,240,.12); --accent-glow:rgba(142,197,240,.2);
+  --gold:#F7B42C; --goldl:#33270C;
+  --b:#E8EDF2; --bm:#A3AFBC; --bl:#1F3A55; --ba:#8797A7; --w:#0F2236; --br:#1F3A55;
+  --orange-text:#F28C3A; --amber:#F7B42C; --amber-soft:#33270C; --sky:#8EC5F0;
+}
+:root{
+  --font:"Gill Sans","Gill Sans MT","Lato",Calibri,sans-serif !important;
+  --serif:"Gill Sans","Gill Sans MT","Lato",Calibri,sans-serif !important;
+  --r:14px; --rl:22px;
+}
+@media screen{
+  body{padding-top:88px !important;font-family:var(--font) !important;font-size:16px !important;line-height:1.6;background:var(--bg) !important;-webkit-font-smoothing:antialiased}
+  .sidebar{top:88px !important;height:calc(100vh - 88px) !important;background:var(--bg) !important;border-right:1px solid var(--border) !important}
+  .layout{height:calc(100vh - 88px) !important}
+
+  /* Navigation als Pille wie auf der Startseite */
+  .topnav{top:12px !important;left:max(12px,calc(50% - 590px)) !important;right:max(12px,calc(50% - 590px)) !important;
+    height:64px !important;border-radius:99px !important;background:var(--nav-bg) !important;border:0 !important;
+    box-shadow:0 8px 30px rgba(0,52,98,.06) !important;padding:0 12px 0 10px !important;gap:.2rem !important;
+    backdrop-filter:blur(14px) saturate(160%) !important;-webkit-backdrop-filter:blur(14px) saturate(160%) !important}
+  .topnav .brand{display:flex !important;align-items:center;gap:10px;margin-right:auto !important;padding:0 !important;background:none !important;text-decoration:none}
+  .topnav .brand .ci-logo{width:44px;height:44px;flex-shrink:0}
+  .topnav .brand b{font-size:17px;font-weight:700;color:var(--text)}
+  .topnav .nav-links{margin:0 auto !important}
+  .topnav a:not(.brand){font-size:15.5px !important;padding:8px 16px !important;border-radius:99px !important;color:var(--text-3) !important;background:none !important;font-weight:400 !important;text-decoration:none}
+  .topnav a:not(.brand):hover{background:var(--surface) !important;color:var(--text) !important}
+  .topnav a.active{background:var(--surface) !important;color:var(--text) !important;font-weight:700 !important}
+  .topnav .sp{flex:1}
+  .topnav .nav-hamburger{display:none !important}
+  html .topnav .theme-toggle,html .topnav .nav-hamburger,html.light .topnav .theme-toggle,html.light .topnav .nav-hamburger{width:42px !important;height:42px !important;border-radius:50% !important;border:0 !important;background:var(--surface) !important;color:var(--text-3) !important;box-shadow:none !important}
+  .topnav .theme-toggle:hover,.topnav .nav-hamburger:hover{color:var(--text) !important;transform:none !important}
+
+  /* Kopfbereiche */
+  .page-hero-badge,.hero-badge{background:var(--surface) !important;border:1px solid var(--border) !important;color:var(--accent) !important;border-radius:99px !important;font-size:12.5px !important;letter-spacing:.1em}
+  h1,h2,h3{font-family:var(--font) !important;letter-spacing:-.01em}
+  .version-badge{display:none !important}
+
+  /* Filter-Knöpfe */
+  .fbtn,.sbtn,.vtbtn,.mode-btn{font-family:var(--font) !important;font-size:14.5px !important;border-radius:99px !important;padding:8px 16px !important}
+  .fbtn.active,.fbtn.on,.vtbtn.active,.mode-btn.active,.sbtn.active{background:var(--text) !important;color:var(--bg) !important;border-color:var(--text) !important}
+  html:not(.light) .fbtn:not(.active):not(.on),html:not(.light) .vtbtn:not(.active),html:not(.light) .sbtn:not(.active),html:not(.light) .mode-btn:not(.active):not(.on){background:var(--surface-2) !important;color:var(--text-2) !important;border-color:var(--border) !important}
+  input[type=search],input[type=text],.toolbar input{background:var(--surface) !important;color:var(--text) !important;border-color:var(--border-2) !important;font-family:var(--font) !important;font-size:16px !important;border-radius:99px !important}
+
+  /* Themenfeld-Punkt statt Emoji */
+  .ci-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+
+  /* Vergleichstabellen: gut lesbar */
+  .ptbl td,.ctbl td{line-height:1.55 !important;padding:12px 14px !important;vertical-align:top}
+  .ptbl th,.ctbl th{padding:12px 14px !important;line-height:1.35 !important}
+  .ptbl td.rl,.ctbl td.rl{color:var(--text-3) !important;letter-spacing:.06em}
+  html.light .mr td{background:#EEF3F8 !important;color:#003462 !important;font-style:normal !important;font-weight:600;border-top:2px solid #003462 !important;border-bottom:2px solid #003462 !important}
+  html.light .mr td.rl{background:#003462 !important;color:#fff !important}
+  html:not(.light) .mr td{background:#12355A !important;color:#E8EDF2 !important;font-style:normal !important;font-weight:600;border-top:2px solid #8EC5F0 !important;border-bottom:2px solid #8EC5F0 !important}
+  html:not(.light) .mr td.rl{background:#8EC5F0 !important;color:#0B1C2E !important}
+
+  /* Keine Seitenstreifen an Kästen (CI 04.10.2026) */
+  .def-label,.intro-note,.antwort,.answer-block,.pcm,.qqt,.lf,.cb-label,.term-card.hl{border-left:0 !important;box-shadow:none !important}
+  .def-label{border-radius:12px;padding:.6rem .9rem !important;background:var(--surface-2) !important}
+  .def-label:has(.lbl-wichtig){background:var(--amber-soft) !important}
+  .lf,.qqt{border-radius:14px !important}
+  html.light .lbl-wichtig{color:#8A5A00 !important}
+  .thdr h2{font-size:26px !important;line-height:1.2}
+  html.light .lf,html .lf{background:#003462 !important;padding:14px 18px !important;font-size:17px !important;border:0 !important}
+  html.light .lf,html.light .lf *,html .lf,html .lf *{color:#fff !important}
+  html:not(.light) .lf{background:#12355A !important}
+
+  /* Abschnitte in Vergleichen klar trennen */
+  .ci-ul{margin:.2rem 0 .4rem 0 !important;padding:0 0 0 1.1rem !important;display:grid;gap:.55rem}
+  .ci-ul li{padding-left:.2rem;line-height:1.55}
+  .ci-ul li::marker{color:var(--accent)}
+  .ci-sub{font-weight:700;margin:.9rem 0 .35rem !important;color:var(--text)}
+  .ci-sub:first-child{margin-top:0 !important}
+  .ci-note{margin:.4rem 0 !important;padding:.4rem .7rem;border-radius:10px;background:var(--surface-2);font-weight:600}
+  .ci-p{margin:.4rem 0 !important}
+  .pcd .dl{display:inline-block !important;margin:1.8rem 0 .7rem !important;padding:5px 14px !important;border-radius:99px !important;
+    background:#003462 !important;color:#fff !important;font-size:12.5px !important;font-weight:700 !important;letter-spacing:.1em !important;text-transform:uppercase}
+  html:not(.light) .pcd .dl{background:#8EC5F0 !important;color:#0B1C2E !important}
+  .pcd .dl:first-child{margin-top:.6rem !important}
+  .pcd .dt{padding:0 0 1.4rem !important;border-bottom:1px solid var(--border) !important;font-size:16px !important;line-height:1.6 !important}
+  .pcd .dt:last-child{border-bottom:0 !important}
+  .ptbl tbody td{border-top:1px solid var(--border) !important}
+  html .ptbl td.rl,html.light .ptbl td.rl{font-weight:700 !important;color:var(--accent) !important;font-size:13px !important;letter-spacing:.08em !important}
+
+  /* Links */
+  a{color:inherit}
+}
+@media (max-width:900px){
+  .topnav .nav-links{display:none;position:fixed !important;top:84px !important;left:12px !important;right:12px !important;
+    flex-direction:column;background:var(--bg) !important;border-radius:24px !important;padding:.75rem !important;box-shadow:0 12px 40px rgba(0,0,0,.14) !important;margin:0 !important}
+  .topnav .nav-links.open{display:flex !important}
+  .topnav .nav-hamburger{display:flex !important;align-items:center;justify-content:center}
+  .topnav .brand b{display:none}
+}
+
+</style>
+
+<style>.topnav .brand .ci-lvl{color:var(--muted) !important;font-weight:400 !important}.topnav .brand{margin-right:0 !important}.topnav .nav-links{margin:0 auto !important}</style>
+<style>.upd-line{text-align:center;font-size:13px;color:var(--text-3);padding:2.5rem 1rem 2rem;margin:0;opacity:.85}</style>
+<p class="upd-line" data-upd=""></p>
+<script>/* Letzte Aktualisierung (automatisch aus dem Dateidatum) */
+(function(){var d=new Date(document.lastModified);if(isNaN(d))return;
+var t='Letzte Aktualisierung: '+('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear();
+document.documentElement.style.setProperty('--upd','"'+t+'"');
+document.querySelectorAll('[data-upd]').forEach(function(e){e.textContent=(e.getAttribute('data-upd')||'')+t});})();</script>
+<style>/* ===== Essay-Werkstatt ===== */
+:root{--es-navy:#003462;--es-amber:#F2A516;--es-amber-soft:#FDF0D3;--es-red:#C0392B;--es-red-soft:#FBEAEA;--es-green:#2E7D5B;--es-green-soft:#E6F4EC}
+html:not(.light){--es-navy:#58B8E8;--es-amber-soft:rgba(242,165,22,.14);--es-red:#F08A7E;--es-red-soft:rgba(240,138,126,.10);--es-green:#7BD3A8;--es-green-soft:rgba(123,211,168,.10)}
+.es-tabs{position:sticky;top:64px;z-index:50;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 1.25rem;margin:0 auto 4px;max-width:900px;background:var(--bg)}
+.es-tabs::-webkit-scrollbar{display:none}
+.es-tab{flex:none;font:600 15px/1 var(--font);padding:11px 18px;border-radius:99px;border:1px solid var(--border-2);background:var(--surface);color:var(--text-2);cursor:pointer;transition:background .15s,color .15s}
+.es-tab:hover{color:var(--text)}
+.es-tab[aria-selected=true]{background:var(--es-navy);border-color:var(--es-navy);color:#fff}
+html:not(.light) .es-tab[aria-selected=true]{color:#0B1C2E}
+.es-wrap{max-width:900px;margin:0 auto;padding:1rem 1.25rem 1rem}
+.es-pane{animation:esIn .2s ease}
+@keyframes esIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.es-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px 24px;margin-bottom:16px}
+.es-card h2{font-size:22px;margin:0 0 8px;color:var(--text)}
+.es-card h3{font-size:17px;margin:0 0 8px;color:var(--text)}
+.es-card p,.es-card li{color:var(--text-2);line-height:1.6;font-size:16px}
+.es-card p{margin:0 0 8px}.es-card p:last-child{margin-bottom:0}
+.es-card ul{margin:0;padding-left:20px}.es-card li{margin-bottom:4px}
+.es-card-a{border-color:var(--es-navy)}
+.es-h{font-size:22px;font-weight:700;color:var(--text);margin:34px 0 6px;letter-spacing:-.01em}
+.es-sub{color:var(--text-3);font-size:15.5px;line-height:1.55;margin:0 0 14px}
+.es-nr{flex:none;width:32px;height:32px;border-radius:50%;background:var(--es-navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+html:not(.light) .es-nr{color:#0B1C2E}
+.es-nr-x{background:var(--es-red)}
+.es-sn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--es-amber);color:#1a1d24;display:inline-grid;place-items:center;font-weight:700;font-size:13.5px}
+.es-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--surface-2);color:var(--text-3);margin-bottom:6px}
+.es-tag-a{background:var(--es-amber-soft);color:var(--text)}
+.es-eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.es-merk{border:2px solid var(--es-amber);border-radius:16px;padding:16px 20px;margin:24px 0 8px;color:var(--text-2);line-height:1.6}
+.es-merk a{color:var(--es-navy);font-weight:600}
+.es-quelle{font-size:13.5px;color:var(--text-3);text-align:center;margin:18px 0 0}
+/* Zeit: Zeilen mit proportionalem Balken */
+.es-zeit{margin:6px 0 4px;border-top:1px solid var(--border-2)}
+.es-z{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--border-2)}
+.es-zl b{display:block;font-size:18px;color:var(--text);line-height:1.2}
+.es-zl span{display:block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:3px}
+.es-zt{position:relative;height:6px;background:var(--surface-2);border-radius:3px;margin:7px 0 10px}
+.es-zt i{position:absolute;top:0;bottom:0;background:var(--text-3);border-radius:3px}
+.es-z-main .es-zt i{background:var(--es-amber)}
+.es-zr p{margin:0;font-size:15px;line-height:1.5;color:var(--text-2)}
+/* Akkordeon */
+.es-acc{display:flex;flex-direction:column;gap:8px}
+.es-d{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.es-d summary{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;list-style:none;font-weight:600;font-size:16.5px;color:var(--text)}
+.es-d summary::-webkit-details-marker{display:none}
+.es-d summary::after{content:"";margin-left:auto;width:9px;height:9px;border:solid var(--text-3);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s}
+.es-d[open] summary::after{transform:rotate(-135deg)}
+.es-db{padding:0 18px 16px 64px;color:var(--text-2);line-height:1.6}
+.es-db p{margin:0 0 8px}
+.es-frage{font-style:italic;color:var(--text)}
+.es-gs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.es-gs>div{background:var(--bg);border-radius:12px;padding:10px 14px}
+.es-gs p{margin:0;font-size:15px}
+.es-regel{margin-top:10px !important}
+/* Checkliste */
+.es-intro .es-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.es-btn{font:600 15px/1 var(--font);padding:11px 20px;border-radius:99px;border:0;cursor:pointer;background:var(--es-navy);color:#fff}
+html:not(.light) .es-btn{color:#0B1C2E}
+.es-btn-soft{background:var(--surface-2) !important;color:var(--text-2) !important;border:1px solid var(--border-2)}
+.es-teil{margin:28px 0}
+.es-teil-h{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.es-teil-h h2{font-size:20px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin:0}
+.es-bar{flex:1;max-width:160px;height:6px;border-radius:99px;background:var(--surface-2);margin-left:auto;overflow:hidden}
+.es-bar span{display:block;height:100%;width:0;background:var(--es-amber);border-radius:99px;transition:width .25s}
+.es-ab h3{font-size:15.5px;font-weight:700;color:var(--text-3);margin:16px 0 4px}
+.es-ab ul{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.es-ab li+li{border-top:1px solid var(--border)}
+.es-ab label{display:flex;gap:14px;align-items:flex-start;padding:12px 16px;cursor:pointer;line-height:1.5;font-size:16.5px;color:var(--text-2)}
+.es-ab label:hover{background:var(--accent-soft)}
+.es-ab input{position:absolute;opacity:0;pointer-events:none}
+.es-box{flex:none;width:22px;height:22px;margin-top:1px;border:2px solid var(--text-3);border-radius:6px;display:grid;place-items:center;transition:background .15s,border-color .15s}
+.es-ab input:checked+.es-box{background:var(--es-amber);border-color:var(--es-amber)}
+.es-ab input:checked+.es-box::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.es-ab input:checked~.es-t{color:var(--text-3)}
+.es-ab input:focus-visible+.es-box{outline:3px solid var(--accent-glow);outline-offset:2px}
+.es-hint{display:block;margin-top:5px;font-size:14px;color:var(--text-3);border-left:3px solid var(--es-amber);padding-left:9px}
+.es-hint b{color:var(--text-2)}
+.es-formal{margin-top:24px}
+/* Bac-Beispiel */
+.es-frage26{border:2px solid var(--es-navy)}
+.es-frage26 h2{font-size:clamp(22px,3.4vw,30px);line-height:1.25;margin-bottom:14px}
+.es-steps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.es-step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px}
+.es-step h3{display:inline;font-size:17px;margin-left:8px;color:var(--text)}
+.es-step p{margin:10px 0 0;color:var(--text-2);line-height:1.55;font-size:15.5px}
+.es-step dl{margin:10px 0 0}
+.es-step dt{font-weight:700;color:var(--text);font-size:15.5px}
+.es-step dd{margin:0 0 6px;color:var(--text-2);font-size:15px;line-height:1.5}
+.es-weak,.es-strong{border-radius:12px;padding:10px 14px}
+.es-weak{background:var(--es-red-soft)}.es-strong{background:var(--es-green-soft)}
+.es-weak>span,.es-strong>span{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.es-weak>span{color:var(--es-red)}.es-strong>span{color:var(--es-green)}
+.es-step .es-weak,.es-step .es-strong{margin-top:10px}
+.es-chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px}
+.es-chip{font:500 14.5px/1 var(--font);padding:9px 14px;border-radius:99px;border:1px solid var(--border-2);background:var(--surface);color:var(--text-2);cursor:pointer}
+.es-chip b{color:var(--es-navy);margin-right:3px}
+.es-chip.on{background:var(--es-navy);border-color:var(--es-navy);color:#fff}
+.es-chip.on b{color:inherit}
+html:not(.light) .es-chip.on{color:#0B1C2E}
+.es-essay{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px 24px}
+.es-plabel{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin:18px 0 8px}
+.es-plabel:first-child{margin-top:0}
+.es-para{display:grid;grid-template-columns:1fr 230px;gap:22px;margin-bottom:14px}
+.es-para p{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.75;color:var(--text)}
+.es-para aside{font-size:14px;line-height:1.5;color:var(--text-3);border-left:3px solid var(--es-amber);padding-left:12px;align-self:start}
+.es-m{background:transparent;color:inherit;border-bottom:2px solid var(--border-2);transition:background .2s,border-color .2s;padding:1px 0}
+.es-ks{font:700 10.5px/1 var(--font);color:var(--es-navy);margin-left:2px;vertical-align:super}
+.es-essay.filter .es-m{border-bottom-color:transparent}
+.es-essay.filter .es-ks{opacity:.25}
+.es-essay .es-m.hit{background:var(--es-amber-soft);border-bottom-color:var(--es-amber)}
+.es-essay .es-m.hit .es-ks{opacity:1}
+.es-pair{margin-bottom:18px}
+.es-pair h3{font-size:17px;color:var(--text);margin:0 0 8px}
+.es-pg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.es-pg p{margin:0;line-height:1.6;color:var(--text-2);font-size:15.5px}
+.es-warum{margin:8px 0 0;font-size:14.5px;color:var(--text-3);line-height:1.5}
+.es-fehler{display:flex;flex-direction:column;gap:10px}
+.es-f{display:flex;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px}
+.es-f p{margin:0;color:var(--text-2);line-height:1.55;font-size:15.5px}
+.es-f .es-ff{font-weight:600;color:var(--text);margin-bottom:4px}
+/* Werkzeugkasten */
+.es-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.es-fl{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px;position:relative}
+.es-fl b{display:block;margin:8px 0 4px;color:var(--text);font-size:15.5px}
+.es-fl p{margin:0;font-size:14.5px;line-height:1.45;color:var(--text-2)}
+.es-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.es-3 .es-card,.es-2 .es-card{margin:0}
+.es-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.es-fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.es-fgrid .es-card{margin:0}
+.es-fc li{font-size:15px}
+/* Training */
+.es-qlist{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.es-q{text-align:left;font:600 16px/1.4 var(--font);padding:14px 16px;border-radius:16px;border:1px solid var(--border-2);background:var(--surface);color:var(--text);cursor:pointer}
+.es-q span{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:5px}
+.es-q.on{border:2px solid var(--es-navy);padding:13px 15px}
+.es-train .es-tq{font-size:clamp(20px,3vw,26px);font-weight:700;line-height:1.3;color:var(--text);margin:6px 0 14px}
+.es-tstep{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin-bottom:10px}
+.es-tstep h3{display:inline;font-size:16.5px;margin-left:8px;color:var(--text)}
+.es-tstep .es-help{font-size:14.5px;color:var(--text-3);margin:6px 0 8px}
+.es-tstep textarea{width:100%;min-height:70px;resize:vertical;font:16px/1.5 var(--font);padding:10px 12px;border-radius:12px;border:1px solid var(--border-2);background:var(--bg);color:var(--text)}
+.es-tstep textarea:focus{outline:none;border-color:var(--es-navy);box-shadow:0 0 0 3px var(--accent-soft)}
+.es-show{margin-top:8px;font:600 14.5px/1 var(--font);background:none;border:0;color:var(--es-navy);cursor:pointer;padding:6px 0}
+.es-sol{margin-top:6px}
+.es-sol p{margin:0;color:var(--text-2);line-height:1.55;font-size:15.5px}
+.es-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.es-links a{font:600 14.5px/1 var(--font);padding:10px 16px;border-radius:99px;background:var(--surface-2);color:var(--text-2);text-decoration:none;border:1px solid var(--border-2)}
+.es-links a:hover{color:var(--text)}
+@media(max-width:760px){
+  .es-tabs{top:58px;padding:10px 1rem}
+  .es-wrap{padding:.75rem 1rem}
+  .es-steps,.es-pg,.es-gs,.es-3,.es-2,.es-fgrid,.es-qlist{grid-template-columns:1fr}
+  .es-flow{grid-template-columns:1fr 1fr}
+  .es-z{grid-template-columns:82px 1fr;gap:12px}
+  .es-zl b{font-size:16px}
+  .es-para{grid-template-columns:1fr;gap:8px}
+  .es-db{padding-left:18px}
+  .es-essay{padding:16px}
+  .es-bar{max-width:80px}
+  .es-ab label{font-size:16px}
+}
+@media print{
+  .topnav,.version-badge,.upd-line,.page-hero,.es-tabs,.es-intro .es-tools{display:none !important}
+  .es-pane{display:none !important}
+  #tab-checkliste{display:block !important}
+  body{padding-top:0 !important;background:#fff !important;color:#000 !important}
+  .es-wrap{max-width:none;padding:0}
+  .es-intro{border:0;padding:0;margin-bottom:10px;background:none}
+  .es-intro p{font-size:11pt;color:#000}
+  .es-checklist::before{content:"Checkliste Essay - Name: ____________________";display:block;font:700 16pt var(--font);margin-bottom:8px}
+  .es-teil{margin:6px 0 10px}
+  .es-teil-h h2{font-size:13pt;color:#000}.es-bar,.es-hint,.es-formal,.es-quelle{display:none}
+  .es-nr{background:#003462 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;width:24px;height:24px;font-size:11pt}
+  .es-ab{break-inside:avoid}.es-ab h3{font-size:11pt;margin:6px 0 2px;color:#003462}
+  .es-ab ul{border:0;background:none;border-radius:0}
+  .es-ab label{padding:3px 0;font-size:10.5pt;color:#000}
+  .es-ab input:checked~.es-t{color:#000 !important}
+  .es-box{width:14px;height:14px;border:1.5px solid #003462;border-radius:3px}
+  .es-ab input:checked+.es-box{background:none;border-color:#003462}
+  .es-ab input:checked+.es-box::after{display:none}
+}
+</style>
+<script>/* Essay-Werkstatt */
+(function(){
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  /* Tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.es-tab'));
+  function show(id,push){
+    if(!document.getElementById('tab-'+id))id='bac';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false');});
+    document.querySelectorAll('.es-pane').forEach(function(p){p.hidden=(p.id!=='tab-'+id);});
+    if(push&&history.replaceState)history.replaceState(null,'','#'+id);
+    ls('philo-essay-tab',id);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);
+    var w=document.getElementById('esTabs');var y=w.getBoundingClientRect().top+window.scrollY-70;if(window.scrollY>y)window.scrollTo({top:y});});});
+  show((location.hash||'').slice(1)||ls('philo-essay-tab')||'bac',false);
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1),false);});
+
+  /* Checkliste */
+  var KEY='philo-essay-checkliste-v13',st={};
+  try{st=JSON.parse(ls(KEY)||'{}')||{};}catch(e){st={};}
+  var boxes=document.querySelectorAll('.es-ab input[type=checkbox]');
+  function bars(){document.querySelectorAll('.es-teil').forEach(function(s){
+    var b=s.querySelectorAll('input'),n=0;b.forEach(function(x){if(x.checked)n++;});
+    s.querySelector('.es-bar span').style.width=(b.length?100*n/b.length:0)+'%';});}
+  function save(){ls(KEY,JSON.stringify(st));}
+  boxes.forEach(function(b){b.checked=!!st[b.dataset.id];
+    b.addEventListener('change',function(){if(b.checked)st[b.dataset.id]=1;else delete st[b.dataset.id];save();bars();});});
+  var r=document.getElementById('esReset');
+  if(r)r.addEventListener('click',function(){st={};save();boxes.forEach(function(b){b.checked=false;});bars();});
+  bars();
+
+  /* Kriterien-Filter im Musteressay */
+  var essay=document.getElementById('esEssay');
+  document.querySelectorAll('#esChips .es-chip').forEach(function(c){c.addEventListener('click',function(){
+    document.querySelectorAll('#esChips .es-chip').forEach(function(x){x.classList.toggle('on',x===c);});
+    var k=c.dataset.k;essay.classList.toggle('filter',!!k);
+    essay.querySelectorAll('.es-m').forEach(function(m){m.classList.toggle('hit',!!k&&m.dataset.k.split(' ').indexOf(k)>=0);});
+  });});
+
+  /* Formulierungshilfen-Filter */
+  document.querySelectorAll('#esFChips .es-chip').forEach(function(c){c.addEventListener('click',function(){
+    document.querySelectorAll('#esFChips .es-chip').forEach(function(x){x.classList.toggle('on',x===c);});
+    var f=c.dataset.f;document.querySelectorAll('.es-fc').forEach(function(card){card.hidden=!!f&&card.dataset.f!==f;});
+  });});
+
+  /* Training */
+  var TR=[{"q": "Reduziert die moderne Demokratie die Bürger auf bloße Wähler?", "bereich": "Politische Philosophie", "vid": "demokratie", "steps": ["Reduziert: unterstellt eine Verarmung oder einen Verlust. Moderne Demokratie: keine Antike, kein Ideal, sondern heutige repräsentative Systeme. Bürger: nicht „Menschen allgemein“, sondern politische Subjekte. Bloße Wähler: nur Wahlakt, keine weitere politische Teilhabe.", "Demokratie verspricht politische Teilhabe. Realität: Bürger handeln oft nur als Wähler. Spannung: Partizipation vs. politische Passivität.", "Ermöglicht die moderne Demokratie echte politische Teilhabe oder beschränkt sie Bürger auf den Wahlakt?", "Die moderne repräsentative Demokratie sichert politische Stabilität, reduziert Bürger jedoch weitgehend auf Wähler und schwächt dadurch aktive politische Teilhabe."]}, {"q": "Ist Freiheit ohne rechtliche Ordnung möglich?", "bereich": "Politische Philosophie", "vid": "vertragstheorie", "steps": ["Freiheit: tun können, was man will (negativ), oder sich selbst Gesetze geben (positiv)? Rechtliche Ordnung: Gesetze, die mit staatlicher Gewalt durchgesetzt werden. Möglich: nicht „wünschenswert“, sondern denkbar und dauerhaft.", "Recht begrenzt Freiheit, weil es Handlungen verbietet. Ohne Recht ist Freiheit aber ständig bedroht (Hobbes: Naturzustand). Spannung: Recht als Grenze oder als Bedingung der Freiheit?", "Ist das Recht eine Grenze der Freiheit oder ihre Voraussetzung?", "Ohne rechtliche Ordnung gibt es Willkür, aber keine gesicherte Freiheit. Recht ist deshalb Bedingung der Freiheit, solange es selbst durch die Freiheit der Bürger begrenzt bleibt."]}, {"q": "Können wir sicher sein, dass die Welt so ist, wie wir sie wahrnehmen?", "bereich": "Erkenntnistheorie", "vid": "rationalismus", "steps": ["Sicher: nicht „wahrscheinlich“, sondern unbezweifelbar. Die Welt: das, was unabhängig von uns besteht. Wahrnehmen: Wissen über die Sinne, im Unterschied zum Denken.", "Wir verlassen uns ständig auf die Sinne. Sinne können täuschen (Traumargument, optische Täuschungen). Spannung: Erfahrung als Quelle des Wissens oder als Quelle des Irrtums?", "Reicht Wahrnehmung für sicheres Wissen, oder braucht es etwas, das über die Sinne hinausgeht?", "Absolute Sicherheit liefert die Wahrnehmung nicht. Verlässliches Wissen entsteht erst, wenn die Vernunft die Erfahrung ordnet und prüft."]}, {"q": "Kommt es beim moralischen Handeln nur auf die Folgen an?", "bereich": "Ethik", "vid": "utilitarismus", "steps": ["Moralisches Handeln: Handeln, das sich als gut oder richtig rechtfertigen lässt. Nur: schließt andere Kriterien (Absicht, Pflicht, Charakter) aus. Folgen: Wirkungen auf das Wohl der Betroffenen.", "Wer nur auf Folgen schaut, kann sehr viel Leid verhindern. Er kann aber auch Handlungen rechtfertigen, die die Würde Einzelner verletzen. Spannung: Nutzen vs. Pflicht.", "Rechtfertigen gute Folgen jede Handlung, oder gibt es Grenzen, die unabhängig von den Folgen gelten?", "Folgen sind für moralisches Urteilen unverzichtbar, aber nicht ausreichend. Wo die Würde eines Menschen auf dem Spiel steht, gelten Grenzen, die kein Nutzen aufwiegt."]}, {"q": "Bestimmt die Gesellschaft, wer wir sind?", "bereich": "Anthropologie", "vid": "essentialismus", "steps": ["Bestimmt: legt fest, im Unterschied zu „beeinflusst“. Gesellschaft: Normen, Rollen, Erwartungen anderer. Wer wir sind: unsere Identität, unser Wesen.", "Wir übernehmen Sprache, Rollen und Werte von anderen. Gleichzeitig können wir uns zu ihnen verhalten und sie ablehnen (Sartre). Spannung: Prägung vs. Freiheit.", "Ist unsere Identität ein Produkt der Gesellschaft, oder bleibt uns die Freiheit, uns selbst zu entwerfen?", "Die Gesellschaft prägt, wer wir sind, aber sie bestimmt es nicht vollständig. Identität entsteht dort, wo wir uns zu den vorgefundenen Rollen bewusst verhalten."]}];
+  var STEPS=[['Schlüsselbegriffe','Welche Wörter tragen die Frage? Was bedeuten sie genau, was nicht?'],
+             ['Konflikt','Wo liegt die Spannung? Was spricht für Ja, was für Nein?'],
+             ['Leitfrage','Formuliere die Frage präziser, sodass man sie prüfen kann.'],
+             ['Hypothese','Deine vorläufige Antwort: begründbar, nicht bloß Meinung.']];
+  var box=document.getElementById('esTrain'),TKEY='philo-essay-training';
+  var notes={};try{notes=JSON.parse(ls(TKEY)||'{}')||{};}catch(e){notes={};}
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+  function open(i){
+    var t=TR[i];
+    document.querySelectorAll('.es-q').forEach(function(q){q.classList.toggle('on',+q.dataset.i===i);});
+    var h='<span class="es-eyebrow">'+esc(t.bereich)+'</span><p class="es-tq">'+esc(t.q)+'</p>';
+    STEPS.forEach(function(s,j){
+      var v=(notes[i]&&notes[i][j])||'';
+      h+='<div class="es-tstep"><span class="es-sn">'+(j+1)+'</span><h3>'+s[0]+'</h3><p class="es-help">'+s[1]+'</p>'+
+         '<textarea data-j="'+j+'" aria-label="'+s[0]+'">'+esc(v)+'</textarea>'+
+         '<button type="button" class="es-show" data-j="'+j+'">Lösungsvorschlag zeigen</button>'+
+         '<div class="es-sol es-strong" hidden><span>Lösungsvorschlag</span><p>'+esc(t.steps[j])+'</p></div></div>';
+    });
+    h+='<div class="es-links"><a href="vergleiche.html?id='+t.vid+'">Passender Vergleich</a><a href="leitfragen.html">Leitfragen</a><a href="begriffe.html">Begriffe nachschlagen</a></div>';
+    box.innerHTML=h;
+    box.querySelectorAll('textarea').forEach(function(a){a.addEventListener('input',function(){
+      notes[i]=notes[i]||{};notes[i][a.dataset.j]=a.value;ls(TKEY,JSON.stringify(notes));});});
+    box.querySelectorAll('.es-show').forEach(function(b){b.addEventListener('click',function(){
+      var s=b.nextElementSibling;s.hidden=!s.hidden;b.textContent=s.hidden?'Lösungsvorschlag zeigen':'Lösungsvorschlag ausblenden';});});
+  }
+  document.querySelectorAll('.es-q').forEach(function(q){q.addEventListener('click',function(){open(+q.dataset.i);
+    box.scrollIntoView({behavior:'smooth',block:'start'});});});
+  if(box)open(0);
+})();
+</script>
+</body>
+</html>

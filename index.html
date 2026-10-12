@@ -88,7 +88,7 @@ section.block{padding:8rem 0}
 .head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap}
 .head h2{font-size:clamp(2rem,3.6vw,3rem);font-weight:600;line-height:1.1;max-width:34rem}
 .head p{color:var(--text-2);max-width:26rem}
-.mods{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .mod{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;padding:2rem 1.5rem 1.75rem;border-radius:28px;background:var(--card);border:1px solid var(--line);transition:transform .2s,border-color .2s}
 .mod:hover{transform:translateY(-4px);border-color:var(--text-3)}
 .mod svg.ic{width:96px;height:96px}
@@ -194,6 +194,13 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
     </symbol>
 
     <!-- Karteikarten -->
+    <symbol id="i-feder" viewBox="0 0 64 64">
+      <path style="fill:var(--acc)" d="M47 9c-14 3-24 14-27 30l5 5c16-3 27-13 30-27Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 39l-9 16M32 32l-9 9"/>
+        <path d="M30 55h24"/>
+      </g>
+    </symbol>
     <symbol id="i-karten" viewBox="0 0 64 64">
       <rect x="9" y="17" width="28" height="38" rx="4" transform="rotate(-10 23 36)" fill="none" stroke="currentColor" stroke-width="3"/>
       <rect style="fill:var(--acc)" x="26" y="9" width="28" height="38" rx="4" stroke="currentColor" stroke-width="3"/>
@@ -234,7 +241,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
     <a class="logo" href="index.html"><svg class="ci-logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#003462"/><g fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 50c0-15 10-24 24-24s24 9 24 24v22c0 17-11 27-24 27S36 89 36 72Z"/><path d="M39 38l3-13 11 7M81 38l-3-13-11 7"/><path d="M49 82c2.5 2.5 5.5 2.5 8 0 2.5 2.5 5.5 2.5 8 0M53 90c2.5 2.5 5.5 2.5 8 0" stroke-width="2.8"/><path d="M28 100h64"/><path d="M50 99v-3M56 99v-3M64 99v-3M70 99v-3" stroke-width="2.8"/></g><circle cx="49" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="71" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="49" cy="53" r="3.6" fill="#003462"/><circle cx="71" cy="53" r="3.6" fill="#003462"/><path d="M56.5 64h7L60 70.5Z" fill="#F2A516" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg><span>Philosophieunterricht <span class="ci-lvl">S6/S7</span></span></a>
     <span class="sp"></span>
     <div class="links" id="links">
-      <a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a>
+      <a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a><a href="essay.html">Essay</a>
     </div>
     <button class="tbtn" id="themeBtn" aria-label="Hell/Dunkel wechseln"></button>
     <button class="tbtn burger" id="burger" aria-label="Menü" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -280,7 +287,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
 
   <section class="block">
     <div class="head">
-      <h2>Fünf Werkzeuge, die zusammenspielen</h2>
+      <h2>Sechs Werkzeuge, die zusammenspielen</h2>
       <p>Von der Frage über die Positionen bis zum sicheren Begriff.</p>
     </div>
     <div class="mods">
@@ -289,6 +296,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
       <a class="mod" href="begriffe.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-buch"/></svg><h3>Begriffe</h3><p>Definition, Abgrenzung und warum der Begriff wichtig ist.</p></a>
       <a class="mod" href="philosophen.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-denker"/></svg><h3>Philosophen</h3><p>Kernidee, Konzepte und Querverbindungen.</p></a>
       <a class="mod" href="karteikarten.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-karten"/></svg><h3>Karteikarten</h3><p>Abfragen, bis es sitzt.</p></a>
+      <a class="mod" href="essay.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-feder"/></svg><h3>Essay</h3><p>Die Checkliste für Planen, Schreiben und Überlesen.</p></a>
     </div>
   </section>
 
@@ -313,7 +321,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
   </section>
 </main>
 
-<footer><div class="wrap foot"><span>Philosophie 4 · Tom Retter · LLIS</span><nav><a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a></nav></div></footer>
+<footer><div class="wrap foot"><span>Philosophie 4 · Tom Retter · LLIS<span data-upd=" · "></span></span><nav><a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a><a href="essay.html">Essay</a></nav></div></footer>
 
 <script>
 (function(){var h=document.documentElement,b=document.getElementById('themeBtn');
@@ -321,5 +329,10 @@ function p(){b.innerHTML='<svg><use href="#i-'+(h.classList.contains('dark')?'so
 b.addEventListener('click',function(){var d=h.classList.toggle('dark');try{localStorage.setItem('philo-theme',d?'dark':'light')}catch(e){}p()});})();
 </script>
 <script>(function(){var b=document.getElementById('burger'),l=document.getElementById('links');if(b&&l)b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o);});})();</script>
+<script>/* Letzte Aktualisierung (automatisch aus dem Dateidatum) */
+(function(){var d=new Date(document.lastModified);if(isNaN(d))return;
+var t='Letzte Aktualisierung: '+('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear();
+document.documentElement.style.setProperty('--upd','"'+t+'"');
+document.querySelectorAll('[data-upd]').forEach(function(e){e.textContent=(e.getAttribute('data-upd')||'')+t});})();</script>
 </body>
 </html>
