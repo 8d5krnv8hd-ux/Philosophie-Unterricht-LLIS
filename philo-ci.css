@@ -1,0 +1,116 @@
+/* LLIS PHILO - Webseite an die Arbeitsblätter angeglichen (Philo-CI 2.1, 18.10.2026)
+   Wird in jeder Seite als letztes Stylesheet geladen und überschreibt Schrift, Formen und Farbregeln.
+   Quelle der Regeln: 05 Werkzeuge/CI Philo/Philo_CI_Styleguide.html */
+
+/* ---------- Schriften: dieselben Dateien wie im Arbeitsblatt ---------- */
+@font-face{font-family:"Gillius ADF No2";src:url(assets/fonts/GilliusADFNo2-Regular.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"Gillius ADF No2";src:url(assets/fonts/GilliusADFNo2-Bold.otf) format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"Lato";src:url(assets/fonts/lato-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Lato";src:url(assets/fonts/lato-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Lato";src:url(assets/fonts/lato-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/source-serif-4-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/source-serif-4-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/source-serif-4-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
+html:root,html.light,html.dark,:root[data-theme],:root[data-theme="dark"],:root[data-theme="light"]{
+  --font:"Lato","Gill Sans",sans-serif !important;
+  --serif:"Source Serif 4",Georgia,serif !important;
+  --ci-head:"Gill Sans","Gill Sans MT","Gillius ADF No2",sans-serif;
+  --ci-navy:#003462;--ci-sky:#8EC5F0;--ci-amber:#F2A516;--ci-line:#D3D8DF;
+  --r:8px !important;--rl:12px !important;
+}
+body{font-family:"Lato","Gill Sans",sans-serif}
+
+/* Titel, Navigation, Labels in Gill wie auf Arbeitsblatt und Folien; höchstens 700 */
+:is(h1,h2,h3,h4,h5,.brand b,.nav-links a,.pill-nav a,nav a,button,.btn,.fbtn,.vtbtn,
+.lf-q,.lf-topic,.lf-sem-hdr,.term-name,.sem-banner-title,.sem-banner-sub,.subsection-label,th,
+[class*="badge"],[class*="eyebrow"],[class*="chip"],.tag,.page-hero-badge):not(#_ci){font-family:var(--ci-head) !important}
+:is(h1,h2,h3,h4,.lf-q,.term-name,.sem-banner-title):not(#_ci){font-weight:700 !important;letter-spacing:-.01em}
+
+/* ---------- Formensprache: flach wie das Arbeitsblatt ---------- */
+:is([class*="card"],.field,.quote,.box,.soc,.sem-section,.toolbar,.lf-card,.term-card,.subsection-block,
+.cmp,.panel,.tile,.stat,.step,.faq,.acc,.item,.way,.mod,.pc):not(#_ci){border-radius:12px !important;box-shadow:none !important}
+:is(.topnav,.pill-nav,nav.pill-nav):not(#_ci){box-shadow:none !important;border:1px solid var(--ci-line) !important}
+:is(.topnav,.pill-nav)::before,:is(.topnav,.pill-nav)::after{box-shadow:none !important}
+[class*="card"]:not(.card-flipper):not(.card-scene):hover,.field:hover{box-shadow:none !important;transform:none !important}
+html.dark .topnav,html.dark .pill-nav,:root[data-theme="dark"] .pill-nav{border-color:#1F3A55 !important}
+
+/* ---------- Leitfragen: Navy wie auf Folie und Arbeitsblatt ---------- */
+.lf-card:not(#_ci){background:var(--ci-navy) !important;border-color:var(--ci-navy) !important}
+.lf-card .lf-q:not(#_ci){color:#FFFFFF !important}
+.lf-card .lf-topic:not(#_ci){color:var(--ci-sky) !important}
+.lf-card :is(.lf-btn,a):not(#_ci){color:#FFFFFF !important}
+
+/* ---------- Begriffe: Buch-Icon in Amber wie in der Begriffe-Box ---------- */
+.term-name::before{content:"";display:inline-block;width:22px;height:22px;margin-right:9px;vertical-align:-5px;border-radius:50%;
+  background:var(--ci-amber) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316202B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 6.5C10.2 5.2 7.6 4.8 3.5 5v13c4.1-.2 6.7.2 8.5 1.5 1.8-1.3 4.4-1.7 8.5-1.5V5c-4.1-.2-6.7.2-8.5 1.5Z'/%3E%3Cpath d='M12 6.5v13'/%3E%3C/svg%3E") center/13px no-repeat}
+
+/* ---------- Farbregeln: Orange nur für Schüleraktivität ---------- */
+.tag b:not(#_ci){background:var(--ci-navy) !important;color:#FFFFFF !important}
+.hero-art .spark:not(#_ci){background:var(--ci-sky) !important}
+svg.ic .dot:not(#_ci){fill:var(--ci-sky) !important}
+
+/* Marke */
+.ci-lvl{font-weight:400 !important;opacity:.75}
+
+/* ---------- Vergleichstabellen: Zeilentitel in Gill, normal geschrieben, fett (20.10.2026) ---------- */
+:is(.ptbl,.ctbl) td.rl:not(#_ci){font-family:var(--ci-head) !important;text-transform:none !important;letter-spacing:0 !important;
+  font-size:16px !important;font-weight:700 !important;line-height:1.3 !important}
+
+/* ---------- Überarbeitung 21.10.2026 (Prüfung impeccable + Barrierefreiheit) ----------
+   Dunkelmodus: index und philosophen setzen html.dark, die übrigen Seiten sind dunkel, solange html.light fehlt. */
+:root{--ci-focus:#003462}
+html.dark,html:not(.light):has(.topnav){--ci-focus:#8EC5F0}
+
+/* Fokus-Ring für Tastatur, einheitlich auf allen Seiten */
+:is(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid var(--ci-focus) !important;outline-offset:2px}
+.lf-card :focus-visible{outline-color:#FFFFFF !important}
+:is(.search,.toolbar,.search-wrap):focus-within{outline:3px solid var(--ci-focus);outline-offset:2px}
+
+/* Dunkelmodus: Steel-Blau als Schrift ist auf Navy unlesbar, dort Himmelblau */
+html:not(.light):has(.topnav) :is(.lbl-argumentation,.cb-lbl-haupt,.thdr-sem-nr,.thdr-sem-name,.count-badge strong):not(#_ci){color:#8EC5F0 !important}
+/* Dunkelmodus: aktive Knöpfe auf Himmelblau mit dunkler Schrift */
+html:not(.light):has(.topnav) :is(.mode-btn.on,.vb.on,.vtbtn.on,.vtbtn.active):not(#_ci){color:#0B1C2E !important}
+/* Dunkelmodus: aktiver Themenbereich in der Seitenleiste (Vergleiche, Begriffe) */
+html:not(.light):has(.topnav) .sb-sem-link.active:not(#_ci){background:rgba(142,197,240,.14) !important}
+html:not(.light):has(.topnav) .sb-sem-link.active :is(.sb-sem-name,span):not(#_ci){color:#E8EDF2 !important}
+
+/* Navigation der Unterseiten: Links mittig wie auf der Startseite */
+@media(min-width:901px){.topnav .nav-links:not(#_ci){display:flex !important;margin:0 auto !important;gap:.25rem}.topnav .sp:not(#_ci){display:none !important}}
+/* Drucken nicht mehr in der Navigation (die Essay-Checkliste hat einen eigenen Knopf) */
+.topnav button[aria-label="Drucken"]{display:none !important}
+/* Aufgeklapptes Handy-Menü flach wie der Rest */
+:is(.links,.nav-links):not(#_ci){box-shadow:none !important}
+@media(max-width:1050px){.links.open{border:1px solid var(--ci-line)}}
+@media(max-width:900px){.nav-links.open{border:1px solid var(--ci-line)}}
+
+/* Kleine Labels nicht unter 13px */
+:is(.page-hero-badge,.lf-topic,.chips .chip,.ub-ey,.lab,.es-tag,.st-qhead .ey,.merk span):not(#_ci){font-size:13px !important}
+
+/* Tippflächen am Handy mindestens 44px */
+:is(.theme-toggle,.nav-hamburger,.tbtn):not(#_ci){min-width:44px;min-height:44px}
+@media(max-width:600px){
+  :is(.fbtn,.sbtn,.mode-btn,.vb,.vtbtn,.st-back,.st-kurs button,.qz-tf button,.es-tab,.qz-skip):not(#_ci){min-height:44px}
+}
+
+/* Weniger Bewegung, wenn im System eingestellt */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto !important}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+
+/* Gemeinsame Fußzeile der Unterseiten (wie auf der Startseite) */
+.ci-foot{border-top:1px solid var(--ci-line);padding:2.5rem 0;margin-top:4rem;font-size:15px;color:#5F6B78}
+html.dark .ci-foot,html:not(.light):has(.topnav) .ci-foot{border-color:#1F3A55;color:#8A97A5}
+.ci-foot-in{max-width:1180px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.ci-foot nav{display:flex;gap:.5rem 1.5rem;flex-wrap:wrap}
+.ci-foot a{color:inherit;text-decoration:none}
+.ci-foot a:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:640px){.ci-foot-in{padding:0 1rem}.ci-foot nav a{padding:10px 0}}
+@media print{.ci-foot{display:none}}
+
+/* Kein Verlaufsschleier unter der Navigation (wirkte wie ein Schatten) */
+.page-hero::before{display:none !important}
+/* Seitenleiste: aktiver Unterpunkt Anthropologie (Blush) mit dunkler Schrift */
+.sb-sem-block:has(.sb-sem-name):last-of-type .sb-sub-link.active:not(#_ci){color:#16202B !important}
+html:not(.light):has(.topnav) .topnav:not(#_ci){border-color:#1F3A55 !important}

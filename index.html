@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Philosophieunterricht S6/S7</title>
+<title>LLIS PHILO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>try{if(localStorage.getItem('philo-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
@@ -11,16 +11,16 @@
 /* Vorschlag B "Ruhig & gross": warmes Papier, schwebende Pill-Navigation, grosse Line-Icons */
 :root{
   --bg:#FBFAF7; --panel:#EEF1F5; --card:#FFFFFF; --line:#E4E2DC;
-  --text:#16202B; --text-2:#4A5663; --text-3:#6B7785;
+  --text:#16202B; --text-2:#4A5663; --text-3:#5F6B78;
   --ink:#16202B; --navy:#003462; --navy-ink:#003462; --sky:#8EC5F0;
   --orange:#E2630A; --orange-text:#C24F00; --amber:#F2A516; --amber-soft:#FDF0D3; --peach:#FCE0B6;
-  --tf-ek:#2D5282; --tf-et:#5A8A5A; --tf-pp:#C85A4A; --tf-an:#E8A090;
+  --tf-ek:#2D5282; --tf-et:#5A8A5A; --tf-pp:#BE5444; --tf-an:#E8A090;
   --acc:#F2A516; --acc2:#8EC5F0;
   --font:"Gill Sans","Gill Sans MT","Lato",Calibri,sans-serif;
 }
 html.dark{
   --bg:#0B1C2E; --panel:#12283F; --card:#0F2236; --line:#1F3A55;
-  --text:#E8EDF2; --text-2:#B4C0CC; --text-3:#8797A7; --ink:#E8EDF2; --navy-ink:#8EC5F0;
+  --text:#E8EDF2; --text-2:#B4C0CC; --text-3:#8A97A5; --ink:#E8EDF2; --navy-ink:#8EC5F0;
   --orange-text:#F28C3A; --amber-soft:#33270C;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -109,10 +109,12 @@ section.block{padding:8rem 0}
 .quote blockquote{font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.3;font-weight:500}
 .quote cite{display:block;margin-top:1rem;font-style:normal;color:var(--text-3)}
 
-footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var(--text-3);font-size:.92rem}
-.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.foot nav{display:flex;gap:1.5rem;flex-wrap:wrap}
-.foot a:hover{color:var(--orange-text)}
+/* Fußzeile: gemeinsame .ci-foot aus philo-ci.css; Dunkelmodus hier über html.dark */
+html.dark .ci-foot{border-color:#1F3A55;color:#8A97A5}
+
+/* S3: Themenfeld-Karten führen zu den Leitfragen (Optik wie vorher, dezenter Hover) */
+a.field{color:inherit;text-decoration:none;border:1px solid transparent;transition:border-color .2s}
+a.field:hover{border-color:var(--text-3)}
 
 @media(max-width:1050px){
   .links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--bg);border-radius:24px;padding:.75rem;box-shadow:0 12px 40px rgba(0,0,0,.12)}
@@ -132,10 +134,45 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
   .panel{padding:1.5rem;border-radius:28px}
   .mods,.fields{grid-template-columns:1fr}
   section.block{padding:5rem 0}
+  .hero{padding:1.75rem 0 3.5rem;gap:1.5rem}
+  .hero-art{width:170px}
+  .hero h1{margin:1.1rem 0 1rem}
+  .mod svg.ic{width:56px;height:56px}
   .nav-cta{display:none}
   .logo span{display:none}
 }
-.ci-lvl{font-weight:400;color:var(--text-3,#6B7785)}
+.ci-lvl{font-weight:400;color:var(--text-3,#5F6B78)}
+</style>
+<link rel="stylesheet" href="philo-ci.css">
+<style id="owl-anim">
+.ci-logo .owl,.ci-logo .owl-eyes,.ci-logo .owl-pupils{transform-box:view-box}
+.ci-logo .owl{transform-origin:60px 100px}
+.ci-logo .owl-eyes{transform-origin:60px 53px}
+a:hover .ci-logo .owl,a:focus-visible .ci-logo .owl{animation:owl-tilt 1.1s ease-in-out}
+a:hover .ci-logo .owl-eyes,a:focus-visible .ci-logo .owl-eyes{animation:owl-blink 1.1s ease-in-out}
+a:hover .ci-logo .owl-pupils,a:focus-visible .ci-logo .owl-pupils{animation:owl-look 1.1s ease-in-out}
+@keyframes owl-tilt{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}55%{transform:rotate(7deg)}80%{transform:rotate(-2deg)}}
+@keyframes owl-blink{0%,38%,50%,100%{transform:scaleY(1)}44%{transform:scaleY(.12)}}
+@keyframes owl-look{0%,100%{transform:translate(0,0)}20%,35%{transform:translate(-3px,0)}60%,75%{transform:translate(3px,-1px)}}
+@media (prefers-reduced-motion:reduce){a .ci-logo *{animation:none!important}}
+</style>
+<style id="kopf-anim">
+.kopf-anim{overflow:visible}
+.kopf-anim *{transform-box:view-box}
+.kopf-anim .k-head{transform-origin:60px 112px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}
+.kopf-anim .k-bubble{transform-origin:76px 44px;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.kopf-anim .k-eye{transition:transform .35s ease}
+.kopf-anim .k-eye-l{transform-origin:43.5px 73px}
+.kopf-anim .k-eye-r{transform-origin:76.5px 73px}
+.kopf-anim .k-dot{transform-origin:center;transform-box:fill-box}
+.hero-art:hover .k-head{transform:rotate(-5deg)}
+.hero-art:hover .k-bubble{transform:scale(1.08) rotate(4deg)}
+.hero-art:hover .k-eye{transform:scaleY(-1)}
+.hero-art:hover .k-dot{animation:k-think 1.2s ease-in-out infinite}
+.hero-art:hover .k-dot:nth-child(2){animation-delay:.15s}
+.hero-art:hover .k-dot:nth-child(3){animation-delay:.3s}
+@keyframes k-think{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.kopf-anim *{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -238,21 +275,21 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
 
 <div class="wrap navbar">
   <nav class="pill-nav">
-    <a class="logo" href="index.html"><svg class="ci-logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#003462"/><g fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 50c0-15 10-24 24-24s24 9 24 24v22c0 17-11 27-24 27S36 89 36 72Z"/><path d="M39 38l3-13 11 7M81 38l-3-13-11 7"/><path d="M49 82c2.5 2.5 5.5 2.5 8 0 2.5 2.5 5.5 2.5 8 0M53 90c2.5 2.5 5.5 2.5 8 0" stroke-width="2.8"/><path d="M28 100h64"/><path d="M50 99v-3M56 99v-3M64 99v-3M70 99v-3" stroke-width="2.8"/></g><circle cx="49" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="71" cy="53" r="9" fill="#F2A516" stroke="#fff" stroke-width="3.2"/><circle cx="49" cy="53" r="3.6" fill="#003462"/><circle cx="71" cy="53" r="3.6" fill="#003462"/><path d="M56.5 64h7L60 70.5Z" fill="#F2A516" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg><span>Philosophieunterricht <span class="ci-lvl">S6/S7</span></span></a>
+    <a class="logo" href="index.html"><svg class="ci-logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#FFFFFF"/><g class="owl"><g fill="none" stroke="#003462" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 50c0-15 10-24 24-24s24 9 24 24v22c0 17-11 27-24 27S36 89 36 72Z"/><path d="M39 38l3-13 11 7M81 38l-3-13-11 7"/><path d="M49 82c2.5 2.5 5.5 2.5 8 0 2.5 2.5 5.5 2.5 8 0M53 90c2.5 2.5 5.5 2.5 8 0" stroke-width="2.8"/><path d="M28 100h64"/><path d="M50 99v-3M56 99v-3M64 99v-3M70 99v-3" stroke-width="2.8"/></g><g class="owl-eyes"><circle cx="49" cy="53" r="9" fill="#F2A516" stroke="#003462" stroke-width="3.2"/><circle cx="71" cy="53" r="9" fill="#F2A516" stroke="#003462" stroke-width="3.2"/><g class="owl-pupils"><circle cx="49" cy="53" r="3.6" fill="#003462"/><circle cx="71" cy="53" r="3.6" fill="#003462"/></g></g><path d="M56.5 64h7L60 70.5Z" fill="#F2A516" stroke="#003462" stroke-width="2.4" stroke-linejoin="round"/></g></svg><span>LLIS PHILO</span></a>
     <span class="sp"></span>
     <div class="links" id="links">
-      <a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a><a href="essay.html">Essay</a>
+      <a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="uebung.html">Üben</a><a href="essay.html">Essay</a>
     </div>
-    <button class="tbtn" id="themeBtn" aria-label="Hell/Dunkel wechseln"></button>
-    <button class="tbtn burger" id="burger" aria-label="Menü" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="nav-cta" href="karteikarten.html">Jetzt üben</a>
+    <button class="tbtn" id="themeBtn" aria-label="Hell/Dunkel wechseln" aria-pressed="false"></button>
+    <button class="tbtn burger" id="burger" aria-label="Menü" aria-expanded="false" aria-controls="links"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="nav-cta" href="uebung.html">Jetzt üben</a>
   </nav>
 </div>
 
 <main class="wrap">
   <header class="hero">
     <div>
-      <span class="tag"><b>S6/S7</b>Philosophie 4 · Europäisches Abitur</span>
+      <span class="tag"><b>S6/S7</b>Philosophie 4 und 2 · Europäisches Abitur</span>
       <h1>Denken lernen.<br>Philosophie verstehen.</h1>
       <p>Leitfragen, Positionen, Begriffe und Philosophen aus allen vier Themenfeldern, an einem Ort.</p>
       <div class="actions">
@@ -261,7 +298,20 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <svg class="ic" viewBox="0 0 120 120"><use href="#i-kopf"/></svg>
+      <svg class="ic kopf-anim" viewBox="0 0 120 120"><g class="k-head">
+        <g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="60" cy="47" rx="37" ry="6"/>
+          <path d="M23 47v30a37 37 0 0 0 74 0V47"/>
+          <path d="M23 60c-5 1-8.5 5.5-8.5 10s3.5 9 8.5 10"/>
+          <path d="M97 60c5 1 8.5 5.5 8.5 10s-3.5 9-8.5 10"/>
+          <path class="k-eye k-eye-l" d="M36 69c1.5 5 4.5 8 7.5 8s6-3 7.5-8"/>
+          <path class="k-eye k-eye-r" d="M69 69c1.5 5 4.5 8 7.5 8s6-3 7.5-8"/>
+          <path d="M60 72.5l-3.5 14 7-1.8"/>
+        </g>
+        <g class="k-bubble">
+          <path style="fill:var(--acc)" d="M58 5c14 0 25 8.5 25 19.5V47l-9.5-7.5c-5 2.4-10.4 3.7-15.5 4-14 0-25-8.5-25-19.5S44 5 58 5Z" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round"/>
+          <g fill="currentColor"><circle class="k-dot" cx="49.5" cy="24.5" r="2.6"/><circle class="k-dot" cx="58" cy="24.5" r="2.6"/><circle class="k-dot" cx="66.5" cy="24.5" r="2.6"/></g>
+        </g></g></svg>
       <span class="spark" style="width:14px;height:14px;left:4%;top:12%"></span>
       <span class="spark" style="width:10px;height:10px;right:6%;top:4%"></span>
       <span class="spark" style="width:8px;height:8px;right:0;top:30%;background:var(--sky)"></span>
@@ -278,9 +328,9 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
       <h3>Ich will ein Thema verstehen</h3>
       <div class="art"><svg class="ic" viewBox="0 0 64 64"><use href="#i-waage"/></svg></div>
     </a>
-    <a class="way w2" href="karteikarten.html">
+    <a class="way w2" href="uebung.html">
       <span class="lab">Vor der Prüfung</span>
-      <h3>Ich will Begriffe sicher können</h3>
+      <h3>Ich will den Stoff sicher können</h3>
       <div class="art"><svg class="ic" viewBox="0 0 64 64"><use href="#i-karten"/></svg></div>
     </a>
   </section>
@@ -295,7 +345,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
       <a class="mod" href="vergleiche.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-waage"/></svg><h3>Vergleiche</h3><p>Positionen nebeneinander, mit Kritik und Merksatz.</p></a>
       <a class="mod" href="begriffe.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-buch"/></svg><h3>Begriffe</h3><p>Definition, Abgrenzung und warum der Begriff wichtig ist.</p></a>
       <a class="mod" href="philosophen.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-denker"/></svg><h3>Philosophen</h3><p>Kernidee, Konzepte und Querverbindungen.</p></a>
-      <a class="mod" href="karteikarten.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-karten"/></svg><h3>Karteikarten</h3><p>Abfragen, bis es sitzt.</p></a>
+      <a class="mod" href="uebung.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-karten"/></svg><h3>Üben</h3><p>Karteikarten, Selbsttest und Quiz: abfragen, bis es sitzt.</p></a>
       <a class="mod" href="essay.html"><svg class="ic" viewBox="0 0 64 64"><use href="#i-feder"/></svg><h3>Essay</h3><p>Die Checkliste für Planen, Schreiben und Überlesen.</p></a>
     </div>
   </section>
@@ -306,10 +356,10 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
       <p>Dieselbe Ordnung wie auf den Folien und Arbeitsblättern.</p>
     </div>
     <div class="fields">
-      <div class="field" style="--acc:var(--tf-ek)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-auge"/></svg><h3>Erkenntnistheorie</h3><div class="meta"><span>Wissen</span><span>Wahrheit</span><span>Wissenschaft</span></div></div>
-      <div class="field" style="--acc:var(--tf-et)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-herz"/></svg><h3>Ethik</h3><div class="meta"><span>Glück</span><span>Pflicht</span><span>Verantwortung</span></div></div>
-      <div class="field" style="--acc:var(--tf-pp)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-tempel"/></svg><h3>Politische Philosophie</h3><div class="meta"><span>Staat</span><span>Macht</span><span>Gerechtigkeit</span></div></div>
-      <div class="field" style="--acc:var(--tf-an)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-mensch"/></svg><h3>Anthropologie</h3><div class="meta"><span>Freiheit</span><span>Sinn</span><span>Menschenbild</span></div></div>
+      <a class="field" href="leitfragen.html" style="--acc:var(--tf-ek)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-auge"/></svg><h3>Erkenntnistheorie</h3><div class="meta"><span>Wissen</span><span>Wahrheit</span><span>Wissenschaft</span></div></a>
+      <a class="field" href="leitfragen.html" style="--acc:var(--tf-et)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-herz"/></svg><h3>Ethik</h3><div class="meta"><span>Glück</span><span>Pflicht</span><span>Verantwortung</span></div></a>
+      <a class="field" href="leitfragen.html" style="--acc:var(--tf-pp)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-tempel"/></svg><h3>Politische Philosophie</h3><div class="meta"><span>Staat</span><span>Macht</span><span>Gerechtigkeit</span></div></a>
+      <a class="field" href="leitfragen.html" style="--acc:var(--tf-an)"><svg class="ic" viewBox="0 0 64 64"><use href="#i-mensch"/></svg><h3>Anthropologie</h3><div class="meta"><span>Freiheit</span><span>Sinn</span><span>Menschenbild</span></div></a>
     </div>
   </section>
 
@@ -321,11 +371,11 @@ footer{border-top:1px solid var(--line);padding:3rem 0;margin-top:4rem;color:var
   </section>
 </main>
 
-<footer><div class="wrap foot"><span>Philosophie 4 · Tom Retter · LLIS<span data-upd=" · "></span></span><nav><a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="karteikarten.html">Karteikarten</a><a href="essay.html">Essay</a></nav></div></footer>
+<footer class="ci-foot"><div class="ci-foot-in"><span>LLIS PHILO · Tom Retter<span data-upd=" · "></span></span><nav aria-label="Fußzeile"><a href="leitfragen.html">Leitfragen</a><a href="vergleiche.html">Vergleiche</a><a href="begriffe.html">Begriffe</a><a href="philosophen.html">Philosophen</a><a href="uebung.html">Üben</a><a href="essay.html">Essay</a></nav></div></footer>
 
 <script>
 (function(){var h=document.documentElement,b=document.getElementById('themeBtn');
-function p(){b.innerHTML='<svg><use href="#i-'+(h.classList.contains('dark')?'sonne':'mond')+'"/></svg>'}p();
+function p(){var d=h.classList.contains('dark');b.innerHTML='<svg aria-hidden="true"><use href="#i-'+(d?'sonne':'mond')+'"/></svg>';b.setAttribute('aria-pressed',d?'true':'false')}p();
 b.addEventListener('click',function(){var d=h.classList.toggle('dark');try{localStorage.setItem('philo-theme',d?'dark':'light')}catch(e){}p()});})();
 </script>
 <script>(function(){var b=document.getElementById('burger'),l=document.getElementById('links');if(b&&l)b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o);});})();</script>
